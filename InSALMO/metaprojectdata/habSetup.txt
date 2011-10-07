@@ -1,0 +1,14 @@
+"Format: must be tab separated, first four field are required, 5th-7th are optional."						
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin						
+reachName	ClearCreek-3A	Reach Name	STRING	1	0	30
+habParamFile	ClearCreek3A-Hab.Params	Name of reach's habitat parameter file	INFILENAME	2		
+habDownstreamJunctionNumber	2	Reach's downstream junction number	INTEGER	3	0	99999
+habUpstreamJunctionNumber	1	Reach's upstream junction number	INTEGER	4	0	99999
+cellGeomFile	ClearCreek3A-Geom.Data	Name of reach's geometry (cell coordinates) data file	INFILENAME	5	0	35
+cellHydraulicFile	ClearCreek3A-Hyd.csv	Name of reach's hydraulic (depth and velocity) data file	INFILENAME	5	0	35
+cellHabVarsFile	ClearCreek3A-Cell.Data	Name of reach's cell variables data file	INFILENAME	5	0	35
+flowFile	ClearCreekAtIgo-Flow.csv	Name of reach's flow input file	INFILENAME	6	0	35
+temperatureFile	ClearCreekReach3-Temp.csv	Name of reach's temperature input file	INFILENAME	7	0	35
+turbidityFile	ClearCreekReach3-Turbidity.csv	Name of reach's turbidity input file	INFILENAME	8	0	35
+@end						

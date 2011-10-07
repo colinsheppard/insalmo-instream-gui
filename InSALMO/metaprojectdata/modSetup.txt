@@ -1,0 +1,20 @@
+"Format: must be tab separated, first four field are required, 5th-7th are optional."						
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin						
+randGenSeed	32461	Random number generator seed	INTEGER	1	0	99999999
+numberOfSpecies	1	Number of species	INTEGER	2	1	10
+runStartDate	10/1/06	Run start date	DATE	3		
+runEndDate	9/30/07	Run end date	DATE	4		
+fishOutputFile	Live_Fish_Out.csv	Population output file name	OUTFILENAME	5		
+fishMortalityFile	Dead_Fish_Out.csv	Mortality output file name	OUTFILENAME	6				
+reddOutputFile	Redds_Out.csv	Redd output file name	OUTFILENAME	8		
+outmigrantOutputFile	Outmigrants_Out.csv	Outmigrant output file name	OUTFILENAME	9		
+fileOutputFrequency	1	Days between file outputs	INTEGER	10	1	30
+appendFiles	0	"0" to overwrite output files; "1" to append	BOOL	11		
+shuffleYears	0	"1" if simulation years should be randomly shuffles; "0" if not	BOOL	20		
+shuffleYearReplace	1	"1" if year shuffle randomization is with replacement (only relevant if "shuffleYears" is "1"); "0" if without replacement	BOOL	21		
+shuffleYearSeed	1	Seed used by random year shuffler	INTEGER	22	0	99999999
+siteLatitude	40	Latitude of the study site, in degrees north	FLOAT	30	-90	90
+juvenileSuperindividualRatio	20	Number of juveniles to represent per model fish	INTEGER	40	1	100
+numSpawnerAdjuster	1	Number of Spawners adjustment factor (used by Limiting Factors Tool, simply scales the number of spawners)	FLOAT	45	0	20
+@end						

@@ -1,0 +1,124 @@
+"Format: must be tab separated, first four field are required, 5th-7th are optional."						
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin  						
+fishCaptureParam1	1.6	Ratio velocity/swim speed for capture success = 0.1	FLOAT	1	1	2
+fishCaptureParam9	0.5	Ratio velocity/swim speed for capture success = 0.9	FLOAT	3	0.1	0.9
+fishCmaxParamA	0.628	Allometric constant in Cmax equation (unitless)	FLOAT	5	0.1	2
+fishCmaxParamB	-0.3	Allometric exponent in Cmax equation (unitless)	FLOAT	7	-1	0
+fishCmaxTempF1	0.05	Value for first point in Cmax temperature function (unitless)	FLOAT	9	0	1
+fishCmaxTempF2	0.05	Value for 2nd point in Cmax temperature function (unitless)	FLOAT	11	0	1
+fishCmaxTempF3	0.5	Value for 3rd point in Cmax temperature function (unitless)	FLOAT	13	0	1
+fishCmaxTempF4	1	Value for 4th point in Cmax temperature function (unitless)	FLOAT	15	0	1
+fishCmaxTempF5	0.8	Value for 5th point in Cmax temperature function (unitless)	FLOAT	17	0	1
+fishCmaxTempF6	0	Value for 6th point in Cmax temperature function (unitless)	FLOAT	19	0	1
+fishCmaxTempF7	0	Value for 7th point in Cmax temperature function (unitless)	FLOAT	21	0	1
+fishCmaxTempT1	0	Temperature (C) for first point in max consumption function	FLOAT	23	0	30
+fishCmaxTempT2	2	Temperature (C) for 2nd point in max consumption function	FLOAT	25	0	30
+fishCmaxTempT3	10	Temperature (C) for 3rd point in max consumption function	FLOAT	27	0	30
+fishCmaxTempT4	22	Temperature (C) for 4th point in max consumption function	FLOAT	29	0	30
+fishCmaxTempT5	23	Temperature (C) for 5th point in max consumption function	FLOAT	31	0	30
+fishCmaxTempT6	25	Temperature (C) for 6th point in max consumption function	FLOAT	33	0	30
+fishCmaxTempT7	100	Temperature (C) for 7th point in max consumption function	FLOAT	35	0	100
+fishDetectDistParamA	4	A in: Detection distance = A + B*Length	FLOAT	37	0	10
+fishDetectDistParamB	2	B in: Detection distance = A + B*Length	FLOAT	39	1	3
+fishEnergyDensity	5900	Energy density (j/g) of trout/salmon	FLOAT	43	3000	10000
+fishFecundParamA	690	A in: fecundity (eggs/redd) = A*Length^B	FLOAT	45	0.1	1000
+fishFecundParamB	0.552	B in: fecundity (eggs/redd) = A*Length^B	FLOAT	47	0	3.5
+fishFitnessHorizon	90	Time horizon (d) for habitat selection decision	FLOAT	49	5	100
+fishMaxSwimParamA	2.8	Slope in max swim speed length term	FLOAT	51	2	4
+fishMaxSwimParamB	21	Constant in max swim speed length term	FLOAT	53	0	50
+fishMaxSwimParamC	-0.0029	T2 coefficient in max swim speed temperature term	FLOAT	55	-1	0
+fishMaxSwimParamD	0.084	T coefficient in max swim speed temperature term	FLOAT	57	0	1
+fishMaxSwimParamE	0.37	Constant in max swim speed temperature term	FLOAT	59	0	1
+fishMoveDistParamA	50	A in: max move distance = A*Length^B (unitless)	FLOAT	61	5	100
+fishMoveDistParamB	2	B in: max move distance = A*Length^B (unitless)	FLOAT	63	1	3
+fishOutmigrateSuccessL1	5	Length at which outmigration success function is 0.1	FLOAT	64	0	10
+fishOutmigrateSuccessL9	12	Length at which outmigration success function is 0.9	FLOAT	65	5	20
+fishRespParamA	30	Multiplier in weight term of respiration eq.	FLOAT	67	10	100
+fishRespParamB	0.784	Exponent in weight term of respiration eq.	FLOAT	69	0.5	1
+fishRespParamC	0.0693	Temperature parameter in respiration equation	FLOAT	71	0	1
+fishRespParamD	0.03	Swim speed parameter in respiration equation	FLOAT	73	0	1
+fishSearchArea	20000	Area (cm2) search-feeding fish use per day	FLOAT	75	0	100000
+fishSpawnDSuitD1	0	Depth 1 (cm) in spawning depth suitability function	FLOAT	77	0	1000
+fishSpawnDSuitD2	12	Depth 2 (cm) in spawning depth suitability function	FLOAT	79	0	1000
+fishSpawnDSuitD3	27	Depth 3 (cm) in spawning depth suitability function	FLOAT	81	0	1000
+fishSpawnDSuitD4	33.5	Depth 4 (cm) in spawning depth suitability function	FLOAT	83	0	1000
+fishSpawnDSuitD5	204	Depth 5 (cm) in spawning depth suitability function	FLOAT	85	0	1000
+fishSpawnDSuitS1	0	Spawning suitability for depth 1	FLOAT	87	0	1
+fishSpawnDSuitS2	0	Spawning suitability for depth 2	FLOAT	89	0	1
+fishSpawnDSuitS3	0.95	Spawning suitability for depth 3	FLOAT	91	0	1
+fishSpawnDSuitS4	1	Spawning suitability for depth 4	FLOAT	93	0	1
+fishSpawnDSuitS5	0	Spawning suitability for depth 5	FLOAT	95	0	1
+fishSpawnEggViability	0.8	Fraction of eggs that are viable	FLOAT	97	0	1
+fishSpawnDefenseArea	200000	Area that females guard around redds	FLOAT	97	0	400000
+fishSpawnEndDate	11/30	Last day of spawning (MM/DD)	DAY	99		
+fishSpawnMaxFlowChange	0.2	Maximum change in flow for spawning (fraction)	FLOAT	101	0.05	1
+fishSpawnMaxTemp	14	Maximum temperature for spawning (C)	FLOAT	103	0	20
+fishSpawnMinTemp	5	Minimum temperature for spawning (C)	FLOAT	111	0	20
+fishSpawnProb	0.2	Probability of spawning on days when conditions met	FLOAT	113	0	1
+fishSpawnStartDate	10/1	First day of spawning (MM/DD)	DAY	115		
+fishSpawnVSuitS1	0	Spawning suitability for velocity 1	FLOAT	117	0	1
+fishSpawnVSuitS2	0	Spawning suitability for velocity 2	FLOAT	119	0	1
+fishSpawnVSuitS3	0.06	Spawning suitability for velocity 3	FLOAT	121	0	1
+fishSpawnVSuitS4	1	Spawning suitability for velocity 4	FLOAT	123	0	1
+fishSpawnVSuitS5	1	Spawning suitability for velocity 5	FLOAT	125	0	1
+fishSpawnVSuitS6	0	Spawning suitability for velocity 6	FLOAT	127	0	1
+fishSpawnVSuitV1	0	Velocity 1 (cm/s) in spawning velocity suitability function	FLOAT	129	0	1000
+fishSpawnVSuitV2	2.3	Velocity 2 (cm/s) in spawning velocity suitability function	FLOAT	131	0	1000
+fishSpawnVSuitV3	3	Velocity 3 (cm/s) in spawning velocity suitability function	FLOAT	133	0	1000
+fishSpawnVSuitV4	54	Velocity 4 (cm/s) in spawning velocity suitability function	FLOAT	135	0	1000
+fishSpawnVSuitV5	61	Velocity 5 (cm/s) in spawning velocity suitability function	FLOAT	137	0	1000
+fishSpawnVSuitV6	192	Velocity 6 (cm/s) in spawning velocity suitability function	FLOAT	139	0	1000
+fishSpawnWtLossFraction	0.4	Fraction of spawner's weight lost upon spawning	FLOAT	141	0	0.5
+fishTurbidExp	-0.0711	Coefficient for turbidity effect on detection distance	FLOAT	143	-1	0
+fishTurbidMin	0.1	Minimum fraction of detection distance at high turbidities	FLOAT	145	0	1
+fishTurbidThreshold	5	Highest turbidity that has no effect on drift feeding (NTU)	FLOAT	147	0	20
+fishWeightParamA	0.00411	A in: healthy weight (g) = A*Length^B	FLOAT	149	0	0.1
+fishWeightParamB	3.49	B in: healthy weight (g) = A*Length^B	FLOAT	151	2	3.5
+mortFishAqPredD1	20	Depth at which fish predation survival increases by 10% (cm)	FLOAT	153		
+mortFishAqPredD9	10	Depth at which fish predation survival increases by 90% (cm)	FLOAT	155		
+mortFishAqPredF1	18	Feeding time at which fish predation survival increases by 10% (h)	FLOAT	157		
+mortFishAqPredF9	0	Feeding time at which fish predation survival increases by 90% (h)	FLOAT	159		
+mortFishAqPredH1	200	Dist to cover at which fish predation survival increases by 10% (cm)	FLOAT	161		
+mortFishAqPredH9	0	Dist to cover at which fish predation survival increases by 90% (cm)	FLOAT	163		
+mortFishAqPredL1	4	Length at which fish predation survival increases by 10% (cm)	FLOAT	165		
+mortFishAqPredL9	18	Length at which fish predation survival increases by 90% (cm)	FLOAT	167		
+mortFishAqPredMin	0.92	Minimum daily survival probability for fish predation	FLOAT	169	0.5	1
+mortFishAqPredT1	15	Temperature at which fish predation survival increases by 10% (C)	FLOAT	171		
+mortFishAqPredT9	8	Temperature at which fish predation survival increases by 90% (C)	FLOAT	173		
+mortFishAqPredU1	5	Turbidity at which fish predation survival increases by 10% (NTU)	FLOAT	175		
+mortFishAqPredU9	80	Turbidity at which fish predation survival increases by 90% (NTU)	FLOAT	177		
+mortFishConditionK1	0.3	Condition at which survival probability is 0.1	FLOAT	179	0	0.9
+mortFishConditionK9	0.6	Condition at which survival probability is 0.9	FLOAT	181	0.2	0.9
+mortFishHiTT1	28	Temperature at which survival probability is 0.1 (C)	FLOAT	183	20	40
+mortFishHiTT9	24	Temperature at which survival probability is 0.9 (C)	FLOAT	185	15	30
+mortFishStrandD1	-0.3	Ratio of fish length / water depth at which survival is 0.1	FLOAT	187		
+mortFishStrandD9	0.3	Ratio of fish length / water depth at which survival is 0.9	FLOAT	189		
+mortFishTerrPredD1	5	Depth at which terr predation survival increases by 10% (cm)	FLOAT	191		
+mortFishTerrPredD9	200	Depth at which terr predation survival increases by 90% (cm)	FLOAT	193		
+mortFishTerrPredF1	18	Feeding time at which terr predation survival increases by 10% (h)	FLOAT	195		
+mortFishTerrPredF9	0	Feeding time at which terr predation survival increases by 90% (h)	FLOAT	197		
+mortFishTerrPredH1	500	Dist to cover at which terr predation survival increases by 10% (cm)	FLOAT	199		
+mortFishTerrPredH9	-100	Dist to cover at which terr predation survival increases by 90% (cm)	FLOAT	201		
+mortFishTerrPredL1	6	Length at which terr predation survival increases by 10% (cm)	FLOAT	203		
+mortFishTerrPredL9	3	Length at which terr predation survival increases by 90% (cm)	FLOAT	205		
+mortFishTerrPredMin	0.95	Minimum daily survival probability for terr predation	FLOAT	207	0.5	1
+mortFishTerrPredT1	10	Turbidity at which terr predation survival increases by 10% (NTU)	FLOAT	209		
+mortFishTerrPredT9	50	Turbidity at which terr predation survival increases by 90% (NTU)	FLOAT	211		
+mortFishTerrPredV1	20	Velocity at which terr predation survival increases by 10% (cm/s)	FLOAT	213		
+mortFishTerrPredV9	200	Velocity at which terr predation survival increases by 90% (cm/s)	FLOAT	215		
+mortFishVelocityV1	1.8	Ratio of max swim speed / cell velocity where survival is 0.1	FLOAT	217		
+mortFishVelocityV9	1.4	Ratio of max swim speed / cell velocity where survival is 0.9	FLOAT	219		
+mortReddDewaterSurv	0.9	Daily egg survival when redd is dewatered	FLOAT	221	0	1
+mortReddHiTT1	23	High temperature at which egg survival is 10% (C)	FLOAT	223		
+mortReddHiTT9	17.5	High temperature at which egg survival is 90% (C)	FLOAT	225		
+mortReddLoTT1	1.7	Low temperature at which egg survival is 10% (C)	FLOAT	227		
+mortReddLoTT9	4	Low temperature at which egg survival is 90% (C)	FLOAT	229		
+mortReddScourDepth	20	Depth of egg pocket, for redd scour (cm)	FLOAT	231	0	50
+reddDevelParamA	33000	Constant in redd development equation	FLOAT	233		
+reddDevelParamB	-2.04	Temperature coef in redd development equation	FLOAT	235		
+reddDevelParamC	-7.58	Temperature2 coef in redd development equation	FLOAT	237		
+reddNewLengthMin	3.5	Minimum length of newly emerged fry (cm)	FLOAT	239	1	5
+reddNewLengthMax	4.1	Maximum length of newly emerged fry (cm)	FLOAT	241	2	8
+reddSize	56000	Area of redds, for superimposition (cm2)	FLOAT	243	100	100000
+@end						

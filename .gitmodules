@@ -1,0 +1,3 @@
+[submodule "Code/inSALMO"]
+	path = Code/inSALMO
+	url = git@github.com:colinsheppard/insalmo.git
