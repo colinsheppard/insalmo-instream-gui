@@ -32,7 +32,7 @@ winterTemperatureEndDay		03/31
 spawnerNumberRatioHigh		1.5
 hidingCoverThreshold		1
 foodAvailabilityRatioLow		0.5
-numScenarios		4
+numScenarios		5
 piscivoryRiskRatioHigh		1.1
 baseFlowRangeHigh		4
 reddScourRatioLow		0.5
