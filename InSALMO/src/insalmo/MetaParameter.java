@@ -168,10 +168,16 @@ public class MetaParameter {
 			break;
 		case DATE:
 			validationCode = ValidationCode.VALID;
-			try {
-				new SimpleDateFormat("MM/dd/yyyy").parse(value);
-			} catch (ParseException e) {
+			// The year must be 4 digits long
+			String[] pieces = value.split("/");
+			if(pieces.length<3 || pieces[2].length()<4){
 				validationCode = ValidationCode.INVALID_DATE;
+			}else{
+				try {
+					new SimpleDateFormat("MM/dd/yyyy").parse(value);
+				} catch (ParseException e) {
+					validationCode = ValidationCode.INVALID_DATE;
+				}
 			}
 			break;
 		case DAY:
@@ -233,7 +239,7 @@ public class MetaParameter {
 		switch(type){
 		case FLOAT:
 			return "double";  // insalmo is looking for 'double' not 'float' in Experiment.Setup
-							  // eventually, all references to FLOAT here and in the metaprojectdata should be replaced
+			// eventually, all references to FLOAT here and in the metaprojectdata should be replaced
 		case STRING:
 			return "string";
 		case INFILENAME:

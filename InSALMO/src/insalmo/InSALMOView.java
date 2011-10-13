@@ -2136,7 +2136,7 @@ public class InSALMOView extends JFrame{
 					for(Parameter value : openProject.getExperimentParameters(exp).getValues()){
 						theText += value.getParameterValue()+", ";
 					}
-					theText = theText.substring(0,theText.length()-3);	
+					theText = theText.substring(0,theText.length()-2);	
 					theText += "</i></td></tr>";					
 				}
 			}else{
