@@ -2157,7 +2157,23 @@ public class InSALMOView extends JFrame{
 	private void runMenuItemActionPerformed(java.awt.event.ActionEvent evt){
 		runMenuItemActionPerformed(evt, false);
 	}
+	private boolean cancelDueToErrors(){
+		if(this.openProject.errors.size()>0){
+			String[] choices = {"Run with Errors","Cancel and show the errors","Cancel"};
+			int result = JOptionPane.showOptionDialog(this.parentFrame, "Errors exist in the project, run anyway?", "Warning", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE, null, choices, choices[0]);
+			if(result==1){
+				errorWarningButtonActionPerformed(new ActionEvent(this, 0,""));
+				return true;
+			}else if(result!=0){
+				return true;
+			}
+		}
+		return false;
+	}
 	private void runMenuItemActionPerformed(java.awt.event.ActionEvent evt,boolean useGraphics) {
+		if(cancelDueToErrors()){
+			return;
+		}
 		if(MetaProject.getInstance().hasProjectChanged()){
 			String[] choices = {"Save and Run", "CANCEL"};
 			int result = JOptionPane.showOptionDialog(this.parentFrame, "You have unsaved changes...", "Warning", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE, null, choices, choices[0]);
