@@ -1,3 +1,6 @@
 [submodule "Code/inSALMO"]
 	path = Code/inSALMO
 	url = git@github.com:colinsheppard/insalmo.git
+[submodule "Code/inSTREAM"]
+	path = Code/inSTREAM
+	url = git@github.com:colinsheppard/instream.git
