@@ -2196,7 +2196,7 @@ public class InSALMOView extends JFrame{
 		runWithGraphicsMenuItem.setEnabled(false);
 		try {
 			// launch EXE and grab stdout and stderr
-			modelLauncher = new LaunchInsamloExecutable(projectDir.getAbsolutePath(),this,useGraphics,false,showConsoleTextArea,"InSALMO MODEL");
+			modelLauncher = new LaunchInsamloExecutable(projectDir.getAbsolutePath(),this,useGraphics,false,showConsoleTextArea,MetaProject.getInstance().getAppTitle()+" MODEL");
 			StreamGobbler s1 = new StreamGobbler ("stdout", modelLauncher.getProcess().getInputStream(),showConsoleTextArea,projectDir.getAbsolutePath()+"/Console_Output.Out",newline);
 			StreamGobbler s2 = new StreamGobbler ("stderr", modelLauncher.getProcess().getErrorStream(),showConsoleTextArea,projectDir.getAbsolutePath()+"/Console_Output.Out",newline);
 			s1.start ();

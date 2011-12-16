@@ -128,7 +128,7 @@ public class InSALMO extends JFrame implements ActionListener{
 		if (MAC_OS_X) {
 			try{
 				System.setProperty("apple.laf.useScreenMenuBar", "true");  
-				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "inSALMO"); 
+				System.setProperty("com.apple.mrj.application.apple.menu.about.name", MetaProject.getInstance().getAppTitle()); 
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch(ClassNotFoundException e) {  
 				System.out.println("ClassNotFoundException: " + e.getMessage());  

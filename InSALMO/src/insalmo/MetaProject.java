@@ -227,4 +227,7 @@ public class MetaProject {
 	public InSALMOView getInSALMOView(){
 		return this.inSALMOView;
 	}
+	public String getAppTitle(){
+		return (this.version.equals("instream") ? "InSTREAM" : "InSALMO");
+	}
 }
