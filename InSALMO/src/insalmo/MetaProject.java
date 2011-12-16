@@ -63,7 +63,7 @@ public class MetaProject {
 	private boolean projectChanged = false;
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
-	private String version = "insalmo";  // "insalmo" or "instream"
+	private String version = "instream";  // "insalmo" or "instream"
 	private InSALMOView inSALMOView;
 
     public static MetaProject getInstance() {
@@ -79,7 +79,7 @@ public class MetaProject {
 			String paramType = paramTypes[i];
 			ArrayList<String> nameList = new ArrayList<String>();
 	        try {
-	            FileInputStream fstream = new FileInputStream(applicationDirPath+"/metaprojectdata/" + paramType + ".txt");
+	            FileInputStream fstream = new FileInputStream(applicationDirPath+"/metaprojectdata/" + version + "/" + paramType + ".txt");
 	            DataInputStream in = new DataInputStream(fstream);
 	            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 	            String strLine;

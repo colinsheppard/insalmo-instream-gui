@@ -1,4 +1,4 @@
-"Format: must be tab separated, first four field are required, 5th-7th are optional."						
+Format: must be tab separated, first four field are required, 5th-7th are optional.						
 VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
 @begin						
 rasterColorVariable	depth	Display "depth" or "velocity" on raster	STRING	0		
