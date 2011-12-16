@@ -118,7 +118,7 @@ public class MetaProject {
 	        } catch (Exception e) {//Catch exception if any
 	            System.err.println("Error: " + e.getMessage());
 	        }
-	        this.paramNameListByParamType.put(paramType, nameList);
+	        MetaProject.paramNameListByParamType.put(paramType, nameList);
 		}
 	}
 	
