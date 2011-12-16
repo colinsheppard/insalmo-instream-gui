@@ -64,7 +64,7 @@ public class InSALMO extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.view = new InSALMOView(this);
 		ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo.InSTREAMConfigApp.class).getContext().getResourceMap(InSALMO.class);
-		this.setIconImage(resourceMap.getImageIcon("application.icon").getImage());
+		this.setIconImage(resourceMap.getImageIcon(MetaProject.getInstance().getVersion()+".icon").getImage());
 		this.setSize(1050, 850);
 
 		if (MAC_OS_X) {
