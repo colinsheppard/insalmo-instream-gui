@@ -1151,7 +1151,7 @@ public class InSALMOView extends JFrame{
 			sb.append( "<html><body><font color=RED size=+2>Warning</font><br><br>");
 			if(getOpenProject().isMissingParameters()){
 				sb.append("<b>Missing Parameters:</b> The following parameters were not found in the configuration files.<br>" +
-				"These parameters will be added to the opened project with empty values.<br><br>" );
+				"These parameters will be added to the opened project with default values.<br><br>" );
 				sb.append("<table border=1><tr><th align='left'>Parameter Name</th><th align='left'>File</th></tr>");
 				for(String[] missing : getOpenProject().getMissingParameters()){
 					sb.append("<tr><td align='left'>"+missing[0]+"</td><td align='left'>"+missing[1]+"</td></tr>");

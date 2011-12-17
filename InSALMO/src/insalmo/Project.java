@@ -472,7 +472,7 @@ public class Project {
 				ArrayList<String[]> missingP = setupParam.getMissingParams();
 				this.missing.addAll(missingP);
 				for(String[] miss : missingP){
-					setupParam.addParameter(new Parameter(miss[0],"",setupParam));
+					setupParam.addParameter(new Parameter(miss[0],MetaProject.getInstance().getMetaParameter(miss[0]).getDefaultValue(),setupParam));
 				}
 			}
 		}
