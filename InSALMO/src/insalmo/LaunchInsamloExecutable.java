@@ -49,7 +49,12 @@ public class LaunchInsamloExecutable implements Runnable{
 		String useBat = (useGraphics) ? "" : "-b";
 		String appPath = MetaProject.getInstance().getApplicationDir();
 		try {
-			ProcessBuilder pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO\\.libs\\insalmo.exe", useBat);
+			ProcessBuilder pb = null;
+			if(MetaProject.getInstance().getVersion().equals("insalmo")){
+				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO\\.libs\\insalmo.exe", useBat);
+			}else{
+				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSTREAM\\.libs\\instream.exe", useBat);
+			}
 			Map<String, String> env = pb.environment();
 			env.put("Path", appPath+"\\..\\Code\\Swarm\\bin;"+env.get("Path"));
 			env.put("SWARMHOME",appPath+"\\..\\Code\\Swarm");

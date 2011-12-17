@@ -4,3 +4,4 @@ bin
 build
 atest*
 /InstreamInput
+/0test
