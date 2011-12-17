@@ -148,8 +148,8 @@ public class InSALMOView extends JFrame{
 	private ArrayList<javax.swing.JLabel>		habitatParamFileLabel = new ArrayList<javax.swing.JLabel>();
 	private ArrayList<javax.swing.JScrollPane>	speciesSetupScrollPane = new ArrayList<javax.swing.JScrollPane>();
 	private ArrayList<javax.swing.JScrollPane>	speciesParamScrollPane = new ArrayList<javax.swing.JScrollPane>();
-	private ArrayList<javax.swing.JLabel>		speciesSetupFileLabel = new ArrayList<javax.swing.JLabel>();
-	private ArrayList<javax.swing.JLabel>		speciesParamFileLabel = new ArrayList<javax.swing.JLabel>();
+	public ArrayList<javax.swing.JLabel>		speciesSetupFileLabel = new ArrayList<javax.swing.JLabel>();
+	public ArrayList<javax.swing.JLabel>		speciesParamFileLabel = new ArrayList<javax.swing.JLabel>();
 	private ArrayList<javax.swing.JButton>		speciesSetupChangeParamButton = new ArrayList<JButton>();
 	private JScrollPane			modelSetupScrollPane = new javax.swing.JScrollPane();
 	private JScrollPane			experimentControlScrollPane = new javax.swing.JScrollPane();
@@ -157,7 +157,7 @@ public class InSALMOView extends JFrame{
 	private ArrayList<JTable>	habitatSetupTable = new ArrayList<JTable>();
 	private ArrayList<JTable>	habitatParamTable = new ArrayList<JTable>();
 	private ArrayList<JTable>	speciesSetupTable = new ArrayList<JTable>();
-	private ArrayList<JTable>	speciesParamTable = new ArrayList<JTable>();
+	public ArrayList<JTable>	speciesParamTable = new ArrayList<JTable>();
 	private JTable		experimentControlTable = new JTable();
 	private JTable		lftSetupTable = new JTable();
 	private JLayeredPane		habitatLayeredPane = new javax.swing.JLayeredPane();
@@ -1476,8 +1476,8 @@ public class InSALMOView extends JFrame{
 			speciesSetupScrollPane.get(i).setName("speciesScrollPane"+i); 
 			speciesSetupScrollPane.get(i).setViewportView(speciesSetupTable.get(i));
 			speciesSetupFileLabel.add(new javax.swing.JLabel());
-			speciesSetupFileLabel.get(i).setText("<html><div width=\"250px;\">"+resourceMap.getString("configFileLabel.text")+" Species.Setup Parameter File: "+
-					openProject.getSetupParameters("speParam-"+speciesComboElements.get(i)[0]).getFileName()+"</div></html>"); 
+			speciesSetupFileLabel.get(i).setText("<html>"+resourceMap.getString("configFileLabel.text")+" Species.Setup<br>Parameter File: "+
+					openProject.getSetupParameters("speParam-"+speciesComboElements.get(i)[0]).getFileName()+"</html>"); 
 			speciesSetupFileLabel.get(i).setPreferredSize(new Dimension(250,20));
 			speciesSetupFileLabel.get(i).setName("speciesSetupFileLabel"+i); 
 			speciesSetupChangeParamButton.add(new JButton());
@@ -1500,15 +1500,12 @@ public class InSALMOView extends JFrame{
 				speciesSetupFileLabel.get(i).setVisible(false);
 			}
 			speciesSetupLayeredScrollPanesHGroup.addGroup(speciesSetupTabLayout.createParallelGroup()
-					.addGroup(speciesSetupTabLayout.createSequentialGroup()
-							.addComponent(speciesSetupFileLabel.get(i))
-//							.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-							.addComponent(speciesSetupChangeParamButton.get(i)))
+					.addComponent(speciesSetupFileLabel.get(i))
+					.addComponent(speciesSetupChangeParamButton.get(i))
 					.addComponent(speciesSetupScrollPane.get(i),0, resourceMap.getInteger("defaultContentSize.width.int"), Short.MAX_VALUE));
 			speciesSetupLayeredScrollPanesVGroup.addGroup(speciesSetupTabLayout.createSequentialGroup()
-					.addGroup(speciesSetupTabLayout.createParallelGroup()
-							.addComponent(speciesSetupFileLabel.get(i))
-							.addComponent(speciesSetupChangeParamButton.get(i)))
+					.addComponent(speciesSetupFileLabel.get(i))
+					.addComponent(speciesSetupChangeParamButton.get(i))
 					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 					.addComponent(speciesSetupScrollPane.get(i),0, resourceMap.getInteger("defaultContentSize.height.int"), Short.MAX_VALUE));
 
@@ -2050,7 +2047,10 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	protected void changeSpeParamButtonActionPerformed(ActionEvent evt) {
-		
+		Integer speIndex = Integer.parseInt(((JButton)evt.getSource()).getName().substring(20));
+		ChangeSpeciesParameterFile changeParamFile = new ChangeSpeciesParameterFile(this, getOpenProject(),speIndex);
+		changeParamFile.setLocationRelativeTo(InSTREAMConfigApp.getApplication().getMainFrame());
+		InSTREAMConfigApp.getApplication().show(changeParamFile);
 	}
 
 	// MENU ITEM ACTIONS

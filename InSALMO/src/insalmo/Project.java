@@ -643,6 +643,20 @@ public class Project {
 		//		sParams.removeParameter("speciesParamFile");
 		//		speParams.setFileName(sParams.getParamInstance()+".Params");
 	}
+	
+	public void changeSpeciesParameterFile(String speciesName, File newParameterFile) throws Exception{
+		SetupParameters speSetup = setupParams.get("speSetup-"+speciesName);
+		SetupParameters prevSpeParam = setupParams.get("speParam-"+speciesName);
+		speSetup.addParameter(new Parameter("speciesParamFile",newParameterFile.getName(),speSetup));
+		setupParams.remove("speParam-"+speciesName);
+		try{
+			this.loadSpeciesParams(speSetup,newParameterFile.getAbsolutePath());
+		}catch (Exception e){
+			speSetup.removeParameter("speciesParamFile");
+			setupParams.put("speParam-"+speciesName,prevSpeParam);
+			throw e;
+		}
+	}
 
 	public void addNewSpecies(String existingSpeciesName,String newSpeciesName)throws IOException,RuntimeException{
 		if(existingSpeciesName==null){
