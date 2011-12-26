@@ -1171,8 +1171,11 @@ public class InSALMOView extends JFrame{
 				sb.append("</table><br>");
 			}
 			sb.append( "</body></html>" );
-			JLabel textarea = new JLabel( sb.toString() );
-			int result = JOptionPane.showOptionDialog(this.parentFrame, textarea ,"Warning",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,new String[]{"Continue","Close Without Save"},"Continue"); 
+			JLabel textarea = new JLabel( sb.toString());
+			textarea.setVerticalAlignment(JLabel.TOP);
+			JScrollPane scrollpane = new JScrollPane(textarea);
+			scrollpane.setPreferredSize(new Dimension(600, 400));
+			int result = JOptionPane.showOptionDialog(this.parentFrame, scrollpane,"Warning",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,new String[]{"Continue","Close Without Save"},"Continue"); 
 			if(result==1){
 				shutDownProject();
 			}else{
@@ -2331,7 +2334,6 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void errorWarningButtonActionPerformed(java.awt.event.ActionEvent evt){
-		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
 		showErrorWarnings = new ShowErrorsWarnings(this, getOpenProject());
 		showErrorWarnings.setLocationRelativeTo(this.parentFrame);
 		InSTREAMConfigApp.getApplication().show(showErrorWarnings);
