@@ -696,6 +696,7 @@ public class Project {
 			speSetup.addParameter(new Parameter("speciesColor",existingSpeSetup.getParameter("speciesColor").getParameterValue(),speSetup));
 			SetupParameters existingSpeParams= getSetupParameters("speParam-"+existingSpeciesName);
 			SetupParameters speParams = new SetupParameters("speParam",newSpeciesName+".Params");
+			speParams.setParamInstance(speSetup.getParameter("speciesName").getParameterValue());
 			for(String speParamParamName : MetaProject.getInstance().getParameterNameListFromType("speParam")){
 				speParams.addParameter(new Parameter(speParamParamName,existingSpeParams.getParameter(speParamParamName).getParameterValue(),speParams));
 			}
@@ -747,6 +748,7 @@ public class Project {
 			habSetup.getParameter("reachName").setParameterValue(newReachName);
 			SetupParameters existingHabParam = getSetupParameters("habParam-"+existingReachName);
 			SetupParameters habParam = new SetupParameters("habParam",newReachName+".Params");
+			habParam.setParamInstance(habSetup.getParameter("reachName").getParameterValue());
 			for(String habParamParamName : MetaProject.getInstance().getParameterNameListFromType("habParam")){
 				habParam.addParameter(new Parameter(habParamParamName,existingHabParam.getParameter(habParamParamName).getParameterValue(),habParam));
 			}
