@@ -1478,7 +1478,6 @@ public class InSALMOView extends JFrame{
 			speciesSetupFileLabel.add(new javax.swing.JLabel());
 			speciesSetupFileLabel.get(i).setText("<html>"+resourceMap.getString("configFileLabel.text")+" Species.Setup<br>Parameter File: "+
 					openProject.getSetupParameters("speParam-"+speciesComboElements.get(i)[0]).getFileName()+"</html>"); 
-			speciesSetupFileLabel.get(i).setPreferredSize(new Dimension(250,20));
 			speciesSetupFileLabel.get(i).setName("speciesSetupFileLabel"+i); 
 			speciesSetupChangeParamButton.add(new JButton());
 			speciesSetupChangeParamButton.get(i).setText(resourceMap.getString("changeSpeParamButton.text")); 
@@ -1495,9 +1494,11 @@ public class InSALMOView extends JFrame{
 			if(i==0){
 				speciesSetupScrollPane.get(i).setVisible(true);
 				speciesSetupFileLabel.get(i).setVisible(true);
+				speciesSetupChangeParamButton.get(i).setVisible(true);
 			}else{
 				speciesSetupScrollPane.get(i).setVisible(false);
 				speciesSetupFileLabel.get(i).setVisible(false);
+				speciesSetupChangeParamButton.get(i).setVisible(false);
 			}
 			speciesSetupLayeredScrollPanesHGroup.addGroup(speciesSetupTabLayout.createParallelGroup()
 					.addComponent(speciesSetupFileLabel.get(i))
@@ -2506,13 +2507,28 @@ public class InSALMOView extends JFrame{
 			speciesSetupScrollPane.get(i).setName("speciesScrollPane"+i); 
 			speciesSetupScrollPane.get(i).setViewportView(speciesSetupTable.get(i));
 			speciesSetupFileLabel.add(new javax.swing.JLabel());
-			speciesSetupFileLabel.get(i).setText(resourceMap.getString("configFileLabel.text")+" Species.Setup"); 
+			speciesSetupFileLabel.get(i).setText("<html>"+resourceMap.getString("configFileLabel.text")+" Species.Setup<br>Parameter File: "+
+					openProject.getSetupParameters("speParam-"+newSpeciesName).getFileName()+"</html>"); 
 			speciesSetupFileLabel.get(i).setName("speciesSetupFileLabel"+i); 
+			speciesSetupChangeParamButton.add(new JButton());
+			speciesSetupChangeParamButton.get(i).setText(resourceMap.getString("changeSpeParamButton.text")); 
+			speciesSetupChangeParamButton.get(i).setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+			speciesSetupChangeParamButton.get(i).setName("changeSpeParamButton"+i);
+			speciesSetupChangeParamButton.get(i).setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+			if(speciesSetupChangeParamButton.get(i).getActionListeners().length==0){
+				speciesSetupChangeParamButton.get(i).addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						changeSpeParamButtonActionPerformed(evt);
+					}
+				});
+			}
 			speciesSetupLayeredScrollPanesHGroup.addGroup(speciesSetupTabLayout.createParallelGroup()
 					.addComponent(speciesSetupFileLabel.get(i))
+					.addComponent(speciesSetupChangeParamButton.get(i))
 					.addComponent(speciesSetupScrollPane.get(i),0, resourceMap.getInteger("defaultContentSize.width.int"), Short.MAX_VALUE));
 			speciesSetupLayeredScrollPanesVGroup.addGroup(speciesSetupTabLayout.createSequentialGroup()
 					.addComponent(speciesSetupFileLabel.get(i))
+					.addComponent(speciesSetupChangeParamButton.get(i))
 					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 					.addComponent(speciesSetupScrollPane.get(i),0, resourceMap.getInteger("defaultContentSize.height.int"), Short.MAX_VALUE));
 			speciesComboElements.add(new String[] {newSpeciesName,"speciesTable"+newSpeciesName});
@@ -2545,6 +2561,8 @@ public class InSALMOView extends JFrame{
 			speciesSetupScrollPane.remove(foundIndex);
 			speciesSetupFileLabel.get(foundIndex).setVisible(false);
 			speciesSetupFileLabel.remove(foundIndex);
+			speciesSetupChangeParamButton.get(foundIndex).setVisible(false);
+			speciesSetupChangeParamButton.remove(foundIndex);
 			speciesSetupTable.remove(foundIndex);
 			speciesParamTable.remove(foundIndex);
 			speciesSetupTab.revalidate();
@@ -2741,6 +2759,7 @@ public class InSALMOView extends JFrame{
 				if(((String)evt.getItem()).equals(speciesComboElements.get(i)[0])){ 
 					speciesSetupScrollPane.get(i).setVisible(true);
 					speciesSetupFileLabel.get(i).setVisible(true);
+					speciesSetupChangeParamButton.get(i).setVisible(true);
 					if(speciesSetupComboBox.getItemCount()>0)speciesSetupComboBox.setSelectedIndex(i);
 					speciesSetupTab.revalidate();
 
@@ -2754,6 +2773,7 @@ public class InSALMOView extends JFrame{
 			for(int i=0; i<speciesSetupScrollPane.size(); i++){
 				speciesSetupScrollPane.get(i).setVisible(false);
 				speciesSetupFileLabel.get(i).setVisible(false);
+				speciesSetupChangeParamButton.get(i).setVisible(false);
 				speciesParamScrollPane.get(i).setVisible(false);
 				speciesParamFileLabel.get(i).setVisible(false);
 			}

@@ -285,9 +285,11 @@ public class NewFishOrReach extends javax.swing.JFrame {
 					parent.addSpeciesSubmitted();
 				}catch (IOException e){
 					JOptionPane.showMessageDialog(this,"<html><body><font size=+2><b>Species add operation cancelled</b></font><br/><br/>An error occurred reading the parameter file:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
+					e.printStackTrace();
 					return;
 				}catch (RuntimeException e){
 					JOptionPane.showMessageDialog(this,"<html><body><font size=+2><b>Species add operation cancelled</b></font><br/><br/>An error occurred reading the parameter file:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
+					e.printStackTrace();
 					return;
 				}
 			}
