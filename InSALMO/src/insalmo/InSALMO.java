@@ -66,6 +66,7 @@ public class InSALMO extends JFrame implements ActionListener{
 		ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo.InSTREAMConfigApp.class).getContext().getResourceMap(InSALMO.class);
 		this.setIconImage(resourceMap.getImageIcon(MetaProject.getInstance().getVersion()+".icon").getImage());
 		this.setSize(1050, 850);
+		this.setTitle(MetaProject.getInstance().getAppTitle());
 
 		if (MAC_OS_X) {
 			// take the menu bar off the jframe
