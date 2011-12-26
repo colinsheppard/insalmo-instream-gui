@@ -155,4 +155,17 @@ public class ParameterTable {
     	}
     	if(targetRow>-1)tableModel.setValueAt(newValue, targetRow, 1);
     }
+    public void replaceParameter(TableModel tableModel, Parameter newParam){
+    	int targetRow=-1;
+    	for(int i=0; i<tableModel.getRowCount(); i++){
+    		if(tableModel.getValueAt(i, 2).equals(newParam.getParameterName())){
+    			targetRow = i;
+    			break;
+    		}
+    	}
+    	if(targetRow>-1){
+    		tableModel.setValueAt(newParam, targetRow, 5);
+    		tableModel.setValueAt(newParam.getParameterValue(), targetRow, 1);
+    	}
+    }
 }

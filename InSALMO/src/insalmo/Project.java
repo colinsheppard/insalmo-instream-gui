@@ -25,7 +25,6 @@
 package insalmo;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,16 +34,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
-
-import insalmo.MetaParameter.DataType;
 
 public class Project {
 	public static String newline = System.getProperty("line.separator");
@@ -656,6 +650,9 @@ public class Project {
 			setupParams.put("speParam-"+speciesName,prevSpeParam);
 			throw e;
 		}
+		for(Parameter param : prevSpeParam.getParameterCollection()){
+			this.removeFromErrorsWarnings(param);
+		}
 	}
 
 	public void addNewSpecies(String existingSpeciesName,String newSpeciesName)throws IOException,RuntimeException{
@@ -920,11 +917,12 @@ public class Project {
 	public void removeFromErrorsWarnings(Parameter param){
 		if(this.errors.contains(param)){
 			this.errors.remove(param);
+			this.errorWarningUpdateListener.actionPerformed(new ActionEvent(this,ActionEvent.ACTION_PERFORMED,null));
 		}
 		if(this.warnings.contains(param)){
 			this.warnings.remove(param);
+			this.errorWarningUpdateListener.actionPerformed(new ActionEvent(this,ActionEvent.ACTION_PERFORMED,null));
 		}
-		this.errorWarningUpdateListener.actionPerformed(new ActionEvent(this,ActionEvent.ACTION_PERFORMED,null));
 	}
 	public void addActionListener(java.awt.event.ActionListener actionListener){
 		this.errorWarningUpdateListener = actionListener;

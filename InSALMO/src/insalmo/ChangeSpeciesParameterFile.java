@@ -184,11 +184,12 @@ public class ChangeSpeciesParameterFile extends javax.swing.JFrame {
 		}
 		TableModel model = this.parent.speciesParamTable.get(speciesIndex).getModel();
 		for(Parameter param : this.openProject.getSetupParameters("speParam-"+speciesName).getParameterCollection()){
-			ParameterTable.getInstance().changeValueOfVariable(model,param.getParameterName(),param.getParameterValue());
+			ParameterTable.getInstance().replaceParameter(model,param);
 		}
 		this.parent.speciesParamFileLabel.get(speciesIndex).setText("Parameter File: "+newParameterFile.getName());
 		this.parent.speciesSetupFileLabel.get(speciesIndex).setText("<html>Filename: Species.Setup<br>Parameter File: "+
 			newParameterFile.getName()+"</html>");
+		this.dispose();
 	}
 
 	private void chooserActionPerformed(java.awt.event.ActionEvent evt,boolean isNew){
