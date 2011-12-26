@@ -1035,7 +1035,12 @@ public class InSALMOView extends JFrame{
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
 	private void helpSoftwareGuideButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Software_Documentation.chm");
+		File helpFile = null;
+		if(isINSTREAM){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_Software_Documentation.chm");
+		}else{
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Software_Documentation.chm");
+		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
 	private void helpLFTButtonActionPerformed(java.awt.event.ActionEvent evt) {
