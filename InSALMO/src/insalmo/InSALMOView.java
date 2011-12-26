@@ -686,6 +686,13 @@ public class InSALMOView extends JFrame{
 		viewResultsMenuItem.setText(resourceMap.getString("viewResultsMenuItem.text")); 
 		viewResultsMenuItem.setName("viewResultsMenuItem"); 
 		viewResultsMenuItem.setEnabled(false);
+		if(viewResultsMenuItem.getActionListeners().length==0){
+			viewResultsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					viewResultsActionPerformed(evt);
+				}
+			});
+		}
 		modelMenu.add(viewResultsMenuItem);
 
 		menuBar.add(modelMenu);
@@ -2638,6 +2645,10 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void viewResultsActionPerformed(java.awt.event.ActionEvent evt){
+		if(MetaProject.getInstance().getVersion().equals("instream")){
+			JOptionPane.showMessageDialog(this.parentFrame, "View Results is not yet implemented for inSTREAM");
+			return;
+		}
 		File outmigrantsFile, reddsFile;
 		SetupParameters modSetup = this.openProject.getSetupParameters("modSetup-");
 		String outmigrantOutputFilename = modSetup.getParameter("outmigrantOutputFile").getParameterValue();
