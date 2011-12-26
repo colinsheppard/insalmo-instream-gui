@@ -61,6 +61,7 @@ public class LimitingFactorsTool {
 	private InSALMOView parent;	
 	public static String newline = System.getProperty("line.separator");
 	public Boolean terminatedForcefully = false;
+	private Boolean isINSTREAM = null;
 	
 	public enum LFTExperiment{
 		WINTER_WATER_TEMP,SUMMER_WATER_TEMP,BASE_FLOW,SPAWNING_GRAVEL_AVAIL,VELOCITY_SHELTER_AVAIL,HIDING_COVER_AVAIL,
@@ -70,6 +71,7 @@ public class LimitingFactorsTool {
 		this.parent = parent;
 	}
 	public void setupLFT() throws RuntimeException,IOException, ParseException {
+		isINSTREAM = MetaProject.getInstance().getVersion().equals("instream");
 		Project project = parent.getOpenProject();
 		String projectDir = parent.getProjectDir().getAbsolutePath();
 		SetupParameters lftSetup = project.getSetupParameters("lftSetup-");
@@ -162,6 +164,7 @@ public class LimitingFactorsTool {
 			}
 			filesToCopy.add("Experiment.Setup");
 			for(LFTExperiment exp : LFTExperiment.values()){
+				if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 				newExpDir = new File(lftDir.getAbsolutePath()+"/"+lftExpToString(exp));
 				if(!newExpDir.exists())newExpDir.mkdir();
 				ArrayList<String> alreadyCopied = new ArrayList<String>();
@@ -207,6 +210,7 @@ public class LimitingFactorsTool {
 			writeTable(lftDir.getAbsolutePath()+"/LFT_Factor_Levels.csv",factorLevels,factorLevelHeader);
 			// Configure each experiment through Experiment.Setup as well as modifying input files when relevant
 			for(LFTExperiment exp : LFTExperiment.values()){
+				if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 				newExpDir = new File(lftDir.getAbsolutePath()+"/"+lftExpToString(exp));
 				parent.closeProject("Close");
 				parent.openProject(newExpDir);
@@ -781,6 +785,7 @@ public class LimitingFactorsTool {
 		String exceptionMessages = "";
 		int modelRunInd = 1;
 		for(LFTExperiment exp : LFTExperiment.values()){
+			if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 			File expDir = new File(lftDir.getAbsolutePath()+"/"+lftExpToString(exp));
 			if(!expDir.exists()){
 				throw new FileNotFoundException("Error - LFT Experiment has not been executed for this project, cannot find directory: <br>"+
@@ -997,6 +1002,7 @@ public class LimitingFactorsTool {
 	public  void createLFTOutputTabs(JTabbedPane tabbedPane){
 		parent.lftTextAreas.clear();
 		for(LFTExperiment exp : LFTExperiment.values()){
+			if(exp == LFTExperiment.NUM_SPAWNERS && MetaProject.getInstance().getVersion().equals("instream"))continue;
 			String expName = lftExpToString(exp);
 			JLabel expLabel = new JLabel();
 			expLabel.setText(expName); 
@@ -1045,6 +1051,7 @@ public class LimitingFactorsTool {
 	}
 	public  void executeLFT() throws Exception{
 		for(LFTExperiment exp : LFTExperiment.values()){
+			if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 			String expName = lftExpToString(exp);
 			String projDir = parent.getProjectDir().getAbsolutePath();
 			// launch EXE and grab stdout and stderr
