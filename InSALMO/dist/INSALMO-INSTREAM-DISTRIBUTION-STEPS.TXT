@@ -1,0 +1,43 @@
+Process of Packaging and Distributing inSALMO/inSTREAM-GUI
+
+*********************************************
+**Compile inSALMO-inSTREAM model (if needed)
+*********************************************
+-Download most recent version of source code from github (click "Downloads" button in upper right of screen):
+https://github.com/colinsheppard/insalmo
+https://github.com/colinsheppard/instream
+-Extract into MinGW accessible directory (e.g. on Steve's old Windows machine: C:\MinGW\msys\1.0\home\Licensed User\)
+-Compile the model in MinGW (see Charlie's wiki tutorial: http://www.swarm.org/index.php/Swarm_and_MinGW), note, the 
+actual executable will be hidden inside a subdirectory called ".libs", don't move it from there, as the inSALMO-inSTREAM-GUI
+assumes that is where the executable should be.
+-Get rid of object files: rm *.o
+
+*********************************************
+**Copy model code and executable to package
+*********************************************
+-move or copy everything in the source directory (including the insalmo.exe/instream.exe wrapper and the .libs directory and 
+the source code) into the following subdirectory of the package:
+inSALMO_#-#\Code\inSALMO\
+inSTREAM_#-#\Code\inSTREAM\
+-optional, to test running the model in Eclipse, copy these same files into:
+<gui development location>\Code\inSALMO
+<gui development location>\Code\inSTREAM
+
+*********************************************
+**Export and Package GUI
+*********************************************
+-From Eclipse with the inSALMO/inSTREAM project open, select File->Export->Runnable JAR File->(Set Launch Config to 
+"Run InSALMO/InSTREAM" and set export destination to dist\inSALMO-GUI.jar or dist\inSTREAM-GUI.jar)
+-Open the jsmooth executable bundler in dist\inSALMO.jsmooth or dist\inSTREAM.jsmoloth (this adds error checking to make sure 
+the appropriate version of JVM is installed) which requires you have JSMOOTH installed (http://jsmooth.sourceforge.net/)
+-Select from Menu "Project"->"Compile..."
+-Assuming all goes well, you should have an inSALMO-GUI.exe or inSTREAM-GUI.exe in the dist/ folder, copy this to inSALMO_#-#\GUI 
+or inSTREAM_#-#\GUI to serve as the official executable
+-If changes have occurred, copy the directories "metaprojectdata" and "DefaultProject" from the gui development 
+directory to inSALMO_#-#\GUI or inSTREAM_#-#\GUI
+-If changes have occurred, copy the directory "ClearCreekDefault" of "InstreamInput" from the gui development 
+directory to inSALMO_#-#\Projects or inSTREAM_#-#\Projects
+-Purge inSALMO_#-#\Projects or or inSTREAM_#-#\Projects of any test or temporary projects you don't want to ship
+
+-Now zip up inSALMO_#-# or inSTREAM_#-# and ship her out, users can extract the zip file anywhere and it should run as along as the 
+contents inside don't get moved around or renamed.
