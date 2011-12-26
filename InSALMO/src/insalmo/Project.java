@@ -104,7 +104,7 @@ public class Project {
 					if(!fromScratch && newParam.getParameterDataType() == MetaParameter.DataType.INFILENAME){
 						// Look for and copy the default version of the infile to the project directory, do not overwrite
 						String defaultFileName = MetaProject.getInstance().getMetaParameter(newParam.getParameterName()).getDefaultValue();
-						File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+defaultFileName);
+						File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/"+defaultFileName);
 						if(defaultFile.exists()){
 							try {
 								MetaProject.getInstance().copy(defaultFile, new File(projectDir.getAbsolutePath()+"/"+defaultFileName));
@@ -666,7 +666,7 @@ public class Project {
 				// For Init Pop File, we use the default
 				String defaultFileName = MetaProject.getInstance().getMetaParameter("speciesInitPopFile").getDefaultValue();
 				// Look for and copy the default version of the infile to the project directory, do not overwrite
-				File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+defaultFileName);
+				File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/"+defaultFileName);
 				if(defaultFile.exists()){
 					File destinationFile = new File(projectDir+"/"+defaultFileName);
 					if(!destinationFile.exists()) MetaProject.getInstance().copy(defaultFile, destinationFile);
@@ -715,7 +715,7 @@ public class Project {
 					if(newParam.getParameterDataType() == MetaParameter.DataType.INFILENAME){
 						// Look for and copy the default version of the infile to the project directory, do not overwrite
 						String defaultFileName = MetaProject.getInstance().getMetaParameter(newParam.getParameterName()).getDefaultValue();
-						File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+defaultFileName);
+						File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/"+defaultFileName);
 						if(defaultFile.exists()){
 							File destinationFile = new File(projectDir+"/"+defaultFileName);
 							if(!destinationFile.exists()) MetaProject.getInstance().copy(defaultFile, destinationFile);

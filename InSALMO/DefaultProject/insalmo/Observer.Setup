@@ -1,0 +1,25 @@
+@begin
+#
+# Observer setup for inSALMO
+# 5/2011   SFR
+# Make sure there are no trailing spaces
+# following text input!
+#
+
+rasterColorVariable         depth
+takeRasterPictures          NO
+
+rasterResolutionX           50
+rasterResolutionY           50
+maxShadeVelocity 	   200
+maxShadeDepth 	           150
+
+tagFishColor                 tomato
+tagCellColor                 DeepPink1
+dryCellColor                 white
+
+@end
+
+
+
+

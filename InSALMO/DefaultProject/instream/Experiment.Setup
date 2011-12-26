@@ -1,0 +1,19 @@
+Experiment setup file - 
+For inSTREAM 5.0
+For no experiment
+
+numberOfScenarios    1
+numberOfReplicates   1
+
+sendScenarioCountToParam: scenario
+inClass:                  TroutModelSwarm
+
+sendReplicateCountToParam: replicate
+inClass:                  TroutModelSwarm
+
+#ClassName    FishParams
+#InstanceName NONE
+#ParamName    fishSpawnProb
+#ValueType    double
+#Value        0.9
+

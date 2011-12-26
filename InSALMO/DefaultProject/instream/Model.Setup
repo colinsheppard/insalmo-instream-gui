@@ -1,0 +1,29 @@
+# Model Setup File for inSTREAM 5.0
+# Example
+
+@begin
+
+randGenSeed                  32461
+
+runStartDate                 10/1/2005
+runEndDate                   9/30/2007
+
+popInitDate                  10/01/2008
+
+fishOutputFile               Live_Fish_Out.csv
+fishMortalityFile            Dead_Fish_Out.csv
+reddOutputFile               Redds_Out.csv
+
+fileOutputFrequency          10
+appendFiles			     0
+
+shuffleYears                 0
+shuffleYearReplace           0
+shuffleYearSeed              4685
+
+siteLatitude                 42
+
+@end
+
+
+

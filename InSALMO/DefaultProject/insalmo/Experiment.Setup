@@ -1,0 +1,19 @@
+Experiment setup file for inSALMO
+Demonstration version with no experiment
+Created 5/23/2011 SFR
+
+numberOfScenarios    1
+numberOfReplicates   1
+
+sendScenarioCountToParam: scenario
+inClass:                  TroutModelSwarm
+
+sendReplicateCountToParam: replicate
+inClass:                  TroutModelSwarm
+
+#ClassName     TroutModelSwarm
+#InstanceName  NONE
+#ParamName     numSpawnerAdjuster
+#ValueType     double
+#Value         0.5
+#Value         0.9

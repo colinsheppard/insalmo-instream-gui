@@ -2285,7 +2285,7 @@ public class InSALMOView extends JFrame{
 		}
 		try {
 			File destinationFile = new File(projectDir.getAbsolutePath()+"/LFT_Setup.xlsm");
-			MetaProject.getInstance().copy(new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/LFT_Setup.xlsm"),destinationFile);
+			MetaProject.getInstance().copy(new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/LFT_Setup.xlsm"),destinationFile);
 			BareBonesBrowserLaunch.openURL("file://"+destinationFile.getAbsolutePath());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2682,7 +2682,7 @@ public class InSALMOView extends JFrame{
 
 		try {
 			File destinationFile = new File(projectDir.getAbsolutePath()+"/Analysis_Setup.xlsm");
-			MetaProject.getInstance().copy(new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/Analysis_Setup.xlsm"),destinationFile);
+			MetaProject.getInstance().copy(new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/Analysis_Setup.xlsm"),destinationFile);
 			BareBonesBrowserLaunch.openURL("file://"+destinationFile.getAbsolutePath());
 		} catch (Exception e) {
 			e.printStackTrace();
