@@ -61,6 +61,7 @@ public class ShowErrorsWarnings extends javax.swing.JFrame {
     Project openProject;
     private javax.swing.JPanel showErrorWarningsPanel;
     private JButton closeButton = new JButton();
+    private JScrollPane tableScrollPane = new JScrollPane();
     private JXTable errorTable;
     private JLabel	errorLabel = new JLabel();
 
@@ -143,7 +144,7 @@ public class ShowErrorsWarnings extends javax.swing.JFrame {
 	  }
 
 });
-        JScrollPane scrollpane = new JScrollPane(errorTable); 
+        tableScrollPane.setViewportView(errorTable);
         
         // LABEL
         errorLabel.setText(resourceMap.getString("errorLabel.text"));
@@ -156,7 +157,7 @@ public class ShowErrorsWarnings extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(showErrorWarningsTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 	.addComponent(errorLabel)
-	                .addComponent(scrollpane)
+	                .addComponent(tableScrollPane)
 	           		.addComponent(closeButton))
                 .addContainerGap())
         );
@@ -165,7 +166,7 @@ public class ShowErrorsWarnings extends javax.swing.JFrame {
             .addGroup(showErrorWarningsTypeLayout.createSequentialGroup()
                 .addContainerGap()
                	.addComponent(errorLabel)
-                .addComponent(scrollpane)
+                .addComponent(tableScrollPane)
            		.addComponent(closeButton)
                 .addContainerGap())
         );
