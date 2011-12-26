@@ -78,6 +78,7 @@ import org.jdesktop.application.Action;
  */
 public class InSALMOView extends JFrame{
 	private File projectDir = null;
+	private Boolean isINSTREAM = null;
 	org.jdesktop.application.ResourceMap resourceMap;
 	public static String newline = System.getProperty("line.separator");
 	private JPanel		mainPanel = new javax.swing.JPanel();
@@ -252,6 +253,7 @@ public class InSALMOView extends JFrame{
 	public InSALMOView(InSALMO inSALMO) {
 		parentFrame = inSALMO;
 		MetaProject.getInstance().setInSALMOView(this);
+		isINSTREAM = MetaProject.getInstance().getVersion().equals("instream");
 		initComponents();
 	}
 
@@ -2162,7 +2164,7 @@ public class InSALMOView extends JFrame{
 			SetupParameters expSetup = openProject.getSetupParameters("expSetup-");
 			theText += "<tr><td>Number of Scenarios:</td><td>"+expSetup.getParameter("numberOfScenarios").getParameterValue()+"</td></tr>";
 			theText += "<tr><td>Number of Replicates:</td><td>"+expSetup.getParameter("numberOfReplicates").getParameterValue()+"</td></tr>";
-			if(MetaProject.getInstance().getVersion().equals("instream")){
+			if(isINSTREAM){
 				theText += "<tr><td>Number of Year Shuffler Replicates:</td><td>"+expSetup.getParameter("numberOfYearShufflerReplicates").getParameterValue()+"<br></td></tr>";
 			}
 			theText += "<tr><td colspan=2>Parameters varied in experiment and <i>their values</i>:</td></tr>";
@@ -2645,33 +2647,40 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void viewResultsActionPerformed(java.awt.event.ActionEvent evt){
-		if(MetaProject.getInstance().getVersion().equals("instream")){
-			JOptionPane.showMessageDialog(this.parentFrame, "View Results is not yet implemented for inSTREAM");
-			return;
-		}
-		File outmigrantsFile, reddsFile;
+		File fishFile, reddsFile;
 		SetupParameters modSetup = this.openProject.getSetupParameters("modSetup-");
-		String outmigrantOutputFilename = modSetup.getParameter("outmigrantOutputFile").getParameterValue();
+		String fishOutputFilename = null;
+		if(isINSTREAM){
+			fishOutputFilename = modSetup.getParameter("fishOutputFile").getParameterValue();
+		}else{
+			fishOutputFilename = modSetup.getParameter("outmigrantOutputFile").getParameterValue();
+		}
 		String reddOutputFilename = modSetup.getParameter("reddOutputFile").getParameterValue();
-		outmigrantsFile = new File(projectDir.getAbsolutePath()+"/"+outmigrantOutputFilename);
+		fishFile = new File(projectDir.getAbsolutePath()+"/"+fishOutputFilename);
 		reddsFile = new File(projectDir.getAbsolutePath()+"/"+reddOutputFilename);
-		if(!outmigrantsFile.exists()){
-			JOptionPane.showMessageDialog(this.parentFrame, "<html><body>Model run output not found, the outmigrant output file named "+outmigrantOutputFilename+" must be present <br>" +
+		if(!fishFile.exists()){
+			JOptionPane.showMessageDialog(this.parentFrame, "<html><body>Model run output not found, the output file named "+fishOutputFilename+" must be present <br>" +
 			"in the project directory to view the results.  Either the model has not yet been run, or that output file was removed, please run the model again.</body></html>");
 			return;
 		}else if(!reddsFile.exists()){
-			JOptionPane.showMessageDialog(this.parentFrame, "<html><body>Model run output not found, the redd output file named "+reddOutputFilename+" must be present <br>" +
+			JOptionPane.showMessageDialog(this.parentFrame, "<html><body>Model run output not found, the output file named "+reddOutputFilename+" must be present <br>" +
 			"in the project directory to view the results.  Either the model has not yet been run, or that output file was removed, please run the model again.</body></html>");
 			return;			
 		}
-		if(!outmigrantOutputFilename.equals("Outmigrants_Out.csv") || !reddOutputFilename.equals("Redds_Out.csv")){
+		if((isINSTREAM && !fishOutputFilename.equals("Live_Fish_Out.csv")) || 
+				(!isINSTREAM && !fishOutputFilename.equals("Outmigrants_Out.csv")) || 
+				!reddOutputFilename.equals("Redds_Out.csv")){
 			ArrayList<ArrayList> tab = new ArrayList<ArrayList>();
 			ArrayList<String> col = new ArrayList<String>();
-			col.add("outmigrantOutputFile");
+			if(isINSTREAM){
+				col.add("fishOutputFile");
+			}else{
+				col.add("outmigrantOutputFile");
+			}
 			col.add("reddOutputFile");
 			tab.add(col);
 			col.clear();
-			col.add(outmigrantOutputFilename);
+			col.add(fishOutputFilename);
 			col.add(reddOutputFilename);
 			try {
 				lftTool.writeTable(projectDir.getAbsolutePath()+"/Analysis_Filenames.csv",tab);
