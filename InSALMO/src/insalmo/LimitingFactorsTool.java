@@ -69,9 +69,9 @@ public class LimitingFactorsTool {
 	}
 	public LimitingFactorsTool(InSALMOView parent) {
 		this.parent = parent;
+		isINSTREAM = MetaProject.getInstance().getVersion().equals("instream");
 	}
 	public void setupLFT() throws RuntimeException,IOException, ParseException {
-		isINSTREAM = MetaProject.getInstance().getVersion().equals("instream");
 		Project project = parent.getOpenProject();
 		String projectDir = parent.getProjectDir().getAbsolutePath();
 		SetupParameters lftSetup = project.getSetupParameters("lftSetup-");
@@ -765,7 +765,12 @@ public class LimitingFactorsTool {
 					lftDir.getAbsolutePath());
 		}
 		String factorLevelsFilename = lftDir.getAbsoluteFile()+"/LFT_Factor_Levels.csv";
-		String resultsHeader = "RunNumber,Experiment Name,Scaled Parameter Value,Number of Outmigrants,Number of Outmigrants >5cm,";
+		String resultsHeader = "RunNumber,Experiment Name,Scaled Parameter Value";
+		if(isINSTREAM){
+			resultsHeader += ",Mean Number of Adults,Mean Biomass of All Adults,";
+		}else{
+			resultsHeader += ",Number of Outmigrants,Number of Outmigrants >5cm,";
+		}
 		ArrayList<ArrayList> factorLevels = readTable(factorLevelsFilename,0);
 		ArrayList<ArrayList> lftConsolidated = new ArrayList<ArrayList>();
 		lftConsolidated.add(new ArrayList<String>());
@@ -784,6 +789,7 @@ public class LimitingFactorsTool {
 		resultsHeader = resultsHeader.substring(0,resultsHeader.length()-1);
 		String exceptionMessages = "";
 		int modelRunInd = 1;
+		int expectedColumns = isINSTREAM ? 5 : 4;
 		for(LFTExperiment exp : LFTExperiment.values()){
 			if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 			File expDir = new File(lftDir.getAbsolutePath()+"/"+lftExpToString(exp));
@@ -792,13 +798,13 @@ public class LimitingFactorsTool {
 						expDir.getAbsolutePath());
 			}
 			try{
-				ArrayList<ArrayList> expOutput = readTable(expDir.getAbsolutePath()+"/LFT_Output.rpt",3,new ArrayList<Integer>(),new ArrayList<Integer>(),4);
+				ArrayList<ArrayList> expOutput = readTable(expDir.getAbsolutePath()+"/LFT_Output.rpt",3,new ArrayList<Integer>(),new ArrayList<Integer>(),expectedColumns);
 				for(int i=0; i<expOutput.get(0).size(); i++){
 					lftConsolidated.get(0).add(modelRunInd++);
 					lftConsolidated.get(1).add(lftExpToString(exp));
 					lftConsolidated.get(2).add(factorLevels.get(0).get(i+1));
-					lftConsolidated.get(3).add(expOutput.get(2).get(i));
-					lftConsolidated.get(4).add(expOutput.get(3).get(i));
+					lftConsolidated.get(3).add(expOutput.get(expectedColumns-2).get(i));
+					lftConsolidated.get(4).add(expOutput.get(expectedColumns-1).get(i));
 					for(int j=1; j<factorLevels.size(); j++){
 						lftConsolidated.get(j+4).add(factorLevels.get(j).get(i+1));
 					}
