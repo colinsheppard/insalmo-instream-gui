@@ -304,7 +304,7 @@ public class InSALMOView extends JFrame{
 		if(openButton.getActionListeners().length==0){
 			openButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					openButtonActionPerformed(evt);
+					openActionPerformed(evt);
 				}
 			});
 		}
@@ -320,7 +320,7 @@ public class InSALMOView extends JFrame{
 		if(saveButton.getActionListeners().length==0){
 			saveButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					saveButtonActionPerformed(evt);
+					saveActionPerformed(evt);
 				}
 			});
 		}
@@ -336,7 +336,7 @@ public class InSALMOView extends JFrame{
 		if(configureButton.getActionListeners().length==0){
 			configureButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					configureButtonActionPerformed(evt);
+					configureActionPerformed(evt);
 				}
 			});
 		}
@@ -406,7 +406,7 @@ public class InSALMOView extends JFrame{
 		if(runButton.getActionListeners().length==0){
 			runButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					runButtonActionPerformed(evt);
+					runActionPerformed(evt);
 				}
 			});
 		}
@@ -422,7 +422,7 @@ public class InSALMOView extends JFrame{
 		if(runWithGraphicsButton.getActionListeners().length==0){
 			runWithGraphicsButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					runWithGraphicsButtonActionPerformed(evt);
+					runWithGraphicsActionPerformed(evt);
 				}
 			});
 		}
@@ -457,7 +457,7 @@ public class InSALMOView extends JFrame{
 		if(errorWarningButton.getActionListeners().length==0){
 			errorWarningButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					errorWarningButtonActionPerformed(evt);
+					errorWarningActionPerformed(evt);
 				}
 			});
 		}
@@ -474,7 +474,7 @@ public class InSALMOView extends JFrame{
 		if(helpInterfaceButton.getActionListeners().length==0){
 			helpInterfaceButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpInterfaceButtonActionPerformed(evt);
+					helpInterfaceActionPerformed(evt);
 				}
 			});
 		}
@@ -489,7 +489,7 @@ public class InSALMOView extends JFrame{
 		if(helpModelButton.getActionListeners().length==0){
 			helpModelButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpModelButtonActionPerformed(evt);
+					helpModelActionPerformed(evt);
 				}
 			});
 		}
@@ -504,7 +504,7 @@ public class InSALMOView extends JFrame{
 		if(helpSoftwareGuideButton.getActionListeners().length==0){
 			helpSoftwareGuideButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpSoftwareGuideButtonActionPerformed(evt);
+					helpSoftwareGuideActionPerformed(evt);
 				}
 			});
 		}
@@ -534,7 +534,7 @@ public class InSALMOView extends JFrame{
 		if(openMenuItem.getActionListeners().length==0){
 			openMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					openMenuItemActionPerformed(evt);
+					openActionPerformed(evt);
 				}
 			});
 		}
@@ -547,7 +547,7 @@ public class InSALMOView extends JFrame{
 		if(saveMenuItem.getActionListeners().length==0){
 			saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					saveMenuItemActionPerformed(evt);
+					saveActionPerformed(evt);
 				}
 			});
 		}
@@ -560,7 +560,7 @@ public class InSALMOView extends JFrame{
 		if(saveasMenuItem.getActionListeners().length==0){
 			saveasMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					saveasMenuItemActionPerformed(evt);
+					saveasActionPerformed(evt);
 				}
 			});
 		}
@@ -589,7 +589,7 @@ public class InSALMOView extends JFrame{
 		if(configureMenuItem.getActionListeners().length==0){
 			configureMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					configureMenuItemActionPerformed(evt);
+					configureActionPerformed(evt);
 				}
 			});
 		}
@@ -605,7 +605,7 @@ public class InSALMOView extends JFrame{
 		if(exitMenuItem.getActionListeners().length==0){
 			exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					exitMenuItemActionPerformed(evt);
+					exitActionPerformed(evt);
 				}
 			});
 		}
@@ -665,7 +665,7 @@ public class InSALMOView extends JFrame{
 		if(runMenuItem.getActionListeners().length==0){
 			runMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					runMenuItemActionPerformed(evt);
+					runActionPerformed(evt);
 				}
 			});
 		}
@@ -678,7 +678,7 @@ public class InSALMOView extends JFrame{
 		if(runWithGraphicsMenuItem.getActionListeners().length==0){
 			runWithGraphicsMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					runWithGraphicsMenuItemActionPerformed(evt);
+					runWithGraphicsActionPerformed(evt);
 				}
 			});
 		}
@@ -707,7 +707,7 @@ public class InSALMOView extends JFrame{
 		if(interfaceHelpMenuItem.getActionListeners().length==0){
 			interfaceHelpMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpInterfaceButtonActionPerformed(evt);
+					helpInterfaceActionPerformed(evt);
 				}
 			});
 		}
@@ -718,7 +718,7 @@ public class InSALMOView extends JFrame{
 		if(modelHelpMenuItem.getActionListeners().length==0){
 			modelHelpMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpModelButtonActionPerformed(evt);
+					helpModelActionPerformed(evt);
 				}
 			});
 		}
@@ -729,7 +729,7 @@ public class InSALMOView extends JFrame{
 		if(softwareGuideHelpMenuItem.getActionListeners().length==0){
 			softwareGuideHelpMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpSoftwareGuideButtonActionPerformed(evt);
+					helpSoftwareGuideActionPerformed(evt);
 				}
 			});
 		}
@@ -740,7 +740,7 @@ public class InSALMOView extends JFrame{
 		if(lftHelpMenuItem.getActionListeners().length==0){
 			lftHelpMenuItem.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					helpLFTButtonActionPerformed(evt);
+					helpLFTActionPerformed(evt);
 				}
 			});
 		}
@@ -879,7 +879,7 @@ public class InSALMOView extends JFrame{
 		if(showConsoleClearButton.getActionListeners().length==0){
 			showConsoleClearButton.addActionListener(new java.awt.event.ActionListener(){
 				public void actionPerformed(java.awt.event.ActionEvent evt){
-					showConsoleClearButtonActionPerfomed(evt);
+					showConsoleClearActionPerfomed(evt);
 				}
 			});
 		}
@@ -888,7 +888,7 @@ public class InSALMOView extends JFrame{
 		if(terminateModelRunButton.getActionListeners().length==0){
 			terminateModelRunButton.addActionListener(new java.awt.event.ActionListener(){
 				public void actionPerformed(java.awt.event.ActionEvent evt){
-					terminateModelRunButtonActionPerfomed(evt);
+					terminateModelRunActionPerfomed(evt);
 				}
 			});
 		}
@@ -970,13 +970,15 @@ public class InSALMOView extends JFrame{
 
 	}
 
-	private void configureButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void configureActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		modelSummaryScrollPane.setVisible(false);
 		modelSetupTabbedPane.setVisible(true);
 		experimentTabbedPane.setVisible(false);
 		lftTabbedPane.setVisible(false);
 	}
-	private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+	private void exitActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		if(closeProject("Quit"))exitApplication();
 	}
 	public void exitApplication(){
@@ -992,16 +994,16 @@ public class InSALMOView extends JFrame{
 	private void hideModelSetupTabbedPane(java.awt.event.ContainerEvent evt) {
 		modelSetupTabbedPane.setVisible(false);
 	}
-	private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		openProject(null);
-	}
-	private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+	private void openActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		openProject(null);
 	}
 	private void closeActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		closeProject("Close");
 	}
 	private void newActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		if(this.getOpenProject() != null){
 			int response = JOptionPane.showConfirmDialog(this.parentFrame, "You can only have one project open at a time, close the current project?","Project Already Open",JOptionPane.YES_NO_OPTION);
 			if(response==0){
@@ -1023,18 +1025,18 @@ public class InSALMOView extends JFrame{
 		this.setProjectDir(projectFile);
 		this.getOpenProject().createNewProject(fromScratch);
 	}
-	private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		saveProject();
-	}
-	private void helpInterfaceButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void helpInterfaceActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_GUI_Guide.chm");
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
-	private void helpModelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void helpModelActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Model_Description.chm");
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
-	private void helpSoftwareGuideButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void helpSoftwareGuideActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		File helpFile = null;
 		if(isINSTREAM){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_Software_Documentation.chm");
@@ -1043,7 +1045,8 @@ public class InSALMOView extends JFrame{
 		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
-	private void helpLFTButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void helpLFTActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/Limiting_Factors_Tool.chm");
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
@@ -1453,7 +1456,7 @@ public class InSALMOView extends JFrame{
 		if(addSpeButton.getActionListeners().length==0){
 			addSpeButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					addSpeciesButtonActionPerformed(evt);
+					addSpeciesActionPerformed(evt);
 				}
 			});
 		}
@@ -1464,7 +1467,7 @@ public class InSALMOView extends JFrame{
 		if(remSpeButton.getActionListeners().length==0){
 			remSpeButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					removeSpeciesButtonActionPerformed(evt);
+					removeSpeciesActionPerformed(evt);
 				}
 			});
 		}
@@ -1504,7 +1507,7 @@ public class InSALMOView extends JFrame{
 			if(speciesSetupChangeParamButton.get(i).getActionListeners().length==0){
 				speciesSetupChangeParamButton.get(i).addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						changeSpeParamButtonActionPerformed(evt);
+						changeSpeParamActionPerformed(evt);
 					}
 				});
 			}
@@ -1658,7 +1661,7 @@ public class InSALMOView extends JFrame{
 		if(addHabButton.getActionListeners().length==0){
 			addHabButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					addHabitatButtonActionPerformed(evt);
+					addHabitatActionPerformed(evt);
 				}
 			});
 		}
@@ -1669,7 +1672,7 @@ public class InSALMOView extends JFrame{
 		if(remHabButton.getActionListeners().length==0){
 			remHabButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					removeHabitatButtonActionPerformed(evt);
+					removeHabitatActionPerformed(evt);
 				}
 			});
 		}
@@ -1816,7 +1819,7 @@ public class InSALMOView extends JFrame{
 		if(clearExpParamButton.getActionListeners().length==0){
 			clearExpParamButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					clearExperimentButtonActionPerformed(evt);
+					clearExperimentActionPerformed(evt);
 				}
 			});
 		}
@@ -1894,7 +1897,7 @@ public class InSALMOView extends JFrame{
 		if(addExpParamButton.getActionListeners().length==0){
 			addExpParamButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					addExperimentParamButtonActionPerformed(evt);
+					addExperimentParamActionPerformed(evt);
 				}
 			});
 		}
@@ -1905,7 +1908,7 @@ public class InSALMOView extends JFrame{
 		if(remExpParamButton.getActionListeners().length==0){
 			remExpParamButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					removeExperimentParamButtonActionPerformed(evt);
+					removeExperimentParamActionPerformed(evt);
 				}
 			});
 		}
@@ -2064,7 +2067,8 @@ public class InSALMOView extends JFrame{
 			lftTool.createLFTOutputTabs(lftExecutionTabbedPane);
 		}
 	}
-	protected void changeSpeParamButtonActionPerformed(ActionEvent evt) {
+	protected void changeSpeParamActionPerformed(ActionEvent evt) {
+		commitTables();
 		Integer speIndex = Integer.parseInt(((JButton)evt.getSource()).getName().substring(20));
 		ChangeSpeciesParameterFile changeParamFile = new ChangeSpeciesParameterFile(this, getOpenProject(),speIndex);
 		changeParamFile.setLocationRelativeTo(InSTREAMConfigApp.getApplication().getMainFrame());
@@ -2072,10 +2076,12 @@ public class InSALMOView extends JFrame{
 	}
 
 	// MENU ITEM ACTIONS
-	private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+	private void saveActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		saveProject();
 	}
-	private void saveasMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+	private void saveasActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		File oldProjectDir = projectDir;
 		if(saveProjectAs()){
 			saveProject();
@@ -2117,12 +2123,8 @@ public class InSALMOView extends JFrame{
 		LaunchInsamloExecutable launcher = lftLaunchers.get(((JButton)evt.getSource()).getName());
 		if(launcher!=null && launcher.getProcess()!=null)launcher.getProcess().destroy();
 	}
-	private void configureMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-		modelSetupTabbedPane.setVisible(true);
-		modelSummaryScrollPane.setVisible(false);
-		experimentTabbedPane.setVisible(false);
-	}
 	private void summaryActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		revealSummaryPane();
 	}
 	private void revealSummaryPane(){
@@ -2194,18 +2196,16 @@ public class InSALMOView extends JFrame{
 		String osName = System.getProperty("os.name");
 		return osName.contains("Windows");
 	}
-	private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		runMenuItemActionPerformed(evt);
-	}
-	private void runMenuItemActionPerformed(java.awt.event.ActionEvent evt){
-		runMenuItemActionPerformed(evt, false);
+	private void runActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
+		runActionPerformed(evt, false);
 	}
 	private boolean cancelDueToErrors(){
 		if(this.openProject.errors.size()>0){
 			String[] choices = {"Run with Errors","Cancel and show the errors","Cancel"};
 			int result = JOptionPane.showOptionDialog(this.parentFrame, "Errors exist in the project, run anyway?", "Warning", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE, null, choices, choices[0]);
 			if(result==1){
-				errorWarningButtonActionPerformed(new ActionEvent(this, 0,""));
+				errorWarningActionPerformed(new ActionEvent(this, 0,""));
 				return true;
 			}else if(result!=0){
 				return true;
@@ -2213,7 +2213,7 @@ public class InSALMOView extends JFrame{
 		}
 		return false;
 	}
-	private void runMenuItemActionPerformed(java.awt.event.ActionEvent evt,boolean useGraphics) {
+	private void runActionPerformed(java.awt.event.ActionEvent evt,boolean useGraphics) {
 		if(cancelDueToErrors()){
 			return;
 		}
@@ -2277,6 +2277,7 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void postProcessLFTActionPerformed(){
+		commitTables();
 		try {
 			String result = lftTool.postProcessResults();
 			if(!result.equals("")){
@@ -2298,31 +2299,34 @@ public class InSALMOView extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	private void showConsoleClearButtonActionPerfomed(java.awt.event.ActionEvent evt){
+	private void showConsoleClearActionPerfomed(java.awt.event.ActionEvent evt){
+		commitTables();
 		showConsoleTextArea.setText("");
 	}
-	private void terminateModelRunButtonActionPerfomed(java.awt.event.ActionEvent evt){
+	private void terminateModelRunActionPerfomed(java.awt.event.ActionEvent evt){
+		commitTables();
 		if(modelLauncher!=null && modelLauncher.getProcess()!=null)modelLauncher.getProcess().destroy();
 	}
-	private void runWithGraphicsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		runMenuItemActionPerformed(evt, true);
-	}
-	private void runWithGraphicsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-		runMenuItemActionPerformed(evt, true);
+	private void runWithGraphicsActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
+		runActionPerformed(evt, true);
 	}
 	private void experimentActionPerformed(java.awt.event.ActionEvent evt) {
+		commitTables();
 		modelSetupTabbedPane.setVisible(false);
 		modelSummaryScrollPane.setVisible(false);
 		experimentTabbedPane.setVisible(true);
 		lftTabbedPane.setVisible(false);
 	}
 	private void lftActionPerformed(){
+		commitTables();
 		modelSetupTabbedPane.setVisible(false);
 		modelSummaryScrollPane.setVisible(false);
 		experimentTabbedPane.setVisible(false);
 		lftTabbedPane.setVisible(true);
 	}
-	private void addExperimentParamButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void addExperimentParamActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		newParamName = null;
 		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
 		NewExperimentParameter expParamAdder = new NewExperimentParameter(this, getOpenProject());
@@ -2347,7 +2351,8 @@ public class InSALMOView extends JFrame{
 			errorWarningButton.setEnabled(true);
 		}
 	}
-	private void errorWarningButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void errorWarningActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		showErrorWarnings = new ShowErrorsWarnings(this, getOpenProject());
 		showErrorWarnings.setLocationRelativeTo(this.parentFrame);
 		InSTREAMConfigApp.getApplication().show(showErrorWarnings);
@@ -2408,6 +2413,7 @@ public class InSALMOView extends JFrame{
 		this.newReachName = newName;
 	}
 	private void startLFTActionPerformed(ActionEvent evt) {
+		commitTables();
 		String projDir = this.projectDir.getAbsolutePath();
 		try{
 			this.parentFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2428,6 +2434,7 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void killLFTActionPerformed(ActionEvent evt){
+		commitTables();
 		Enumeration launchers = this.lftLaunchers.elements();
 		while(launchers.hasMoreElements()){
 			LaunchInsamloExecutable launcher = (LaunchInsamloExecutable)launchers.nextElement();
@@ -2435,7 +2442,8 @@ public class InSALMOView extends JFrame{
 		}
 		lftTool.setTerminatedForcefully(true);
 	}
-	private void clearExperimentButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void clearExperimentActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		int response = JOptionPane.showConfirmDialog(this.parentFrame, "<html><body><b>Clear experiment?</b> This will remove all parameters " +
 					"that are controlled by the experiment <br>manager and set the number of replicates to 1.</html></body>","Confirm Clear Experiment",JOptionPane.YES_OPTION);
 		if(response==0){
@@ -2451,7 +2459,8 @@ public class InSALMOView extends JFrame{
 		ParameterTable.getInstance().changeValueOfVariable(experimentControlTable.getModel(), "numberOfScenarios", "1");
 		ParameterTable.getInstance().changeValueOfVariable(experimentControlTable.getModel(), "numberOfYearShufflerReplicates", "0");
 	}
-	private void removeExperimentParamButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void removeExperimentParamActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		if(experimentParamComboElements.size()==0)return;
 		Object[] paramTitles = new Object[experimentParamComboElements.toArray().length];
 		int selectedParamIndex;
@@ -2483,7 +2492,8 @@ public class InSALMOView extends JFrame{
 		this.getOpenProject().removeExperimentParameter(removeParamName);
 		MetaProject.getInstance().setProjectChanged(true);
 	}
-	private void addSpeciesButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void addSpeciesActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		newSpeciesName = null;
 		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"species");
@@ -2534,7 +2544,7 @@ public class InSALMOView extends JFrame{
 			if(speciesSetupChangeParamButton.get(i).getActionListeners().length==0){
 				speciesSetupChangeParamButton.get(i).addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						changeSpeParamButtonActionPerformed(evt);
+						changeSpeParamActionPerformed(evt);
 					}
 				});
 			}
@@ -2557,7 +2567,8 @@ public class InSALMOView extends JFrame{
 			MetaProject.getInstance().setProjectChanged(true);
 		}
 	}
-	private void removeSpeciesButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void removeSpeciesActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		Object[] speciesTitles = new Object[speciesComboElements.toArray().length];
 		for (int i = 0; i < speciesComboElements.size(); i++) {
 			speciesTitles[i] = speciesComboElements.get(i)[0];
@@ -2592,7 +2603,8 @@ public class InSALMOView extends JFrame{
 			MetaProject.getInstance().setProjectChanged(true);
 		}
 	}
-	private void addHabitatButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void addHabitatActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		newReachName = null;
 		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"reach");
@@ -2652,6 +2664,7 @@ public class InSALMOView extends JFrame{
 		}
 	}
 	private void viewResultsActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		File fishFile, reddsFile;
 		SetupParameters modSetup = this.openProject.getSetupParameters("modSetup-");
 		String fishOutputFilename = null;
@@ -2702,7 +2715,8 @@ public class InSALMOView extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	private void removeHabitatButtonActionPerformed(java.awt.event.ActionEvent evt){
+	private void removeHabitatActionPerformed(java.awt.event.ActionEvent evt){
+		commitTables();
 		Object[] habitatTitles = new Object[habitatComboElements.toArray().length];
 		for (int i = 0; i < habitatComboElements.size(); i++) {
 			habitatTitles[i] = habitatComboElements.get(i)[0];
@@ -2881,5 +2895,47 @@ public class InSALMOView extends JFrame{
 
 	public void updateLFTRunsPerExperiment() {
 		lftRunsPerExpLabel.setText(resourceMap.getString("lftSetupTab.runsPerExperiment.label")+this.lftTool.getLFTRunsPerExperiment()); 
+	}
+	public void commitTables(){
+		if(modelSetupTable.isEditing()){
+			modelSetupTable.getCellEditor().stopCellEditing();
+		}else if(observerSetupTable.isEditing()){
+			observerSetupTable.getCellEditor().stopCellEditing();
+		}else if(experimentControlTable.isEditing()){
+			experimentControlTable.getCellEditor().stopCellEditing();
+		}else if(lftSetupTable.isEditing()){
+			lftSetupTable.getCellEditor().stopCellEditing();
+		}else{
+			for(JTable tab : speciesParamTable){
+				if(tab.isEditing()){
+					tab.getCellEditor().stopCellEditing();
+					return;
+				}
+			}
+			for(JTable tab : speciesSetupTable){
+				if(tab.isEditing()){
+					tab.getCellEditor().stopCellEditing();
+					return;
+				}
+			}
+			for(JTable tab : habitatParamTable){
+				if(tab.isEditing()){
+					tab.getCellEditor().stopCellEditing();
+					return;
+				}
+			}
+			for(JTable tab : habitatSetupTable){
+				if(tab.isEditing()){
+					tab.getCellEditor().stopCellEditing();
+					return;
+				}
+			}
+			for(JTable tab : experimentParamTable){
+				if(tab.isEditing()){
+					tab.getCellEditor().stopCellEditing();
+					return;
+				}
+			}
+		}
 	}
 }

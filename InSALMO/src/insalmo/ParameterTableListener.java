@@ -28,6 +28,7 @@
  */
 
 package insalmo;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
@@ -52,7 +53,7 @@ public class ParameterTableListener implements TableModelListener{
         String parName = (String)model.getValueAt(row,2);
         String data = ((String)model.getValueAt(row, 1)).trim();
         if(model.getValueAt(row,5)!=null)((Parameter)model.getValueAt(row,5)).setParameterValue(data);
+        model.fireTableRowsUpdated(row,row);
         MetaProject.getInstance().setProjectChanged(true,parName);
     }
-    
 }

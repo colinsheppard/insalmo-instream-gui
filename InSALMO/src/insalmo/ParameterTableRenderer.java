@@ -32,6 +32,7 @@ import insalmo.MetaParameter.ValidationCode;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.FocusEvent;
 import java.text.DateFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -89,7 +90,6 @@ public class ParameterTableRenderer extends DefaultTableCellRenderer {
 		}
 		return renderer;
 	}
-
 	@Override
 	public void setValue(Object value) {
 		if(value!=null)setText(value.toString());
