@@ -146,12 +146,13 @@ public class Project {
 		this.setupParams.put("expSetup-", expSetup);
 	}
 	public void loadProjectFiles() throws RuntimeException,IOException {
+		FileInputStream fstream = null;
 		int j=1;
 		boolean beginData = false;
 		for (int i = 0; i < beginEndFiles.length; i++) {
 			SetupParameters sParams =  new SetupParameters(beginEndFiles[i][0],beginEndFiles[i][1]);
 			try {
-				FileInputStream fstream = new FileInputStream(projectDir.getPath()+"/"+beginEndFiles[i][1]);
+				fstream = new FileInputStream(projectDir.getPath()+"/"+beginEndFiles[i][1]);
 				DataInputStream in = new DataInputStream(fstream);
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));
 				String strLine;
@@ -174,8 +175,10 @@ public class Project {
 				}
 				in.close();
 			} catch (IOException e) {//Catch exception if any
+				fstream.close();
 				throw e;
 			} catch (RuntimeException e) {//Catch exception if any
+				fstream.close();
 				throw e;
 			} catch (Exception e) {//Catch exception if any
 				System.err.println("Error: " + e.getMessage());
@@ -185,7 +188,7 @@ public class Project {
 		}
 		this.setupParams.get("modSetup-").removeParameter("numberOfSpecies");
 		try {
-			FileInputStream fstream = new FileInputStream(projectDir.getPath()+"/Reach.Setup");
+			fstream = new FileInputStream(projectDir.getPath()+"/Reach.Setup");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
@@ -227,14 +230,17 @@ public class Project {
 			if(!beginData && habs.size()==0)throw new IOException("Reach.Setup -- expecting token 'REACHBEGIN' but never found.");
 			in.close();
 		} catch (IOException e) {//Catch exception if any
+			fstream.close();
 			throw e; 
 		} catch (RuntimeException e) {//Catch exception if any
+			fstream.close();
 			throw e;
 		} catch (Exception e) {//Catch exception if any
+			fstream.close();
 			System.err.println("Error: " + e.getMessage());
 		}	
 		try {
-			FileInputStream fstream = new FileInputStream(projectDir.getPath()+"/Species.Setup");
+			fstream = new FileInputStream(projectDir.getPath()+"/Species.Setup");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
@@ -282,16 +288,19 @@ public class Project {
 			}
 			in.close();
 		} catch (IOException e) {//Catch exception if any
+			fstream.close();
 			throw e;
 		} catch (RuntimeException e) {//Catch exception if any
+			fstream.close();
 			throw e;
 		} catch (Exception e) {//Catch exception if any
+			fstream.close();
 			System.err.println("Error: " + e.getMessage());
 		}	
 		resolveParamFilenameConflicts();
 
 		try {
-			FileInputStream fstream = new FileInputStream(projectDir.getPath()+"/Experiment.Setup");
+			fstream = new FileInputStream(projectDir.getPath()+"/Experiment.Setup");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine;
@@ -304,7 +313,7 @@ public class Project {
 			while ((strLine = br.readLine())!=null) {
 				lineCount++;
 				if(strLine.length()>0 && strLine.charAt(0)=='#'){
-					// do nothing
+					lineCount--; // pretend nothing happened
 				}else if (k==4){
 					beginDataInt = 1;
 					k++;
@@ -388,8 +397,10 @@ public class Project {
 			this.setupParams.put("expSetup-", expSetup);
 			in.close();
 		} catch (IOException e){
+			fstream.close();
 			throw e;
 		} catch (Exception e) {//Catch exception if any
+			fstream.close();
 			e.printStackTrace();
 		}
 		if(MetaProject.getInstance().getVersion().equals("insalmo")){
