@@ -1027,19 +1027,29 @@ public class InSALMOView extends JFrame{
 	}
 	private void helpInterfaceActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
-		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_GUI_Guide.chm");
+		File helpFile = null;
+		if(isINSTREAM){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_GUI_Guide.chm");
+		}else{
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_GUI_Guide.chm");
+		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
 	private void helpModelActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
-		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Model_Description.chm");
+		File helpFile = null;
+		if(isINSTREAM){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Model_Description.chm");
+		}else{
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Model_Description.chm");
+		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
 	private void helpSoftwareGuideActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
 		File helpFile = null;
 		if(isINSTREAM){
-			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_Software_Documentation.chm");
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Software_Documentation.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Software_Documentation.chm");
 		}
@@ -1047,7 +1057,12 @@ public class InSALMOView extends JFrame{
 	}
 	private void helpLFTActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
-		File helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/Limiting_Factors_Tool.chm");
+		File helpFile = null;
+		if(isINSTREAM){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Limiting_Factors_Tool.chm");
+		}else{
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/Limiting_Factors_Tool.chm");
+		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
 	public void enableModelButtons(){
