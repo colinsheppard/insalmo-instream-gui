@@ -119,7 +119,7 @@ public class Parameter {
 			break;
 		case INVALID_BOOL:
 			this.validationType = MetaParameter.ValidationType.ERROR;
-			this.validationMessage = "Invalid boolean format (must be 0 or 1)";
+			this.validationMessage = "Invalid boolean format (must be YES or NO)";
 			break;
 		case INCONSISTENT_SCENARIOS:
 			this.validationType = MetaParameter.ValidationType.ERROR;
@@ -168,9 +168,9 @@ public class Parameter {
 	            	this.dblValue = Double.parseDouble(value);
 	                break;
 	            case BOOL:
-	            	if(Integer.parseInt(value)==1){
+	            	if(value.equals("YES")){
 						this.boolValue = true;
-					}else if(Integer.parseInt(value)==0){
+					}else if(value.equals("NO")){
 						this.boolValue = false;
 					}else{
 						this.boolValue = null;
