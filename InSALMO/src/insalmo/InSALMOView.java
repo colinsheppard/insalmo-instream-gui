@@ -1061,7 +1061,7 @@ public class InSALMOView extends JFrame{
 		if(isINSTREAM){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Limiting_Factors_Tool.chm");
 		}else{
-			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/Limiting_Factors_Tool.chm");
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Limiting_Factors_Tool.chm");
 		}
 		BareBonesBrowserLaunch.openURL("file://"+helpFile.getAbsolutePath());
 	}
