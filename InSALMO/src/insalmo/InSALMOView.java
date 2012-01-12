@@ -2167,15 +2167,15 @@ public class InSALMOView extends JFrame{
 			theText += "<br><br><b>Experiment Setup</b>";
 			theText += "<br><table border=0 cellpadding=2>";
 			SetupParameters expSetup = openProject.getSetupParameters("expSetup-");
-			theText += "<tr><td>Number of Scenarios:</td><td>"+expSetup.getParameter("numberOfScenarios").getParameterValue()+"</td></tr>";
-			theText += "<tr><td>Number of Replicates:</td><td>"+expSetup.getParameter("numberOfReplicates").getParameterValue()+"</td></tr>";
+			theText += "<tr><td>Number of Scenarios:</td><td><i>"+expSetup.getParameter("numberOfScenarios").getParameterValue()+"</i></td></tr>";
+			theText += "<tr><td>Number of Replicates:</td><td><i>"+expSetup.getParameter("numberOfReplicates").getParameterValue()+"</i></td></tr>";
 			if(isINSTREAM){
-				theText += "<tr><td>Number of Year Shuffler Replicates:</td><td>"+expSetup.getParameter("numberOfYearShufflerReplicates").getParameterValue()+"<br></td></tr>";
+				theText += "<tr><td>Number of Year Shuffler Replicates:</td><td><i>"+expSetup.getParameter("numberOfYearShufflerReplicates").getParameterValue()+"</i><br></td></tr>";
 			}
-			theText += "<tr><td colspan=2>Parameters varied in experiment and <i>their values</i>:</td></tr>";
+			theText += "<tr><td colspan=2>Parameters varied in experiment and their values:</td></tr>";
 			if(openProject.exps.size()>0){
 				for(String exp : openProject.exps){
-					theText += "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;"+exp+":</td><td><i>";
+					theText += "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<i>"+exp+":</i></td><td><i>";
 					for(Parameter value : openProject.getExperimentParameters(exp).getValues()){
 						theText += value.getParameterValue()+", ";
 					}
@@ -2183,7 +2183,7 @@ public class InSALMOView extends JFrame{
 					theText += "</i></td></tr>";					
 				}
 			}else{
-				theText += "<tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;<i>no parameters varied in the experiment</td></tr>";
+				theText += "<tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;<i>no parameters varied in the experiment</i></td></tr>";
 			}
 			theText += "</table><br>";
 			theText += "</html>";
