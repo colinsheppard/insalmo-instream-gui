@@ -1139,6 +1139,11 @@ public class InSALMOView extends JFrame{
 		if(showProject)this.projectTitleLabel.setText("Project: "+projectFile.getName());
 		this.setOpenProject(new Project(projectFile));
 		try{
+			// If the project directory is missing LimitingFactorsTool.Setup, copy the default version in
+			File lftSetupFile = new File(projectFile.getAbsolutePath()+"/LimitingFactorsTool.Setup");
+			if(!lftSetupFile.exists()){
+				MetaProject.getInstance().copy(new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/LimitingFactorsTool.Setup"),lftSetupFile);
+			}
 			this.getOpenProject().loadProjectFiles();
 		}catch (IOException e){
 			JOptionPane.showMessageDialog(this.parentFrame,"<html><body><font size=+2><b>Open operation cancelled</b></font><br/><br/>An error occurred reading a project file:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
