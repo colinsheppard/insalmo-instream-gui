@@ -979,11 +979,13 @@ public class Project {
 		this.setupParams.put("speParam-"+speSetup.getParameter("speciesName").getParameterValue(),speParams);
 	}
 	public void removeExperimentParameter(String paramKey){
-		for(Parameter param : this.expParams.get(paramKey).getParameterArrayList()){
-			this.removeFromErrorsWarnings(param);
+		if(this.expParams.containsKey(paramKey)){
+			for(Parameter param : this.expParams.get(paramKey).getParameterArrayList()){
+				this.removeFromErrorsWarnings(param);
+			}
+			this.expParams.remove(paramKey);
+			this.exps.remove(paramKey);
 		}
-		this.expParams.remove(paramKey);
-		this.exps.remove(paramKey);
 	}
 	public void removeHabitat(String habitatName){
 		this.setupParams.remove("habSetup-"+habitatName);
