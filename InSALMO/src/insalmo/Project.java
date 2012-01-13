@@ -407,6 +407,9 @@ public class Project {
 			if(this.exps.contains("shuffleYearSeed (ALL)")){
 				this.removeExperimentParameter("shuffleYearSeed (ALL)");
 			}
+			if(this.exps.contains("shuffleYears (ALL)")){
+				this.removeExperimentParameter("shuffleYears (ALL)");
+			}
 			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
 			this.setupParams.get("modSetup-").removeParameter("shuffleYearReplace");
 			this.setupParams.get("modSetup-").removeParameter("shuffleYearSeed");
@@ -421,11 +424,11 @@ public class Project {
 		}
 		this.setupParams.get("expSetup-").getParameter("numberOfScenarios").updateValidationCode();
 		checkForMissing();
-		if(MetaProject.getInstance().getVersion().equals("insalmo")){
-			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
-			this.setupParams.get("modSetup-").removeParameter("shuffleYearReplace");
-			this.setupParams.get("modSetup-").removeParameter("shuffleYearSeed");
-		}
+//		if(MetaProject.getInstance().getVersion().equals("insalmo")){
+//			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
+//			this.setupParams.get("modSetup-").removeParameter("shuffleYearReplace");
+//			this.setupParams.get("modSetup-").removeParameter("shuffleYearSeed");
+//		}
 	}
 	private void resolveParamFilenameConflicts() {
 		ArrayList<String> usedFilenames = new ArrayList<String>();
@@ -514,7 +517,9 @@ public class Project {
 				uniqueYearIndependentIndices.add(i);
 			}
 		}
-		// Collapse all of the value lists for each experiment parameter except shuffleYearSeed which is removed
+		// Collapse all of the value lists for each experiment parameter except shuffleYearSeed and shuffleYears which are removed
+		this.expParams.remove("shuffleYears (ALL)");
+		this.exps.remove("shuffleYears (ALL)");
 		this.expParams.remove("shuffleYearSeed (ALL)");
 		this.exps.remove("shuffleYearSeed (ALL)");
 		Enumeration enumer = this.expParams.elements(); 
@@ -529,21 +534,33 @@ public class Project {
 				expParam1.addValue(newVal);
 			}
 		}
+		this.setupParams.get("expSetup-").getParameter("numberOfScenarios").updateValidationCode();
 	}
 	public void expandYearShuffler(){
 		Integer firstSeed = this.setupParams.get("expSetup-").getParameter("firstShuffleYearSeed").getParameterIntegerValue();
 		Integer numReplicates = this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue();
 		Integer numScenarios = this.setupParams.get("expSetup-").getParameter("numberOfScenarios").getParameterIntegerValue();
 
+		// We need to add 2 parameters to the experiment data strucutre, shuffleYearSeed and shuffleYears
+		ExperimentParameter shuffSeedExpParam = new ExperimentParameter();
+		shuffSeedExpParam.setClassName("TroutModelSwarm");
+		shuffSeedExpParam.setInstanceName("NONE");
+		shuffSeedExpParam.setParamName("shuffleYearSeed");
+		shuffSeedExpParam.setValueType("int");
+		
 		ExperimentParameter shuffExpParam = new ExperimentParameter();
 		shuffExpParam.setClassName("TroutModelSwarm");
 		shuffExpParam.setInstanceName("NONE");
-		shuffExpParam.setParamName("shuffleYearSeed");
-		shuffExpParam.setValueType("int");
+		shuffExpParam.setParamName("shuffleYears");
+		shuffExpParam.setValueType("BOOL");
+		
+		this.expParams.put(shuffSeedExpParam.getParamKey(), shuffSeedExpParam);
+		this.exps.add(shuffSeedExpParam.getParamKey());
 		this.expParams.put(shuffExpParam.getParamKey(), shuffExpParam);
 		this.exps.add(shuffExpParam.getParamKey());
 		for(int j=0; j<numScenarios; j++){
-			shuffExpParam.addValue(firstSeed.toString());
+			shuffSeedExpParam.addValue(firstSeed.toString());
+			shuffExpParam.addValue("YES");
 		}
 		for(int i=1; i<numReplicates; i++){
 			Integer shuffleSeed = firstSeed+i;
@@ -900,6 +917,7 @@ public class Project {
 			if(Integer.parseInt(this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterValue())>0){
 				this.setupParams.get("expSetup-").getParameter("numberOfScenarios").setParameterValue(numScenarios.toString());
 				collapseYearShuffler(false);
+				
 			}
 		}else{
 			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
