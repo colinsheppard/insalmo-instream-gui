@@ -1236,6 +1236,7 @@ public class InSALMOView extends JFrame{
 		}
 		shutDownProject();
 		revealSummaryPane();
+		this.killLFTActionPerformed(new ActionEvent(this,0,""));
 		updateErrorWarningLinkButton(new ActionEvent(this,0,"Project closed"));
 		return true;
 	}
@@ -2447,7 +2448,9 @@ public class InSALMOView extends JFrame{
 			e.printStackTrace();
 			startLFTButton.setEnabled(true);
 		}finally{
-			closeProject("Close");
+			shutDownProject();
+			revealSummaryPane();
+			updateErrorWarningLinkButton(new ActionEvent(this,0,"Project closed"));
 			openProject(new File(projDir));
 			lftActionPerformed();
 			this.parentFrame.setCursor(Cursor.getDefaultCursor());
