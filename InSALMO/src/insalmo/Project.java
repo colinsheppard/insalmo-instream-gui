@@ -325,7 +325,6 @@ public class Project {
 							if(!splitStr[0].equals("numberOfScenarios")){
 								throw new IOException("Experiment.Setup (line:"+lineCount+") contains unexpected input on 5th uncommented line: '"+splitStr[0]+"' found when 'numberOfScenarios' expected.");
 							}
-							setNumberOfScenarios(Integer.parseInt(splitStr[1]));
 							break;
 						case 2:
 							if(!splitStr[0].equals("numberOfReplicates")){
@@ -360,23 +359,24 @@ public class Project {
 							expParam.setValueType(splitStr[1]);
 							break;
 						case 14:
-							if(!splitStr[0].equals("Value")){
+							if(splitStr[0].trim().equals("")){
+								beginDataInt = 10;
+								numValues = 0;
+								continue;
+							}else if(!splitStr[0].equals("Value")){
 								throw new IOException("Experiment.Setup (line:"+lineCount+") contains unexpected input in variable declaration: '"+splitStr[0]+"' found when 'Value' expected.");
 							}
-							expParam.addValue(splitStr[1]);
-							numValues++;
-							if(numValues == getNumberOfScenarios()){
+							if(numValues==0){
 								if(this.expParams.containsKey(expParam.getParamKey())){
 									throw new IOException("Experiment.Setup (line:"+lineCount+") contains a duplicate of the combination of experiment parameter <br>" +
 											"name and instance name \""+expParam.getParamKey()+"\", the GUI will only accept a single combination, <br>" +
 											"please remove redundant entries in Experiment.Setup.");
 								}
 								this.expParams.put(expParam.getParamKey(),expParam);
-								beginDataInt = 8;
-								numValues = 0;
-							}else{
-								beginDataInt--;
 							}
+							expParam.addValue(splitStr[1]);
+							numValues++;
+							beginDataInt--;
 							break;
 						}
 					}catch(IllegalParameterException e){
@@ -394,6 +394,7 @@ public class Project {
 					k++;
 				}
 			}
+			setNumberOfScenarios();
 			this.setupParams.put("expSetup-", expSetup);
 			in.close();
 		} catch (IOException e){
@@ -495,13 +496,15 @@ public class Project {
 	void setNumberOfScenarios(Integer numScen){
 		if(numScen == null){
 			if(exps.size()==0){
-				numberOfScenarios = 1;
+				numScen = 1;
 			}else{
-				numberOfScenarios = expParams.get(exps.get(0)).getValues().size();
+				numScen = Integer.MAX_VALUE;
+				for(String exp : exps){
+					if(expParams.get(exp).getValues().size() < numScen) numScen = expParams.get(exp).getValues().size();
+				}
 			}
-		}else{
-			numberOfScenarios = numScen;
 		}
+		numberOfScenarios = numScen;
 	}
 	public void collapseYearShuffler(Boolean onFileRead){
 		ArrayList<Parameter> shuffleValueParameters = this.expParams.get("shuffleYearSeed (ALL)").getValues();

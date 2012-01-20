@@ -1288,6 +1288,7 @@ public class InSALMOView extends JFrame{
 		experimentParamComboBox.removeAllItems();
 		for(int i=0; i<experimentParamTable.size(); i++){
 			experimentParamTable.remove(i);
+			experimentParamScrollPane.get(i).setVisible(false);
 			experimentParamScrollPane.remove(i);
 		}
 		experimentTabbedPane.remove(experimentParamTab);
