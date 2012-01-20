@@ -121,10 +121,20 @@ public class Parameter {
 			this.validationType = MetaParameter.ValidationType.ERROR;
 			this.validationMessage = "Invalid boolean format (must be YES or NO)";
 			break;
-		case INCONSISTENT_SCENARIOS:
-			this.validationType = MetaParameter.ValidationType.ERROR;
-			this.validationMessage = "The number of scenarios specified is not consistent with the number of values in each experiment parameter";
-			break;
+		}
+		if(this.expParamSource != null && this.validationType == MetaParameter.ValidationType.VALID){
+			MetaProject.getInstance().getOpenProject().setNumberOfScenarios();
+			if(this.expParamSource.getValues().size() != MetaProject.getInstance().getOpenProject().getNumberOfScenarios()){
+				this.validationCode = MetaParameter.ValidationCode.INCONSISTENT_SCENARIOS;
+				this.validationType = MetaParameter.ValidationType.ERROR;
+				this.validationMessage = "The number of values for this parameter does not match the number of values that the other experiment parameters contain";
+				previousValidationType = MetaParameter.ValidationType.VALID;
+			}else{
+				this.validationCode = MetaParameter.ValidationCode.VALID;
+				this.validationType = MetaParameter.ValidationType.VALID;
+				this.validationMessage = "";
+				previousValidationType = MetaParameter.ValidationType.ERROR;
+			}
 		}
 		if(this.validationType == MetaParameter.ValidationType.ERROR){
 			this.validationMessage = "Error: " + this.validationMessage;

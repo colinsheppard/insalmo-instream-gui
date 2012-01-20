@@ -74,16 +74,17 @@ public class ExperimentTableButton extends JButton{
 			this.model.setValueAt(theValues.get(theValues.size()-1), lastRow, 5);
 			this.model.addRow(new Object[]{"","","","",this,null});
 		}else{
-			if(theValues.get(this.row-4).getValidationType()!=ValidationType.VALID){
-				theValues.get(this.row-4).setParameterValue(theValues.get(this.row-4).getMetaParameter().getDefaultValue());
-				this.proj.updateErrorsWarnings(theValues.get(this.row-4));
-			}
+//			if(theValues.get(this.row-4).getValidationType()!=ValidationType.VALID){
+//				theValues.get(this.row-4).setParameterValue(theValues.get(this.row-4).getMetaParameter().getDefaultValue());
+//			}
+			this.proj.removeFromErrorsWarnings(theValues.get(this.row-4));
 			theValues.remove(this.row-4); 
+			this.model.setValueAt(null,this.row,5);
 			for(int i=this.row; i<lastRow-1; i++){
 				this.model.setValueAt(this.model.getValueAt(i+1, 1),i,1);
 				this.model.setValueAt(this.model.getValueAt(i+1, 4),i,4);
 				((ExperimentTableButton)this.model.getValueAt(i,4)).setRow(i);
-				((Parameter)this.model.getValueAt(i,5)).setParameterValue(((Parameter)this.model.getValueAt(i+1, 5)).getParameterValue());
+				this.model.setValueAt(this.model.getValueAt(i+1,5),i,5);
 			}
 			this.model.setValueAt(null,lastRow-1,5);
 			this.model.setValueAt("",lastRow-1,0);
@@ -93,7 +94,7 @@ public class ExperimentTableButton extends JButton{
 			this.model.setValueAt(this.model.getValueAt(lastRow,4), lastRow-1, 4);
 			this.model.removeRow(lastRow);
 		}
-		this.proj.getSetupParameters("expSetup-").getParameter("numberOfScenarios").updateValidationCode();
+		this.proj.updateExperimentParamValidations();
 	}
 	public void setRow(int row){
 		this.row = row;

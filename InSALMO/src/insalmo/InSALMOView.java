@@ -2190,7 +2190,7 @@ public class InSALMOView extends JFrame{
 			theText += "<br><br><b>Experiment Setup</b>";
 			theText += "<br><table border=0 cellpadding=2>";
 			SetupParameters expSetup = openProject.getSetupParameters("expSetup-");
-			theText += "<tr><td>Number of Scenarios:</td><td><i>"+expSetup.getParameter("numberOfScenarios").getParameterValue()+"</i></td></tr>";
+			theText += "<tr><td>Number of Scenarios:</td><td><i>"+openProject.getNumberOfScenarios().toString()+"</i></td></tr>";
 			theText += "<tr><td>Number of Replicates:</td><td><i>"+expSetup.getParameter("numberOfReplicates").getParameterValue()+"</i></td></tr>";
 			if(isINSTREAM){
 				theText += "<tr><td>Number of Year Shuffler Replicates:</td><td><i>"+expSetup.getParameter("numberOfYearShufflerReplicates").getParameterValue()+"</i><br></td></tr>";
@@ -2400,10 +2400,9 @@ public class InSALMOView extends JFrame{
 			expParam.setInstanceName(newInstanceName);
 			expParam.setParamName(newParamName);
 			expParam.setValueType(MetaProject.getInstance().getMetaParameter(newParamName).getDataTypeString());
-			Integer numScenarios = this.getOpenProject().getSetupParameters("expSetup-").getParameter("numberOfScenarios").getParameterIntegerValue();
-			if(numScenarios!=null){
+			if(this.getOpenProject().getNumberOfScenarios()!=null){
 				String defaultValue = MetaProject.getInstance().getMetaParameter(newParamName).getDefaultValue();
-				for(int i=0; i<numScenarios; i++){
+				for(int i=0; i<this.getOpenProject().getNumberOfScenarios(); i++){
 					expParam.addValue(defaultValue);
 				}
 			}
@@ -2479,7 +2478,6 @@ public class InSALMOView extends JFrame{
 			removeExperimentParam(expParamKey);
 		}
 		ParameterTable.getInstance().changeValueOfVariable(experimentControlTable.getModel(), "numberOfReplicates", "1");
-		ParameterTable.getInstance().changeValueOfVariable(experimentControlTable.getModel(), "numberOfScenarios", "1");
 		ParameterTable.getInstance().changeValueOfVariable(experimentControlTable.getModel(), "numberOfYearShufflerReplicates", "0");
 	}
 	private void removeExperimentParamActionPerformed(java.awt.event.ActionEvent evt){

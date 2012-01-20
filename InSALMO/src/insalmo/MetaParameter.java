@@ -198,10 +198,6 @@ public class MetaParameter {
 		default:
 			validationCode = ValidationCode.UNTESTED;
 		}
-		// There's special validation needed to make sure the experiment manager settings are consistent
-		if(validationCode==ValidationCode.VALID && this.paramName.equals("numberOfScenarios")){
-			validationCode = validateExperimentScenarios(value);
-		}
 		return validationCode;
 	}
 	public ValidationCode validateExperimentScenarios(String value){

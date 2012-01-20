@@ -123,5 +123,10 @@ public class ExperimentParameter {
 		String instanceName = parts[1].split("\\)")[0];
 		return (instanceName.equals("ALL")) ? "NONE" : instanceName;
 	}
+	public void updateParameterValueValidations(){
+		for(Parameter param : this.values){
+			param.updateValidationCode();
+		}
+	}
 	
 }

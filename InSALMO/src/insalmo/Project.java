@@ -55,6 +55,7 @@ public class Project {
 	File projectDir;
 	private Boolean projectChanged; 
 	private ActionListener errorWarningUpdateListener;
+	Integer numberOfScenarios;
 
 	public Project(File projectDir){
 		MetaProject.getInstance().setOpenProject(this);
@@ -133,7 +134,6 @@ public class Project {
 			this.setupParams.put(paramType+"-"+((sParams.getParamInstance()==null)?"":sParams.getParamInstance()), sParams);
 		}
 		SetupParameters expSetup = new SetupParameters("expSetup","Experiment.Setup");
-		expSetup.addParameter(new Parameter("numberOfScenarios","1",expSetup));
 		expSetup.addParameter(new Parameter("numberOfReplicates","1",expSetup));
 		if(MetaProject.getInstance().getVersion().equals("instream")){
 			expSetup.addParameter(new Parameter("numberOfYearShufflerReplicates","0",expSetup));
@@ -325,7 +325,7 @@ public class Project {
 							if(!splitStr[0].equals("numberOfScenarios")){
 								throw new IOException("Experiment.Setup (line:"+lineCount+") contains unexpected input on 5th uncommented line: '"+splitStr[0]+"' found when 'numberOfScenarios' expected.");
 							}
-							expSetup.addParameter(new Parameter("numberOfScenarios",splitStr[1],expSetup));
+							setNumberOfScenarios(Integer.parseInt(splitStr[1]));
 							break;
 						case 2:
 							if(!splitStr[0].equals("numberOfReplicates")){
@@ -365,7 +365,7 @@ public class Project {
 							}
 							expParam.addValue(splitStr[1]);
 							numValues++;
-							if(numValues == (Integer.parseInt(expSetup.getParameter("numberOfScenarios").getParameterValue()))){
+							if(numValues == getNumberOfScenarios()){
 								if(this.expParams.containsKey(expParam.getParamKey())){
 									throw new IOException("Experiment.Setup (line:"+lineCount+") contains a duplicate of the combination of experiment parameter <br>" +
 											"name and instance name \""+expParam.getParamKey()+"\", the GUI will only accept a single combination, <br>" +
@@ -422,7 +422,8 @@ public class Project {
 				this.setupParams.get("expSetup-").addParameter(new Parameter("firstShuffleYearSeed","1",this.setupParams.get("expSetup-")));
 			}
 		}
-		this.setupParams.get("expSetup-").getParameter("numberOfScenarios").updateValidationCode();
+		this.updateExperimentParamValidations();
+		
 		checkForMissing();
 //		if(MetaProject.getInstance().getVersion().equals("insalmo")){
 //			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
@@ -485,6 +486,23 @@ public class Project {
 			}
 		}
 	}
+	Integer getNumberOfScenarios(){
+		return numberOfScenarios;
+	}
+	void setNumberOfScenarios(){
+		setNumberOfScenarios(null);
+	}
+	void setNumberOfScenarios(Integer numScen){
+		if(numScen == null){
+			if(exps.size()==0){
+				numberOfScenarios = 1;
+			}else{
+				numberOfScenarios = expParams.get(exps.get(0)).getValues().size();
+			}
+		}else{
+			numberOfScenarios = numScen;
+		}
+	}
 	public void collapseYearShuffler(Boolean onFileRead){
 		ArrayList<Parameter> shuffleValueParameters = this.expParams.get("shuffleYearSeed (ALL)").getValues();
 		ArrayList<Integer> shuffleSeeds       = new ArrayList<Integer>(shuffleValueParameters.size());
@@ -501,8 +519,8 @@ public class Project {
 			}
 		}
 		// Collapse the number of scenarios by the number of unique year shuffler seeds there are
-		Integer newNumScenarios = new Double(Double.parseDouble(this.setupParams.get("expSetup-").getParameter("numberOfScenarios").getParameterValue()) / uniqueShuffleSeeds.size()).intValue();
-		this.setupParams.get("expSetup-").getParameter("numberOfScenarios").setParameterValue(newNumScenarios.toString());
+		Integer newNumScenarios = new Double(getNumberOfScenarios().doubleValue() / uniqueShuffleSeeds.size()).intValue();
+		setNumberOfScenarios(newNumScenarios);
 		if(onFileRead){
 			// Set year shuffler params in expSetup
 			this.setupParams.get("expSetup-").addParameter(new Parameter("numberOfYearShufflerReplicates",(new Integer(uniqueShuffleSeeds.size()).toString()),this.setupParams.get("expSetup-")));
@@ -534,12 +552,11 @@ public class Project {
 				expParam1.addValue(newVal);
 			}
 		}
-		this.setupParams.get("expSetup-").getParameter("numberOfScenarios").updateValidationCode();
+		this.updateExperimentParamValidations();
 	}
 	public void expandYearShuffler(){
 		Integer firstSeed = this.setupParams.get("expSetup-").getParameter("firstShuffleYearSeed").getParameterIntegerValue();
 		Integer numReplicates = this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue();
-		Integer numScenarios = this.setupParams.get("expSetup-").getParameter("numberOfScenarios").getParameterIntegerValue();
 
 		// We need to add 2 parameters to the experiment data strucutre, shuffleYearSeed and shuffleYears
 		ExperimentParameter shuffSeedExpParam = new ExperimentParameter();
@@ -558,7 +575,7 @@ public class Project {
 		this.exps.add(shuffSeedExpParam.getParamKey());
 		this.expParams.put(shuffExpParam.getParamKey(), shuffExpParam);
 		this.exps.add(shuffExpParam.getParamKey());
-		for(int j=0; j<numScenarios; j++){
+		for(int j=0; j<getNumberOfScenarios(); j++){
 			shuffSeedExpParam.addValue(firstSeed.toString());
 			shuffExpParam.addValue("YES");
 		}
@@ -568,11 +585,11 @@ public class Project {
 			while(enumer.hasMoreElements()){
 				ExperimentParameter expParam = (ExperimentParameter) enumer.nextElement();
 				if(expParam.getParamKey().equals("shuffleYearSeed (ALL)")){
-					for(int j=0; j<numScenarios; j++){
+					for(int j=0; j<getNumberOfScenarios(); j++){
 						expParam.addValue(new Integer(i+firstSeed).toString());
 					}
 				}else{
-					for(int j=0; j<numScenarios; j++){
+					for(int j=0; j<getNumberOfScenarios(); j++){
 						expParam.addValue(expParam.getValues().get(j).getParameterValue());
 					}
 				}
@@ -879,11 +896,10 @@ public class Project {
 		} catch (Exception e) {//Catch exception if any
 			System.err.println("Error: " + e.getMessage());
 		}	
-		Integer numScenarios = this.setupParams.get("expSetup-").getParameter("numberOfScenarios").getParameterIntegerValue();
 		if(MetaProject.getInstance().getVersion().equals("instream")){
 			if(this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue()>0){
 				expandYearShuffler();
-				numScenarios = numScenarios * this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue();
+				setNumberOfScenarios(getNumberOfScenarios() * this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue());
 			}
 		}
 		try {
@@ -892,7 +908,7 @@ public class Project {
 			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(out));
 			br.write("Experiment setup file, Automatically generated by InSALMO GUI."+
 					newline+"The first 3 lines of this file are for header info and are"+newline+"ignored by InSALMO, the next line must be blank."+newline+newline);
-			br.write("numberOfScenarios\t\t"+numScenarios+newline);
+			br.write("numberOfScenarios\t\t"+getNumberOfScenarios().toString()+newline);
 			br.write("numberOfReplicates\t\t"+this.setupParams.get("expSetup-").getParameter("numberOfReplicates").getParameterValue()+newline+newline);
 			br.write("sendScenarioCountToParam:\t\tscenario"+newline+"inClass:\t\tTroutModelSwarm"+newline+newline+
 					"sendReplicateCountToParam:\t\treplicate"+newline+"inClass:\t\tTroutModelSwarm"+newline+newline);
@@ -915,9 +931,7 @@ public class Project {
 		}	
 		if(MetaProject.getInstance().getVersion().equals("instream")){
 			if(Integer.parseInt(this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterValue())>0){
-				this.setupParams.get("expSetup-").getParameter("numberOfScenarios").setParameterValue(numScenarios.toString());
 				collapseYearShuffler(false);
-				
 			}
 		}else{
 			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
@@ -985,6 +999,7 @@ public class Project {
 	public void addExperimentParameter(ExperimentParameter expParam){
 		this.expParams.put(expParam.getParamKey(), expParam);
 		this.exps.add(expParam.getParamKey());
+		this.setNumberOfScenarios();
 	}
 	public void addHabitat(SetupParameters habSetup, SetupParameters habParams){
 		this.habs.add(habSetup.getParameter("reachName").getParameterValue());
@@ -1003,6 +1018,7 @@ public class Project {
 			}
 			this.expParams.remove(paramKey);
 			this.exps.remove(paramKey);
+			this.setNumberOfScenarios();
 		}
 	}
 	public void removeHabitat(String habitatName){
@@ -1032,6 +1048,11 @@ public class Project {
 			}
 		}
 		return infileNames;
+	}
+	public void updateExperimentParamValidations(){
+		for(String exp : this.exps){
+			this.expParams.get(exp).updateParameterValueValidations();
+		}
 	}
 	public void setProjectDir(File dir){
 		this.projectDir = dir;

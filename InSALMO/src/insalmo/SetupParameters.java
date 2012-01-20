@@ -48,6 +48,7 @@ public class SetupParameters{
 					&& !paramName.equals("speciesParamFile")
 					&& !paramName.equals("shuffleYearSeed")
 					&& !paramName.equals("numberOfSpecies")
+					&& !paramName.equals("numberOfScenarios")
 					&& !this.params.containsKey(paramName)){
 				if(MetaProject.getInstance().getVersion().equals("insalmo") &&
 						(paramName.equals("numberOfYearShufflerReplicates") ||
