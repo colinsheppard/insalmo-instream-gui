@@ -365,10 +365,7 @@ public class LimitingFactorsTool {
 								Double newValue = data.get(i)+constantBaseAdder.get(scenarioNum);
 								if(newValue < 0){
 									if(isINSTREAM){
-										parent.saveProject();
-										parent.closeProject("Close");
-										parent.openProject(new File(projectDir));
-										throw new RuntimeException("The sum of baseFlowRangeLow and the standard flow is less than zero making the flow negative.  This is not permitted, stopping LFT.");
+										throw new RuntimeException("In BASE_FLOW experiment, the sum of baseFlowRangeLow and the standard flow is less than zero making the flow negative.  This is not permitted, stopping LFT.");
 									}else{
 										newValue = 0.1;
 									}
