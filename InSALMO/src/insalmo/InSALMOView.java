@@ -2866,7 +2866,7 @@ public class InSALMOView extends JFrame{
 			lftTabbedPane.setVisible(false);
 			experimentTabbedPane.setVisible(true);
 			experimentTabbedPane.setSelectedIndex(1);
-			experimentParamComboBox.setSelectedItem(p.getParameterName());
+			experimentParamComboBox.setSelectedItem(((ExperimentParameter)p.getSource()).getParamKey());
 		}else{
 			String instance = ((SetupParameters)p.getSource()).getParamInstance();
 			Integer tabIndex = 0;
