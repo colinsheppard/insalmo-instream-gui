@@ -1301,13 +1301,35 @@ public class InSALMOView extends JFrame{
 		if(projectDir==null && !saveProjectAs()){
 			System.out.println("Project save cancelled by user");
 			return false;
+		}else if(experimentValueErrorsExist()){
+			JOptionPane.showMessageDialog(this.parentFrame, 
+					"<html>Errors exist in the experiment manager that prohibit saving.<br>" +
+					"Click ok and you will be taken to the experiment manager so you can<br>" +
+					"fix the errors.</html>", "Error: Cannot Save",JOptionPane.ERROR_MESSAGE);
+			for(Parameter param : this.openProject.errors){
+				if(param.expParamSource!=null && param.validationCode == MetaParameter.ValidationCode.INCONSISTENT_SCENARIOS){
+					this.goToParameter(param);
+					return false;
+				}
+			}
+			return false;
 		}
 		System.out.println("Saving project: "+projectDir.getName());
 		getOpenProject().save();
 		MetaProject.getInstance().setProjectChanged(false);
 		return true;
 	}
-
+	public boolean experimentValueErrorsExist(){
+		if(MetaProject.getInstance().getVersion().equals("instream") && 
+				this.openProject.getSetupParameters("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue()>0){
+			for(String exp : this.openProject.exps){
+				if(this.openProject.getExperimentParameters(exp).getValues().size() != this.openProject.getNumberOfScenarios()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	private boolean saveProjectAs(){
 		final JFileChooser fc = new JFileChooser();
@@ -2106,7 +2128,7 @@ public class InSALMOView extends JFrame{
 		commitTables();
 		File oldProjectDir = projectDir;
 		if(saveProjectAs()){
-			saveProject();
+			if(!saveProject())return;
 		}
 		// If the new directory is different from what the previous, non-null, location, copy all INFILES to the new directory 
 		if(oldProjectDir != null && !projectDir.getAbsolutePath().equals(oldProjectDir.getAbsolutePath())){
@@ -2842,8 +2864,8 @@ public class InSALMOView extends JFrame{
 			}
 		}
 	}
-	public void goToParameter(Parameter p,String location){
-		showErrorWarnings.dispose();
+	public void goToParameter(Parameter p){
+		if(showErrorWarnings!=null)showErrorWarnings.dispose();
 		modelSetupTabbedPane.requestFocusInWindow();
 		String paramType = p.getParameterType();
 		if(p.getSource().getClass().equals(ExperimentParameter.class)){

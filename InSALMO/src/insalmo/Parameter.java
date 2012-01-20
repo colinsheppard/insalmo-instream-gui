@@ -127,7 +127,8 @@ public class Parameter {
 			if(this.expParamSource.getValues().size() != MetaProject.getInstance().getOpenProject().getNumberOfScenarios()){
 				this.validationCode = MetaParameter.ValidationCode.INCONSISTENT_SCENARIOS;
 				this.validationType = MetaParameter.ValidationType.ERROR;
-				this.validationMessage = "The number of values for this parameter does not match the number of values that the other experiment parameters contain";
+				this.validationMessage = "The number of values for this parameter ("+this.expParamSource.getValues().size()+
+						") is greater than other experiment parameters, either remove values from this or add more to the others.";
 				previousValidationType = MetaParameter.ValidationType.VALID;
 			}else{
 				this.validationCode = MetaParameter.ValidationCode.VALID;

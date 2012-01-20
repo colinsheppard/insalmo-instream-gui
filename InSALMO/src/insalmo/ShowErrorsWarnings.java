@@ -194,9 +194,8 @@ public class ShowErrorsWarnings extends javax.swing.JFrame {
 	    if(e.getID()==e.MOUSE_CLICKED){
 			JXTable table = ((JXTable)e.getSource());
 			Integer row = table.rowAtPoint(e.getPoint());
-			String location = (String) table.getValueAt(row, 3);
 			table.getColumnExt("Parameter Object").setVisible(true);
-		    this.parent.goToParameter((Parameter)table.getValueAt(row,5),location);
+		    this.parent.goToParameter((Parameter)table.getValueAt(row,5));
 	    }
 	    return;
 	  }

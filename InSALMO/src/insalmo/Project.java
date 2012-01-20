@@ -561,7 +561,7 @@ public class Project {
 		Integer firstSeed = this.setupParams.get("expSetup-").getParameter("firstShuffleYearSeed").getParameterIntegerValue();
 		Integer numReplicates = this.setupParams.get("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue();
 
-		// We need to add 2 parameters to the experiment data strucutre, shuffleYearSeed and shuffleYears
+		// We need to add 2 parameters to the experiment data structure, shuffleYearSeed and shuffleYears
 		ExperimentParameter shuffSeedExpParam = new ExperimentParameter();
 		shuffSeedExpParam.setClassName("TroutModelSwarm");
 		shuffSeedExpParam.setInstanceName("NONE");
