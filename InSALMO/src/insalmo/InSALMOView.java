@@ -2295,7 +2295,6 @@ public class InSALMOView extends JFrame{
 		}		
 	}
 	public void modelRunCompleted(LaunchInsamloExecutable launcher){
-		//JOptionPane.showMessageDialog(null, "The inSALMO model has terminated.");
 		if(launcher!=null && launcher.getProcess().exitValue()>=0)launcher.textArea.append(newline+newline+"##############################"+newline+launcher.getName()+" TERMINATED"+newline+"##############################");
 		if(launcher.isLFT){
 			this.lftLaunchers.remove(launcher.getName());
