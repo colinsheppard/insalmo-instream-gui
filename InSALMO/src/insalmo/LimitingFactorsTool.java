@@ -215,7 +215,6 @@ public class LimitingFactorsTool {
 				parent.closeProject("Close");
 				parent.openProject(newExpDir);
 				parent.clearExperiment();
-				parent.getOpenProject().getSetupParameters("expSetup-").getParameter("numberOfScenarios").setParameterValue(((Integer)(totalUncertRuns*numScenarios)).toString());
 				ArrayList<ExperimentParameter> uncertParams = createUncertaintyParameters(uncertaintyData);
 				switch (exp) {
 				case WINTER_WATER_TEMP:
@@ -364,7 +363,17 @@ public class LimitingFactorsTool {
 							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 								((ArrayList<Day>) newTimeSeries.get(scenarioNum).get(0)).add(dates.get(i));
 								Double newValue = data.get(i)+constantBaseAdder.get(scenarioNum);
-								((ArrayList<Double>) newTimeSeries.get(scenarioNum).get(1)).add((newValue>0)?newValue:0.1);
+								if(newValue < 0){
+									if(isINSTREAM){
+										parent.saveProject();
+										parent.closeProject("Close");
+										parent.openProject(new File(projectDir));
+										throw new RuntimeException("The sum of baseFlowRangeLow and the standard flow is less than zero making the flow negative.  This is not permitted, stopping LFT.");
+									}else{
+										newValue = 0.1;
+									}
+								}
+								((ArrayList<Double>) newTimeSeries.get(scenarioNum).get(1)).add(newValue);
 							}
 						}
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -706,6 +715,7 @@ public class LimitingFactorsTool {
 				default:
 					break;
 				}
+				parent.getOpenProject().setNumberOfScenarios();
 				parent.saveProject();
 				parent.closeProject("Close");
 				parent.openProject(new File(projectDir));
