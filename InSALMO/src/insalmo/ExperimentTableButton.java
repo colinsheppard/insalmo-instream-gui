@@ -92,6 +92,7 @@ public class ExperimentTableButton extends JButton{
 			this.model.setValueAt("",lastRow-1,2);
 			this.model.setValueAt("",lastRow-1,3);
 			this.model.setValueAt(this.model.getValueAt(lastRow,4), lastRow-1, 4);
+			((ExperimentTableButton)this.model.getValueAt(lastRow-1,4)).setRow(lastRow-1);
 			this.model.removeRow(lastRow);
 		}
 		this.proj.updateExperimentParamValidations();
