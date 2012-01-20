@@ -296,10 +296,24 @@ public class LimitingFactorsTool {
 						}
 						for(int i=0; i<dates.size(); i++){
 							Double existingValue = data.get(i);
+							Integer beginLeapAdder = 0, endLeapAdder = 0;
 							if(sameSide){
-								isSeasonForTempModification = (dates.get(i).getDayOfYear() >= dayBegin && dates.get(i).getDayOfYear() <= dayEnd);
+								if(dates.get(i).isLeapYear()){
+									if(dayBegin>=60)beginLeapAdder = 1;
+									if(dayEnd>=60)endLeapAdder = 1;
+								}
+								isSeasonForTempModification = (dates.get(i).getDayOfYear() >= dayBegin+beginLeapAdder && dates.get(i).getDayOfYear() <= dayEnd+endLeapAdder);
 							}else{
-								isSeasonForTempModification = (dates.get(i).getDayOfYear() <= dayEnd || dates.get(i).getDayOfYear() >= dayBegin);
+								if(dates.get(i).getDayOfYear() < midSummer){
+									if(dates.get(i).isLeapYear()){
+										if(dayEnd>=60)endLeapAdder = 1;
+									}
+								}else{
+									if(dates.get(i).isLeapYear()){
+										if(dayBegin>=60)beginLeapAdder = 1;
+									}
+								}
+								isSeasonForTempModification = (dates.get(i).getDayOfYear() <= dayEnd+endLeapAdder || dates.get(i).getDayOfYear() >= dayBegin+beginLeapAdder);
 							}
 							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 								((ArrayList<Day>) newTimeSeries.get(scenarioNum).get(0)).add(dates.get(i));
