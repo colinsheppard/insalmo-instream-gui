@@ -189,7 +189,7 @@ public class MetaParameter {
 			}
 			break;
 		case BOOL:
-			if(value.equals("YES") || value.equals("NO")){
+			if(value.equals("1") || value.equals("0")){
 				validationCode = ValidationCode.VALID;
 			}else{
 				validationCode = ValidationCode.INVALID_BOOL;

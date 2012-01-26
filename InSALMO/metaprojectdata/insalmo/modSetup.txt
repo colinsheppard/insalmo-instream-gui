@@ -10,9 +10,9 @@ fishMortalityFile	Dead_Fish_Out.csv	Mortality output file name	OUTFILENAME	6
 reddOutputFile	Redds_Out.csv	Redd output file name	OUTFILENAME	8		
 outmigrantOutputFile	Outmigrants_Out.csv	Outmigrant output file name	OUTFILENAME	9		
 fileOutputFrequency	1	Days between file outputs	INTEGER	10	1	30
-appendFiles	NO	NO to overwrite output files; YES to append	BOOL	11		
-shuffleYears	NO	YES if simulation years should be randomly shuffles; NO if not	BOOL	20		
-shuffleYearReplace	YES	YES if year shuffle randomization is with replacement (only relevant if "shuffleYears" is YES); NO if without replacement	BOOL	21		
+appendFiles	0	0 to overwrite output files; 1 to append	BOOL	11		
+shuffleYears	0	1 if simulation years should be randomly shuffles; 0 if not	BOOL	20		
+shuffleYearReplace	1	1 if year shuffle randomization is with replacement (only relevant if "shuffleYears" is 1); 0 if without replacement	BOOL	21		
 shuffleYearSeed	1	Seed used by random year shuffler	INTEGER	22	0	99999999
 siteLatitude	40	Latitude of the study site, in degrees north	FLOAT	30	-90	90
 juvenileSuperindividualRatio	20	Number of juveniles to represent per model fish	INTEGER	40	1	100

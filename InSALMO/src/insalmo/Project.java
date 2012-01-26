@@ -580,7 +580,7 @@ public class Project {
 		this.exps.add(shuffExpParam.getParamKey());
 		for(int j=0; j<getNumberOfScenarios(); j++){
 			shuffSeedExpParam.addValue(firstSeed.toString());
-			shuffExpParam.addValue("YES");
+			shuffExpParam.addValue("1");
 		}
 		for(int i=1; i<numReplicates; i++){
 			Integer shuffleSeed = firstSeed+i;

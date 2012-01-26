@@ -119,7 +119,7 @@ public class Parameter {
 			break;
 		case INVALID_BOOL:
 			this.validationType = MetaParameter.ValidationType.ERROR;
-			this.validationMessage = "Invalid boolean format (must be YES or NO)";
+			this.validationMessage = "Invalid boolean format (must be 1 or 0)";
 			break;
 		}
 		if(this.expParamSource != null && this.validationType == MetaParameter.ValidationType.VALID){
@@ -179,9 +179,9 @@ public class Parameter {
 	            	this.dblValue = Double.parseDouble(value);
 	                break;
 	            case BOOL:
-	            	if(value.equals("YES")){
+	            	if(value.equals("1")){
 						this.boolValue = true;
-					}else if(value.equals("NO")){
+					}else if(value.equals("0")){
 						this.boolValue = false;
 					}else{
 						this.boolValue = null;
