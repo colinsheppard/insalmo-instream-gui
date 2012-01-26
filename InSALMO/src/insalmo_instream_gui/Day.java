@@ -655,7 +655,7 @@ public final class Day
    *
    * @param n          Nth day to look for.
    * @param dayOfWeek  Day to look for (Calendar.XXXDAY).
-   * @param month      Month to check (Calendar.XXX).
+   * @param month      Month to check (Calendar.XX).
    * @param year       Year to check.
    * @return           Required Day (or null if non-existent)
    * @throws IllegalArgumentException if dyaOfWeek parameter

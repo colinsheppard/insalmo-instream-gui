@@ -34,7 +34,7 @@ import org.jdesktop.application.SingleFrameApplication;
 /**
  * The main class of the application.
  */
-public class InsalmoInstreamConfigApp extends SingleFrameApplication {
+public class InsalmoInstreamApp extends SingleFrameApplication {
     // Check that we are on Mac OS X.  This is crucial to loading and using the OSXAdapter class.
     public static boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
 
@@ -57,8 +57,8 @@ public class InsalmoInstreamConfigApp extends SingleFrameApplication {
      * A convenient static getter for the application instance.
      * @return the instance of InSTREAMConfigApp
      */
-    public static InsalmoInstreamConfigApp getApplication() {
-        return Application.getInstance(InsalmoInstreamConfigApp.class);
+    public static InsalmoInstreamApp getApplication() {
+        return Application.getInstance(InsalmoInstreamApp.class);
     }
 
     /**

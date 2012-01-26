@@ -85,7 +85,7 @@ public class ChangeSpeciesParameterFile extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(ChangeSpeciesParameterFile.class);
+		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(ChangeSpeciesParameterFile.class);
 
 		//NEW NAME TEXT FIELD
 		changeParameterTitle.setFont(resourceMap.getFont("changeParameterTitle.font")); 

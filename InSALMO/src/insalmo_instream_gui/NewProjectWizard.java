@@ -91,7 +91,7 @@ public class NewProjectWizard extends javax.swing.JFrame {
 
 
 
-		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(NewProjectWizard.class);
+		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(NewProjectWizard.class);
 
 		//NEW NAME TEXT FIELD
 		projectNewNameLabel.setFont(resourceMap.getFont("projectNewNameLabel.font")); 

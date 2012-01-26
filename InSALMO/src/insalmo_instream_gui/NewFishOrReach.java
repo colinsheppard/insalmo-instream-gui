@@ -74,7 +74,7 @@ public class NewFishOrReach extends javax.swing.JFrame {
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(NewFishOrReach.class);
+		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(NewFishOrReach.class);
 
 		copyFromExistingButton = new JRadioButton(resourceMap.getString("sourceFromFileButton.text"));
 		sourceDefaultButton = new JRadioButton(resourceMap.getString("sourceDefaultButton.text"));
@@ -246,23 +246,6 @@ public class NewFishOrReach extends javax.swing.JFrame {
 		this.newFishReachPanel.revalidate();
 	}
 
-	//    private void selectFileButtonActionPerformed(java.awt.event.ActionEvent evt){
-	//    	sourceFromFileButton.setSelected(true);
-	//		final JFileChooser fc = new JFileChooser();
-	//		fc.setCurrentDirectory(new java.io.File("."));
-	//		fc.setDialogTitle(swapText("Select a <species/reach> parameter file (\".Params\")"));
-	//		fc.addChoosableFileFilter(new ParamFilter());
-	//		int returnVal = fc.showOpenDialog(this.parent);
-	//
-	//		if (returnVal == JFileChooser.APPROVE_OPTION) {
-	//			fishReachFile = fc.getSelectedFile();
-	//			filenameLabel.setText("<html><body><i>"+fishReachFile.getName()+"<i></body></html>");
-	//			newNameTextField.setText(fishReachFile.getName().split("\\.")[0]);
-	//		} else {
-	//			return;
-	//		}
-	//    	this.newFishReachPanel.revalidate();
-	//    }
 	private void submitButtonActionPerfomed(java.awt.event.ActionEvent evt) {
 		if(newNameTextField.getText().trim().equals("")){
 			JOptionPane.showMessageDialog(this, "Please enter a name for the "+fishOrReach);

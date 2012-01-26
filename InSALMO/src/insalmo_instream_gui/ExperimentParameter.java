@@ -39,9 +39,7 @@ public class ExperimentParameter {
 	}
 	public void addValue(String val){
 		if(paramNameParam==null){
-			System.err.println("Error: Attempted to add a value to an experiment parameter before the parameter name has been specified");
-			//TODO change all System.exit calls to a catchable exception that allows user to correct error.
-			System.exit(1);
+			throw new RuntimeException("Error: Attempted to add a value to an experiment parameter before the parameter name has been specified");
 		}
 		this.getValues().add(new Parameter(this.getParamName(),val,this));
 	}

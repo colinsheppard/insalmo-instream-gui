@@ -231,16 +231,6 @@ public class InsalmoInstreamView extends JFrame{
 		initComponents();
 	}
 
-	@Action
-	public void showAboutBox() {
-		if (aboutBox == null) {
-			JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
-			aboutBox = new InSTREAMConfigAboutBox(mainFrame);
-			aboutBox.setLocationRelativeTo(mainFrame);
-		}
-		InsalmoInstreamConfigApp.getApplication().show(aboutBox);
-	}
-
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 */
@@ -252,7 +242,7 @@ public class InsalmoInstreamView extends JFrame{
 		toolBar.setRollover(true);
 		toolBar.setName("toolBar"); 
 
-		this.resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(InsalmoInstreamView.class);
+		this.resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(InsalmoInstreamView.class);
 		newButton.setIcon(resourceMap.getIcon("newButton.icon")); 
 		newButton.setText(resourceMap.getString("newButton.text")); 
 		newButton.setFocusable(false);
@@ -589,7 +579,6 @@ public class InsalmoInstreamView extends JFrame{
 		experimentMenu.setText(resourceMap.getString("experimentMenu.text")); 
 		experimentMenu.setName("experimentMenu"); 
 
-		//TODO assign accelerator to experiment menu options
 		experimentMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, getMenuShortcutKeyMask()));
 		experimentMenuItem.setText(resourceMap.getString("experimentMenuItem.text")); 
 		experimentMenuItem.setName("experimentMenuItem"); 
@@ -986,11 +975,11 @@ public class InsalmoInstreamView extends JFrame{
 				return;
 			}
 		}
-		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamApp.getApplication().getMainFrame();
 		NewProjectWizard wizard = new NewProjectWizard(this);
 		wizard.setLocationRelativeTo(mainFrame);
 
-		InsalmoInstreamConfigApp.getApplication().show(wizard);
+		InsalmoInstreamApp.getApplication().show(wizard);
 	}
 	public void createNewProject(File projectFile, boolean fromScratch){
 		System.out.println("Creating: " + projectFile.getName());
@@ -1385,8 +1374,7 @@ public class InsalmoInstreamView extends JFrame{
 								.addGroup(modelSetupLayeredScrollPanesVGroup))
 								.addContainerGap())
 		);
-
-		modelSetupTabbedPane.addTab(resourceMap.getString("modelSetupTab.TabConstraints.tabTitle"), modelSetupTab); 
+		modelSetupTabbedPane.addTab(resourceMap.getString("modelSetupTab.TabConstraints.tabTitle"), null, modelSetupTab, resourceMap.getString("modelSetupTab.TabConstraints.tabToolTip")); 
 
 		/*
 		 * Observer setup tab
@@ -1436,7 +1424,7 @@ public class InsalmoInstreamView extends JFrame{
 								.addContainerGap())
 		);
 
-		modelSetupTabbedPane.addTab(resourceMap.getString("observerSetupTab.TabConstraints.tabTitle"), observerSetupTab); 
+		modelSetupTabbedPane.addTab(resourceMap.getString("observerSetupTab.TabConstraints.tabTitle"), null, observerSetupTab, resourceMap.getString("observerSetupTab.TabConstraints.tabToolTip")); 
 
 		/*
 		 * Species Setup and Parameter Tabs
@@ -1792,7 +1780,7 @@ public class InsalmoInstreamView extends JFrame{
 										.addGroup(habitatSetupLayeredScrollPanesVGroup)
 										.addContainerGap())
 		);
-		modelSetupTabbedPane.addTab(resourceMap.getString("habitatSetupTab.TabConstraints.tabTitle"), habitatSetupTab); 
+		modelSetupTabbedPane.addTab(resourceMap.getString("habitatSetupTab.TabConstraints.tabTitle"), null, habitatSetupTab, resourceMap.getString("habitatSetupTab.TabConstraints.tabToolTip")); 
 
 		habitatParamTabLayout.setHorizontalGroup(
 				habitatParamTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1820,7 +1808,7 @@ public class InsalmoInstreamView extends JFrame{
 										.addGroup(habitatParamLayeredScrollPanesVGroup)
 										.addContainerGap())
 		);
-		modelSetupTabbedPane.addTab(resourceMap.getString("habitatParamTab.TabConstraints.tabTitle"), habitatParamTab); 
+		modelSetupTabbedPane.addTab(resourceMap.getString("habitatParamTab.TabConstraints.tabTitle"), null, habitatParamTab, resourceMap.getString("habitatParamTab.TabConstraints.tabToolTip")); 
 
 		/*
 		 * Experiment Control Configuration Tab
@@ -1885,7 +1873,7 @@ public class InsalmoInstreamView extends JFrame{
 										.addComponent(experimentControlScrollPane,0, resourceMap.getInteger("defaultContentSize.height.int"), Short.MAX_VALUE))
 										.addContainerGap())
 		);
-		experimentTabbedPane.addTab(resourceMap.getString("experimentControlTab.TabConstraints.tabTitle"), experimentControlTab); 
+		experimentTabbedPane.addTab(resourceMap.getString("experimentControlTab.TabConstraints.tabTitle"), null, experimentControlTab, resourceMap.getString("experimentControlTab.TabConstraints.tabToolTip")); 
 
 		/*
 		 * Experiment Parameters Configuration Tab
@@ -1984,7 +1972,7 @@ public class InsalmoInstreamView extends JFrame{
 								.addGroup(experimentParamLayeredScrollPanesVGroup)
 								.addContainerGap())
 		);
-		experimentTabbedPane.addTab(resourceMap.getString("experimentParamTab.TabConstraints.tabTitle"), experimentParamTab); 
+		experimentTabbedPane.addTab(resourceMap.getString("experimentParamTab.TabConstraints.tabTitle"), null, experimentParamTab, resourceMap.getString("experimentParamTab.TabConstraints.tabToolTip")); 
 
 		/*
 		 * Limiting Factors Tool Setup Tab
@@ -2075,12 +2063,12 @@ public class InsalmoInstreamView extends JFrame{
 								.addComponent(lftSetupScrollPane,0, resourceMap.getInteger("defaultContentSize.height.int"), Short.MAX_VALUE))
 						.addContainerGap())
 		);
-		lftTabbedPane.addTab(resourceMap.getString("lftSetupTab.TabConstraints.tabTitle"), lftSetupTab); 
+		lftTabbedPane.addTab(resourceMap.getString("lftSetupTab.TabConstraints.tabTitle"), null, lftSetupTab, resourceMap.getString("lftSetupTab.TabConstraints.tabToolTip")); 
 		
 		//GroupLayout lftExecutionTabLayout = new javax.swing.GroupLayout(lftExecutionTabbedPane);
 		//lftExecutionTabbedPane.setLayout(lftExecutionTabLayout);
 
-		lftTabbedPane.addTab(resourceMap.getString("lftExecutionTab.TabConstraints.tabTitle"), lftExecutionTabbedPane); 
+		lftTabbedPane.addTab(resourceMap.getString("lftExecutionTab.TabConstraints.tabTitle"), null, lftExecutionTabbedPane, resourceMap.getString("lftExecutionTab.TabConstraints.tabToolTip")); 
 		if(lftTextAreas.size()==0){
 			lftTool.createLFTOutputTabs(lftExecutionTabbedPane);
 		}
@@ -2089,8 +2077,8 @@ public class InsalmoInstreamView extends JFrame{
 		commitTables();
 		Integer speIndex = Integer.parseInt(((JButton)evt.getSource()).getName().substring(20));
 		ChangeSpeciesParameterFile changeParamFile = new ChangeSpeciesParameterFile(this, getOpenProject(),speIndex);
-		changeParamFile.setLocationRelativeTo(InsalmoInstreamConfigApp.getApplication().getMainFrame());
-		InsalmoInstreamConfigApp.getApplication().show(changeParamFile);
+		changeParamFile.setLocationRelativeTo(InsalmoInstreamApp.getApplication().getMainFrame());
+		InsalmoInstreamApp.getApplication().show(changeParamFile);
 	}
 
 	// MENU ITEM ACTIONS
@@ -2345,10 +2333,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addExperimentParamActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newParamName = null;
-		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamApp.getApplication().getMainFrame();
 		NewExperimentParameter expParamAdder = new NewExperimentParameter(this, getOpenProject());
 		expParamAdder.setLocationRelativeTo(mainFrame);
-		InsalmoInstreamConfigApp.getApplication().show(expParamAdder);
+		InsalmoInstreamApp.getApplication().show(expParamAdder);
 	}
 	private void updateErrorWarningLinkButton(java.awt.event.ActionEvent evt){
 		Integer numErr = 0; 
@@ -2372,7 +2360,7 @@ public class InsalmoInstreamView extends JFrame{
 		commitTables();
 		showErrorWarnings = new ShowErrorsWarnings(this, getOpenProject());
 		showErrorWarnings.setLocationRelativeTo(this.parentFrame);
-		InsalmoInstreamConfigApp.getApplication().show(showErrorWarnings);
+		InsalmoInstreamApp.getApplication().show(showErrorWarnings);
 	}
 	public void addExperimentParamSubmitted(String newName,String newInstanceName,String newClassName){
 		this.newParamName = newName;
@@ -2516,10 +2504,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addSpeciesActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newSpeciesName = null;
-		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"species");
 		fishOrReachAdder.setLocationRelativeTo(mainFrame);
-		InsalmoInstreamConfigApp.getApplication().show(fishOrReachAdder);
+		InsalmoInstreamApp.getApplication().show(fishOrReachAdder);
 	}
 	public void addSpeciesSubmitted(){
 		if(newSpeciesName!=null){
@@ -2627,10 +2615,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addHabitatActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newReachName = null;
-		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"reach");
 		fishOrReachAdder.setLocationRelativeTo(mainFrame);
-		InsalmoInstreamConfigApp.getApplication().show(fishOrReachAdder);
+		InsalmoInstreamApp.getApplication().show(fishOrReachAdder);
 	}
 	public void addReachSubmitted(){
 		if(newReachName!=null){
