@@ -120,15 +120,23 @@ public class Project {
 				}
 			}
 			if(paramType.substring(0,3).equals("hab")){
-				sParams.setParamInstance("ClearCreek-3A");
+				if(MetaProject.getInstance().isInstream()){
+					sParams.setParamInstance("ExampleSiteA");
+				}else{
+					sParams.setParamInstance("ClearCreek-3A");
+				}
 				if(paramType.equals("habParam")){
-					this.addHabitat(this.setupParams.get("habSetup-ClearCreek-3A"), sParams);
+					this.addHabitat(this.setupParams.get("habSetup-"+sParams.getParamInstance()), sParams);
 				}
 			}
 			if(paramType.substring(0,3).equals("spe")){
-				sParams.setParamInstance("FallChinook");
+				if(MetaProject.getInstance().isInstream()){
+					sParams.setParamInstance("ExampleTrout");
+				}else{
+					sParams.setParamInstance("FallChinook");
+				}
 				if(paramType.equals("speParam")){
-					this.addSpecies(this.setupParams.get("speSetup-FallChinook"), sParams);
+					this.addSpecies(this.setupParams.get("speSetup-"+sParams.getParamInstance()), sParams);
 				}
 			}
 			this.setupParams.put(paramType+"-"+((sParams.getParamInstance()==null)?"":sParams.getParamInstance()), sParams);
@@ -488,6 +496,7 @@ public class Project {
 		}
 	}
 	Integer getNumberOfScenarios(){
+		if(numberOfScenarios==null)setNumberOfScenarios(null);
 		return numberOfScenarios;
 	}
 	void setNumberOfScenarios(){

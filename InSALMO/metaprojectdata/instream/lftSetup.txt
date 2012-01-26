@@ -7,7 +7,7 @@ resultsCensusDay	9/30	The day on which annual results are censused from the mode
 winterTemperatureStartDay	11/1	The first day (MM/DD) of the "winter" period for winter temperature experiments	DAY	10		
 winterTemperatureEndDay	3/31	The last day (MM/DD) of the "winter" period for winter temperature experiments	DAY	15		
 winterTemperatureRangeLow	-4	The constant change in temperature (deg C) for the lowest-temperature scenario in the winter temperature experiment.	FLOAT	20		
-winterTemperatureRangeHigh	1/4	The constant change in temperature (deg C) for the highest-temperature scenario in the winter temperature experiment.	FLOAT	25		
+winterTemperatureRangeHigh	4	The constant change in temperature (deg C) for the highest-temperature scenario in the winter temperature experiment.	FLOAT	25		
 summerTemperatureStartDay	4/1	The first day (MM/DD) of the "summer" period for summer temperature experiments	DAY	30		
 summerTemperatureEndDay	10/31	The last day (MM/DD) of the "summer" period for summer temperature experiments	DAY	35		
 summerTemperatureRangeLow	-4	The constant change in temperature (deg C) for the lowest-temperature scenario in the summer temperature experiment.	FLOAT	40		

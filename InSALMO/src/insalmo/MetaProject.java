@@ -56,7 +56,7 @@ import javax.swing.JPanel;
 public class MetaProject {
     private static MetaProject instance = null;
     private static String[] paramTypes = {"modSetup","obsSetup","habSetup","habParam","speSetup","speParam","lftSetup","expSetup","expParam"};
-    private static String[] fileNames = {"Model.Setup","Observer.Setup","Reach.Setup","ClearCreek3A.Params","Species.Setup","FallChinook.Params","LimitingFactorsTool.Setup"};
+    private static String[] fileNames = {"Model.Setup","Observer.Setup","Reach.Setup","ClearCreek3A-Hab.Params","Species.Setup","FallChinook.Params","LimitingFactorsTool.Setup"};
     private static Hashtable<String,MetaParameter> metaParamByParamName = new Hashtable<String,MetaParameter>();
     private static Hashtable<String,ArrayList<String>>	paramNameListByParamType = new Hashtable<String,ArrayList<String>>();
     private Project openProject = null;
@@ -73,6 +73,10 @@ public class MetaProject {
         return (instance);
     }
 	protected MetaProject(){
+		if(version.equals("instream")){
+			fileNames[3] = "ExampleSiteA-Hab.Params";
+			fileNames[5] = "ExampleTrout.Params";
+		}
 	}
 	public void Initialize(){
 		for(int i=0; i<paramTypes.length; i++){
@@ -220,6 +224,9 @@ public class MetaProject {
 	}
 	public String getVersion(){
 		return this.version;
+	}
+	public Boolean isInstream(){
+		return this.version.equals("instream");
 	}
 	public void setInSALMOView(InSALMOView inSALMOView) {
 		this.inSALMOView = inSALMOView;
