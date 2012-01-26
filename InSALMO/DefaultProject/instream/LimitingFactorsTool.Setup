@@ -3,7 +3,7 @@
 @begin
 winterTemperatureStartDay		11/1
 resultsAgeThreshold		1
-resultsCensusDay		10/1
+resultsCensusDay		9/30
 uncertaintyParam2HighFactor		1.2
 numUncertaintyScenarios		2
 uncertaintyParam3		mortFishTerrPredMin
