@@ -2465,16 +2465,18 @@ public class InSALMOView extends JFrame{
 				lftTabbedPane.setSelectedIndex(1);
 				lftTool.setTerminatedForcefully(false);
 				lftTool.executeLFT();
+			}else{
+				startLFTButton.setEnabled(true);
 			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this.parentFrame,"<html><body><font size=+2><b>Limiting Factors Tool Execution Cancelled</b></font><br/><br/>The following error was encountered:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
 			e.printStackTrace();
+			startLFTButton.setEnabled(true);
 		}finally{
 			shutDownProject();
 			revealSummaryPane();
 			updateErrorWarningLinkButton(new ActionEvent(this,0,"Project closed"));
 			openProject(new File(projDir));
-			startLFTButton.setEnabled(true);
 			lftActionPerformed();
 			this.parentFrame.setCursor(Cursor.getDefaultCursor());
 		}
