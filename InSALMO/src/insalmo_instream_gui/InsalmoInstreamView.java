@@ -234,11 +234,11 @@ public class InsalmoInstreamView extends JFrame{
 	@Action
 	public void showAboutBox() {
 		if (aboutBox == null) {
-			JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
+			JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
 			aboutBox = new InSTREAMConfigAboutBox(mainFrame);
 			aboutBox.setLocationRelativeTo(mainFrame);
 		}
-		InSTREAMConfigApp.getApplication().show(aboutBox);
+		InsalmoInstreamConfigApp.getApplication().show(aboutBox);
 	}
 
 	/** This method is called from within the constructor to
@@ -252,7 +252,7 @@ public class InsalmoInstreamView extends JFrame{
 		toolBar.setRollover(true);
 		toolBar.setName("toolBar"); 
 
-		this.resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InSTREAMConfigApp.class).getContext().getResourceMap(InsalmoInstreamView.class);
+		this.resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(InsalmoInstreamView.class);
 		newButton.setIcon(resourceMap.getIcon("newButton.icon")); 
 		newButton.setText(resourceMap.getString("newButton.text")); 
 		newButton.setFocusable(false);
@@ -986,11 +986,11 @@ public class InsalmoInstreamView extends JFrame{
 				return;
 			}
 		}
-		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
 		NewProjectWizard wizard = new NewProjectWizard(this);
 		wizard.setLocationRelativeTo(mainFrame);
 
-		InSTREAMConfigApp.getApplication().show(wizard);
+		InsalmoInstreamConfigApp.getApplication().show(wizard);
 	}
 	public void createNewProject(File projectFile, boolean fromScratch){
 		System.out.println("Creating: " + projectFile.getName());
@@ -2089,8 +2089,8 @@ public class InsalmoInstreamView extends JFrame{
 		commitTables();
 		Integer speIndex = Integer.parseInt(((JButton)evt.getSource()).getName().substring(20));
 		ChangeSpeciesParameterFile changeParamFile = new ChangeSpeciesParameterFile(this, getOpenProject(),speIndex);
-		changeParamFile.setLocationRelativeTo(InSTREAMConfigApp.getApplication().getMainFrame());
-		InSTREAMConfigApp.getApplication().show(changeParamFile);
+		changeParamFile.setLocationRelativeTo(InsalmoInstreamConfigApp.getApplication().getMainFrame());
+		InsalmoInstreamConfigApp.getApplication().show(changeParamFile);
 	}
 
 	// MENU ITEM ACTIONS
@@ -2345,10 +2345,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addExperimentParamActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newParamName = null;
-		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
 		NewExperimentParameter expParamAdder = new NewExperimentParameter(this, getOpenProject());
 		expParamAdder.setLocationRelativeTo(mainFrame);
-		InSTREAMConfigApp.getApplication().show(expParamAdder);
+		InsalmoInstreamConfigApp.getApplication().show(expParamAdder);
 	}
 	private void updateErrorWarningLinkButton(java.awt.event.ActionEvent evt){
 		Integer numErr = 0; 
@@ -2372,7 +2372,7 @@ public class InsalmoInstreamView extends JFrame{
 		commitTables();
 		showErrorWarnings = new ShowErrorsWarnings(this, getOpenProject());
 		showErrorWarnings.setLocationRelativeTo(this.parentFrame);
-		InSTREAMConfigApp.getApplication().show(showErrorWarnings);
+		InsalmoInstreamConfigApp.getApplication().show(showErrorWarnings);
 	}
 	public void addExperimentParamSubmitted(String newName,String newInstanceName,String newClassName){
 		this.newParamName = newName;
@@ -2516,10 +2516,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addSpeciesActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newSpeciesName = null;
-		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"species");
 		fishOrReachAdder.setLocationRelativeTo(mainFrame);
-		InSTREAMConfigApp.getApplication().show(fishOrReachAdder);
+		InsalmoInstreamConfigApp.getApplication().show(fishOrReachAdder);
 	}
 	public void addSpeciesSubmitted(){
 		if(newSpeciesName!=null){
@@ -2627,10 +2627,10 @@ public class InsalmoInstreamView extends JFrame{
 	private void addHabitatActionPerformed(java.awt.event.ActionEvent evt){
 		commitTables();
 		newReachName = null;
-		JFrame mainFrame = InSTREAMConfigApp.getApplication().getMainFrame();
+		JFrame mainFrame = InsalmoInstreamConfigApp.getApplication().getMainFrame();
 		NewFishOrReach fishOrReachAdder = new NewFishOrReach(this, getOpenProject(),"reach");
 		fishOrReachAdder.setLocationRelativeTo(mainFrame);
-		InSTREAMConfigApp.getApplication().show(fishOrReachAdder);
+		InsalmoInstreamConfigApp.getApplication().show(fishOrReachAdder);
 	}
 	public void addReachSubmitted(){
 		if(newReachName!=null){

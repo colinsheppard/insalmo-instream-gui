@@ -74,7 +74,7 @@ public class NewFishOrReach extends javax.swing.JFrame {
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InSTREAMConfigApp.class).getContext().getResourceMap(NewFishOrReach.class);
+		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(NewFishOrReach.class);
 
 		copyFromExistingButton = new JRadioButton(resourceMap.getString("sourceFromFileButton.text"));
 		sourceDefaultButton = new JRadioButton(resourceMap.getString("sourceDefaultButton.text"));

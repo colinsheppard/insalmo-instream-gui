@@ -77,7 +77,7 @@ public class NewExperimentParameter extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InSTREAMConfigApp.class).getContext().getResourceMap(NewExperimentParameter.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(NewExperimentParameter.class);
         
 	    parameterTypeInputButton = new JRadioButton(resourceMap.getString("parameterTypeInputButton.text"));
 	    parameterTypeOutputButton = new JRadioButton(resourceMap.getString("parameterTypeOutputButton.text"));

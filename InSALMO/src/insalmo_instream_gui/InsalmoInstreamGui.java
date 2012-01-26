@@ -63,7 +63,7 @@ public class InsalmoInstreamGui extends JFrame implements ActionListener{
 
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.view = new InsalmoInstreamView(this);
-		ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InSTREAMConfigApp.class).getContext().getResourceMap(InsalmoInstreamGui.class);
+		ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamConfigApp.class).getContext().getResourceMap(InsalmoInstreamGui.class);
 		this.setIconImage(resourceMap.getImageIcon(MetaProject.getInstance().getVersion()+".icon").getImage());
 		this.setSize(1050, 850);
 
@@ -117,8 +117,8 @@ public class InsalmoInstreamGui extends JFrame implements ActionListener{
 	 * A convenient static getter for the application instance.
 	 * @return the instance of InSTREAMConfigApp
 	 */
-	public static InSTREAMConfigApp getApplication() {
-		return Application.getInstance(InSTREAMConfigApp.class);
+	public static InsalmoInstreamConfigApp getApplication() {
+		return Application.getInstance(InsalmoInstreamConfigApp.class);
 	}
 
 	/**
