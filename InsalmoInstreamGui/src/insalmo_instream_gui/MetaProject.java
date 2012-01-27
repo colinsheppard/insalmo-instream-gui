@@ -64,7 +64,7 @@ public class MetaProject {
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
 	private String version = "instream";  // "insalmo" or "instream"
-	private InsalmoInstreamView inSALMOView;
+	private InsalmoInstreamView insalmoInstreamView;
 
     public static MetaProject getInstance() {
         if (instance == null) {
@@ -175,7 +175,7 @@ public class MetaProject {
 					(paramName.equals("numUncertaintyScenarios") || 
 					paramName.equals("numScenarios") ||
 					paramName.equals("numUncertaintyParams"))){
-				this.inSALMOView.updateLFTRunsPerExperiment();
+				this.insalmoInstreamView.actionHandler.updateLFTRunsPerExperiment();
 			}
 		}
 	}
@@ -229,10 +229,10 @@ public class MetaProject {
 		return this.version.equals("instream");
 	}
 	public void setInSALMOView(InsalmoInstreamView inSALMOView) {
-		this.inSALMOView = inSALMOView;
+		this.insalmoInstreamView = inSALMOView;
 	}
 	public InsalmoInstreamView getInSALMOView(){
-		return this.inSALMOView;
+		return this.insalmoInstreamView;
 	}
 	public String getAppTitle(){
 		return (this.version.equals("instream") ? "InSTREAM" : "InSALMO");

@@ -87,8 +87,8 @@ public class InsalmoInstreamGui extends JFrame implements ActionListener{
 
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
-				if(view.closeProject("Quit")){
-					view.exitApplication();
+				if(view.actionHandler.closeProject("Quit")){
+					view.actionHandler.exitApplication();
 				}
 			}
 		});
@@ -110,7 +110,7 @@ public class InsalmoInstreamGui extends JFrame implements ActionListener{
 	// General quit handler; fed to the OSXAdapter as the method to call when a system quit event occurs
 	// A quit event is triggered by Cmd-Q, selecting Quit from the application or Dock menu, or logging out
 	public boolean quit() {	
-		return this.view.closeProject("Quit");
+		return this.view.actionHandler.closeProject("Quit");
 	}
 
 	/**

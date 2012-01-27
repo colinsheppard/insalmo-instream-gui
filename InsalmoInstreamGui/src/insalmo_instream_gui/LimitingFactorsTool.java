@@ -77,7 +77,7 @@ public class LimitingFactorsTool {
 		SetupParameters lftSetup = project.getSetupParameters("lftSetup-");
 		Hashtable<String,ArrayList<String>> uncertaintyData = new Hashtable<String,ArrayList<String>>();
 
-		if(parent.saveProject()){
+		if(parent.actionHandler.saveProject()){
 			if(project.getNumErrors()>0){
 				throw new RuntimeException("The project has errors, please fix them before running the Limiting Factors Tool");
 			}else if(project.getNumWarnings()>0){
@@ -212,9 +212,9 @@ public class LimitingFactorsTool {
 			for(LFTExperiment exp : LFTExperiment.values()){
 				if(exp == LFTExperiment.NUM_SPAWNERS && isINSTREAM)continue;
 				newExpDir = new File(lftDir.getAbsolutePath()+"/"+lftExpToString(exp));
-				parent.closeProject("Close");
-				parent.openProject(newExpDir);
-				parent.clearExperiment();
+				parent.actionHandler.closeProject("Close");
+				parent.actionHandler.openProject(newExpDir);
+				parent.actionHandler.clearExperiment();
 				ArrayList<ExperimentParameter> uncertParams = createUncertaintyParameters(uncertaintyData);
 				switch (exp) {
 				case WINTER_WATER_TEMP:
@@ -263,7 +263,7 @@ public class LimitingFactorsTool {
 						// EXPERIMENT SETUP
 						String dataFileName = project.getSetupParameters("habSetup-"+hab).getParameter("temperatureFile").getParameterValue();
 						File dataFile = new File(dataFileName);
-						parent.addExperimentParamSubmitted("temperatureFile", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("temperatureFile", hab, "HabitatSpace");
 						expParam = parent.getOpenProject().getExperimentParameters("temperatureFile ("+hab+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -342,7 +342,7 @@ public class LimitingFactorsTool {
 						// EXPERIMENT SETUP
 						String dataFileName = project.getSetupParameters("habSetup-"+hab).getParameter("flowFile").getParameterValue();
 						File dataFile = new File(dataFileName);
-						parent.addExperimentParamSubmitted("flowFile", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("flowFile", hab, "HabitatSpace");
 						expParam = parent.getOpenProject().getExperimentParameters("flowFile ("+hab+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -409,7 +409,7 @@ public class LimitingFactorsTool {
 						// EXPERIMENT SETUP
 						String dataFileName = project.getSetupParameters("habSetup-"+hab).getParameter("cellHabVarsFile").getParameterValue();
 						File dataFile = new File(dataFileName);
-						parent.addExperimentParamSubmitted("cellHabVarsFile", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("cellHabVarsFile", hab, "HabitatSpace");
 						expParam = parent.getOpenProject().getExperimentParameters("cellHabVarsFile ("+hab+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -489,7 +489,7 @@ public class LimitingFactorsTool {
 						// EXPERIMENT SETUP
 						String dataFileName = project.getSetupParameters("habSetup-"+hab).getParameter("cellHabVarsFile").getParameterValue();
 						File dataFile = new File(dataFileName);
-						parent.addExperimentParamSubmitted("cellHabVarsFile", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("cellHabVarsFile", hab, "HabitatSpace");
 						expParam = parent.getOpenProject().getExperimentParameters("cellHabVarsFile ("+hab+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -562,7 +562,7 @@ public class LimitingFactorsTool {
 					firstInstance = true;
 					for(String spe : project.getFish()){
 						Double baseRisk = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortFishAqPredMin").getParameterValue());
-						parent.addExperimentParamSubmitted("mortFishAqPredMin", spe, "FishParams");
+						parent.actionHandler.addExperimentParamSubmitted("mortFishAqPredMin", spe, "FishParams");
 						expParam = parent.getOpenProject().getExperimentParameters("mortFishAqPredMin ("+spe+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -590,8 +590,8 @@ public class LimitingFactorsTool {
 					for(String hab : project.getHabs()){
 						Double baseConc = Double.parseDouble(parent.getOpenProject().getSetupParameters("habParam-"+hab).getParameter("habDriftConc").getParameterValue());
 						Double baseProd = Double.parseDouble(parent.getOpenProject().getSetupParameters("habParam-"+hab).getParameter("habSearchProd").getParameterValue());
-						parent.addExperimentParamSubmitted("habDriftConc", hab, "HabitatSpace");
-						parent.addExperimentParamSubmitted("habSearchProd", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("habDriftConc", hab, "HabitatSpace");
+						parent.actionHandler.addExperimentParamSubmitted("habSearchProd", hab, "HabitatSpace");
 						expParamConc = parent.getOpenProject().getExperimentParameters("habDriftConc ("+hab+")");
 						expParamProd = parent.getOpenProject().getExperimentParameters("habSearchProd ("+hab+")");
 						expParamConc.getValues().clear();
@@ -618,7 +618,7 @@ public class LimitingFactorsTool {
 					firstInstance = true;
 					for(String spe : project.getFish()){
 						Double baseDepth = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortReddScourDepth").getParameterValue());
-						parent.addExperimentParamSubmitted("mortReddScourDepth", spe, "FishParams");
+						parent.actionHandler.addExperimentParamSubmitted("mortReddScourDepth", spe, "FishParams");
 						expParam = parent.getOpenProject().getExperimentParameters("mortReddScourDepth ("+spe+")");
 						expParam.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -639,7 +639,7 @@ public class LimitingFactorsTool {
 				case NUM_SPAWNERS:
 					Double spawnerNumberRatioLow = Double.parseDouble(lftSetup.getParameter("spawnerNumberRatioLow").getParameterValue());
 					Double spawnerNumberRatioHigh = Double.parseDouble(lftSetup.getParameter("spawnerNumberRatioHigh").getParameterValue());
-					parent.addExperimentParamSubmitted("numSpawnerAdjuster", "NONE", "TroutModelSwarm");
+					parent.actionHandler.addExperimentParamSubmitted("numSpawnerAdjuster", "NONE", "TroutModelSwarm");
 					expParam = parent.getOpenProject().getExperimentParameters("numSpawnerAdjuster (ALL)");
 					expParam.getValues().clear();
 					for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
@@ -727,9 +727,9 @@ public class LimitingFactorsTool {
 					break;
 				}
 				parent.getOpenProject().setNumberOfScenarios();
-				parent.saveProject();
-				parent.closeProject("Close");
-				parent.openProject(new File(projectDir));
+				parent.actionHandler.saveProject();
+				parent.actionHandler.closeProject("Close");
+				parent.actionHandler.openProject(new File(projectDir));
 			}
 			return true;
 		}else{
@@ -741,7 +741,7 @@ public class LimitingFactorsTool {
 		for(String paramKey : uncertaintyData.keySet()){
 			String paramName = ExperimentParameter.getParamNameFromParamKey(paramKey);
 			String instanceName = ExperimentParameter.getParamInstanceFromParamKey(paramKey);
-			parent.addExperimentParamSubmitted(paramName, instanceName, MetaProject.getInstance().getMetaParameter(paramName).getClassNameForExperimentManager());
+			parent.actionHandler.addExperimentParamSubmitted(paramName, instanceName, MetaProject.getInstance().getMetaParameter(paramName).getClassNameForExperimentManager());
 			ExperimentParameter expParam = parent.getOpenProject().getExperimentParameters(paramName + " ("+instanceName+")");
 			expParam.getValues().clear();
 			result.add(expParam);

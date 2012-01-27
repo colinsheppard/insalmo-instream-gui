@@ -75,7 +75,6 @@ public class NewExperimentParameter extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     private void initComponents() {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(NewExperimentParameter.class);
         
@@ -353,7 +352,7 @@ public class NewExperimentParameter extends javax.swing.JFrame {
     	String newName = (String)this.parameterComboBox.getSelectedItem();
     	String newInstance = (String)this.instanceComboBox.getSelectedItem();
     	if(newInstance.equals("ALL"))newInstance = "NONE";
-    	this.parent.addExperimentParamSubmitted(newName,newInstance,this.className);
+    	this.parent.actionHandler.addExperimentParamSubmitted(newName,newInstance,this.className);
     	this.dispose();
     }
     private void cancelButtonActionPerfomed(java.awt.event.ActionEvent evt){

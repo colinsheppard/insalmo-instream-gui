@@ -72,7 +72,6 @@ public class NewFishOrReach extends javax.swing.JFrame {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(insalmo_instream_gui.InsalmoInstreamApp.class).getContext().getResourceMap(NewFishOrReach.class);
 
@@ -264,8 +263,8 @@ public class NewFishOrReach extends javax.swing.JFrame {
 					}else{
 						openProject.addNewSpecies(null, newNameTextField.getText());
 					}
-					parent.setNewSpeciesName(newNameTextField.getText());
-					parent.addSpeciesSubmitted();
+					parent.actionHandler.setNewSpeciesName(newNameTextField.getText());
+					parent.actionHandler.addSpeciesSubmitted();
 				}catch (IOException e){
 					JOptionPane.showMessageDialog(this,"<html><body><font size=+2><b>Species add operation cancelled</b></font><br/><br/>An error occurred reading the parameter file:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
 					e.printStackTrace();
@@ -289,8 +288,8 @@ public class NewFishOrReach extends javax.swing.JFrame {
 					}else{
 						openProject.addNewReach(null, newNameTextField.getText());
 					}
-					parent.setNewReachName(newNameTextField.getText());
-					parent.addReachSubmitted();
+					parent.actionHandler.setNewReachName(newNameTextField.getText());
+					parent.actionHandler.addReachSubmitted();
 				}catch (IOException e){
 					JOptionPane.showMessageDialog(this,"<html><body><font size=+2><b>Reach add operation cancelled</b></font><br/><br/>An error occurred reading the parameter file:<br/><br/><font color='red'> "+e.getMessage()+"</font></body></html>");
 					return;

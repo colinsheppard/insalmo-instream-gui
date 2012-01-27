@@ -34,7 +34,7 @@ public class TerminateListener implements ActionListener{
 		this.parent = parent;
 	}
 	public void actionPerformed(ActionEvent e) {
-		parent.terminateExperiment(e);
+		parent.actionHandler.terminateExperiment(e);
 	}
 
 }

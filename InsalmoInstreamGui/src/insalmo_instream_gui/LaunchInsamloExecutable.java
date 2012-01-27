@@ -73,7 +73,7 @@ public class LaunchInsamloExecutable implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		this.parent.modelRunCompleted(this);
+		this.parent.actionHandler.modelRunCompleted(this);
 	}
 	public Process getProcess(){
 		return this.process;
