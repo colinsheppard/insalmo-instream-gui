@@ -434,11 +434,6 @@ public class Project {
 		this.updateExperimentParamValidations();
 		
 		checkForMissing();
-//		if(MetaProject.getInstance().getVersion().equals("insalmo")){
-//			this.setupParams.get("modSetup-").removeParameter("shuffleYears");
-//			this.setupParams.get("modSetup-").removeParameter("shuffleYearReplace");
-//			this.setupParams.get("modSetup-").removeParameter("shuffleYearSeed");
-//		}
 	}
 	private void resolveParamFilenameConflicts() {
 		ArrayList<String> usedFilenames = new ArrayList<String>();
