@@ -1,0 +1,9 @@
+*.out
+instream-2d
+instream
+*_Out.csv
+*.Setup
+LFT_Output.rpt
+lowpop.Data
+massif*
+val*
