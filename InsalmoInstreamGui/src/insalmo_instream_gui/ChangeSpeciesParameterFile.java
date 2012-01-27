@@ -199,8 +199,8 @@ public class ChangeSpeciesParameterFile extends javax.swing.JFrame {
 		int returnVal = fc.showOpenDialog(this.parent);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			newParameterFile = fc.getSelectedFile();
+			chooseFileLabel.setText("<html><body><b>New Parameter Filename:</b> <i>"+newParameterFile.getName()+"</i></body></html>");
 		}
-		chooseFileLabel.setText("<html><body><b>New Parameter Filename:</b> <i>"+newParameterFile.getName()+"</i></body></html>");
 	}
 
 }

@@ -63,7 +63,7 @@ public class MetaProject {
 	private boolean projectChanged = false;
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
-	private String version = "instream";  // "insalmo" or "instream"
+	private String version = "insalmo";  // "insalmo" or "instream"
 	private InsalmoInstreamView insalmoInstreamView;
 
     public static MetaProject getInstance() {
