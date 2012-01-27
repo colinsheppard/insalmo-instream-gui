@@ -17,7 +17,7 @@
 <iconLocation>inSALMO-Icon.gif</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <jarLocation>inSALMO-GUI.jar</jarLocation>
-<mainClassName>insalmo.InSALMO</mainClassName>
+<mainClassName>insalmo_instream_gui.InsalmoInstreamGui</mainClassName>
 <maximumMemoryHeap>-1</maximumMemoryHeap>
 <maximumVersion></maximumVersion>
 <minimumVersion>1.6</minimumVersion>
@@ -44,6 +44,6 @@
 </skeletonProperties>
 <skeletonProperties>
 <key>Debug</key>
-<value>0</value>
+<value>1</value>
 </skeletonProperties>
 </jsmoothproject>
