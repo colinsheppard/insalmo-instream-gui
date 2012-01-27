@@ -17,7 +17,7 @@
 <iconLocation>inSTREAM-Icon.gif</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <jarLocation>inSTREAM-GUI.jar</jarLocation>
-<mainClassName>insalmo.InSALMO</mainClassName>
+<mainClassName>insalmo_instream_gui.InsalmoInstreamGui</mainClassName>
 <maximumMemoryHeap>-1</maximumMemoryHeap>
 <maximumVersion></maximumVersion>
 <minimumVersion>1.6</minimumVersion>

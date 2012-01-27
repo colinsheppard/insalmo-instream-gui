@@ -1,0 +1,11 @@
+Initial fish population file for example small site			
+for inSTREAM 5.0
+InitDate	Age	Number	MeanLength (cm)	StdDevLength (cm)	Reach
+10/1/1999	0	269	7.0	1.0	ExampleSmallSite
+10/1/1999	1	17	12.1	0.4	ExampleSmallSite
+10/1/1999	2	3	14.2	0.7	ExampleSmallSite
+10/1/1999	3	3	18.9	1.5	ExampleSmallSite
+10/1/2000	0	203	7.3	0.8	ExampleSmallSite
+10/1/2000	1	34	11.4	0.9	ExampleSmallSite
+10/1/2000	2	11	13.8	0.4	ExampleSmallSite
+10/1/2000	3	7	23.0	3.0	ExampleSmallSite
