@@ -66,7 +66,7 @@ public class MetaProject {
 	private String version = "insalmo";  // "insalmo" or "instream"
 	private InsalmoInstreamView insalmoInstreamView;
 
-    public static MetaProject getInstance() {
+    public static synchronized MetaProject getInstance() {
         if (instance == null) {
             instance = new MetaProject();
         }
@@ -79,6 +79,7 @@ public class MetaProject {
 		}
 	}
 	public void Initialize(){
+		System.out.println("Running "+this.version+" in dir: "+this.applicationDirPath);
 		for(int i=0; i<paramTypes.length; i++){
 			String paramType = paramTypes[i];
 			ArrayList<String> nameList = new ArrayList<String>();
