@@ -69,7 +69,7 @@ reddSize		56000
 fishDetectDistParamB		2.0
 fishSpawnMinTemp		5
 fishDetectDistParamA		4.0
-mortFishTerrPredMin		0.95
+mortFishTerrPredMin		0.98
 fishCaptureParam9		0.5
 fishMaxSwimParamE		0.37
 fishMaxSwimParamD		0.084
@@ -112,7 +112,7 @@ mortFishAqPredT9		8
 fishEnergyDensity		5900
 mortFishAqPredT1		15
 mortReddHiTT9		17.5
-mortFishAqPredMin		0.92
+mortFishAqPredMin		0.94
 mortReddHiTT1		23.0
 fishSpawnDSuitS5		0.0
 fishSpawnDSuitS4		1.0
