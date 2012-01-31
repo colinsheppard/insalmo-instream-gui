@@ -1,5 +1,5 @@
 inSALMO-GUI.exe
-VERSION 1.0.1
-Packaged 2011-10-13
+VERSION 1.1.0
+Packaged 2011-01-26
 by Colin Sheppard
-https://github.com/colinsheppard/insalmo-instream-gui/commit/694682fce00c48c76fef5eecf08440b2b7ba2d69
+https://github.com/colinsheppard/insalmo-instream-gui/commit/9d72c624cb2126f6cab93f6838cb8918c41ba109
