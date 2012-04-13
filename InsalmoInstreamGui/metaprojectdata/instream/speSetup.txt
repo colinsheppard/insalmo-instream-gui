@@ -3,6 +3,6 @@ VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBo
 @begin						
 speciesName	ExampleTrout	Name of species used in code	STRING	1		
 speciesParamFile	ExampleTrout.Params	Fish parameter file name for species	INFILENAME	2	0	35
-speciesInitPopFile	ExampleCutthroatInitPop.Data	Spawner initialization file name for species	INFILENAME	3	0	35
+speciesInitPopFile	ExampleCutthroatInitPop.Data	Initial population file name for species	INFILENAME	3	0	35
 speciesColor	black	Species display color	STRING	4		
 @end						
