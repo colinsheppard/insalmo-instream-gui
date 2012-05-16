@@ -39,5 +39,18 @@ directory to inSALMO_#-#\GUI or inSTREAM_#-#\GUI
 directory to inSALMO_#-#\Projects or inSTREAM_#-#\Projects
 -Purge inSALMO_#-#\Projects or or inSTREAM_#-#\Projects of any test or temporary projects you don't want to ship
 
+*********************************************
+**Version Numbers
+*********************************************
+-Update the version number, major new releases should increment the first digit (e.g. from 1.4.0 to 2.0), significant feature additions/changes 
+or significant bug fixes should increment the second digit (e.g. from 1.4.0 to 1.5.0) and minor features/fixes should increment the third digit 
+(e.g. from 1.4.0 to 1.4.1)
+-The version number should be updated in the README.txt file and committed to the git repo.
+-Then the version number should be updated in the VERSION.txt file along with date, person, and the URL to the HEAD of the repo (note this URL should 
+commit from the previous step), this updated VERSION.txt file should then get committed to the repo.
+
+*********************************************
+**Package GUI for Shipping
+*********************************************
 -Now zip up inSALMO_#-# or inSTREAM_#-# and ship her out, users can extract the zip file anywhere and it should run as along as the 
 contents inside don't get moved around or renamed.
