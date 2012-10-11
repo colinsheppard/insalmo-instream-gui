@@ -303,10 +303,9 @@ public class NewProjectWizard extends javax.swing.JFrame {
 		}
 		// Error check the selected project directory
 		ArrayList<String> existingProjectFiles = new ArrayList<String>();
-		String[] fileNames = MetaProject.getInstance().getFileNames();
+		String[] fileNames = MetaProject.getInstance().getStaticFileNames();
 		for(String fileName : fileNames){
-			if(!(fileName.equals("ClearCreek3A.Params") || fileName.equals("FallChinook.Params")) && 
-					(new File(newProjectDir.getAbsolutePath()+"/"+fileName)).exists()){
+			if((new File(newProjectDir.getAbsolutePath()+"/"+fileName)).exists()){
 				existingProjectFiles.add(fileName);
 			}
 		}

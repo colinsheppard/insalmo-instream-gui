@@ -63,7 +63,7 @@ public class Project {
 	}
 	public void createNewProject(boolean fromScratch){
 		String[] paramTypes = MetaProject.getInstance().getParamTypes();
-		String[] fileNames  = MetaProject.getInstance().getFileNames();
+		String[] fileNames  = MetaProject.getInstance().getAllFileNames();
 		String pValue = "";
 		for (int i = 0; i < paramTypes.length-2; i++) {
 			String paramType = paramTypes[i];

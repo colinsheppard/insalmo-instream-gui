@@ -55,15 +55,16 @@ import javax.swing.JPanel;
 
 public class MetaProject {
     private static MetaProject instance = null;
-    private static String[] paramTypes = {"modSetup","obsSetup","habSetup","habParam","speSetup","speParam","lftSetup","expSetup","expParam"};
-    private static String[] fileNames = {"Model.Setup","Observer.Setup","Reach.Setup","ClearCreek3A-Hab.Params","Species.Setup","FallChinook.Params","LimitingFactorsTool.Setup"};
+    private static String[] paramTypes = {"modSetup","obsSetup","habSetup","speSetup","lftSetup","habParam","speParam","expSetup","expParam"};
+    private static String[] staticFileNames = {"Model.Setup","Observer.Setup","Reach.Setup","Species.Setup","LimitingFactorsTool.Setup"};
+    private static String[] variableFileNames = {"",""}; // These are set depending on the version 
     private static Hashtable<String,MetaParameter> metaParamByParamName = new Hashtable<String,MetaParameter>();
     private static Hashtable<String,ArrayList<String>>	paramNameListByParamType = new Hashtable<String,ArrayList<String>>();
     private Project openProject = null;
 	private boolean projectChanged = false;
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
-	private String version = "instream";  // "insalmo" or "instream"
+	private String version = "insalmo";  // "insalmo" or "instream"
 	private InsalmoInstreamView insalmoInstreamView;
 
     public static synchronized MetaProject getInstance() {
@@ -74,8 +75,11 @@ public class MetaProject {
     }
 	protected MetaProject(){
 		if(version.equals("instream")){
-			fileNames[3] = "ExampleSiteA-Hab.Params";
-			fileNames[5] = "ExampleTrout.Params";
+			variableFileNames[0] = "ExampleSiteA-Hab.Params";
+			variableFileNames[1] = "ExampleTrout.Params";
+		}else{
+			variableFileNames[0] = "ClearCreek3A-Hab.Params";
+			variableFileNames[1] = "FallChinook.Params";
 		}
 	}
 	public void Initialize(){
@@ -198,8 +202,22 @@ public class MetaProject {
 	public String[] getParamTypes(){
 		return this.paramTypes;
 	}
-	public String[] getFileNames(){
-		return this.fileNames;
+	public String[] getStaticFileNames(){
+		return this.staticFileNames;
+	}
+	public String[] getVariableFileNames(){
+		return this.variableFileNames;
+	}
+	public String[] getAllFileNames(){
+		String[] allFilenames = new String[this.staticFileNames.length + this.variableFileNames.length];
+		int i=0;
+		for(String fName : this.staticFileNames){
+			allFilenames[i++] = fName;
+		}
+		for(String fName : this.variableFileNames){
+			allFilenames[i++] = fName;
+		}
+		return allFilenames;
 	}
 	// Copies src file to dst file. 
 	// If the dst file does not exist, it is created

@@ -153,8 +153,8 @@ public class LimitingFactorsTool {
 			File newExpDir = null;
 			ArrayList<String> filesToCopy = new ArrayList<String>();
 			filesToCopy.addAll(project.getAllInfileNames());
-			for(String inFilename : MetaProject.getInstance().getFileNames()){
-				if(!(inFilename.equals("ClearCreek3A.Params") || inFilename.equals("FallChinook.Params")))filesToCopy.add(inFilename);
+			for(String inFilename : MetaProject.getInstance().getStaticFileNames()){
+				filesToCopy.add(inFilename);
 			}
 			for(String hab : project.getHabs()){
 				filesToCopy.add(project.getSetupParameters("habParam-"+hab).getFileName());
