@@ -1,7 +1,7 @@
 Format: must be tab separated, first four fields are required, 5th-7th are optional.
 VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
 @begin						
-numScenarios	5	The number of senarios per experiment (applies to all experiments)	INTEGER	0	0	20
+numScenarios	5	The number of scenarios per experiment (applies to all experiments)	INTEGER	0	0	20
 outmigrantSuccessLength	5	The length (cm) above which outmigrants are considered "successful" in results analyses	FLOAT	5		
 winterTemperatureStartDay	11/01	The first day (MM/DD) of the "winter" period for winter temperature experiments	DAY	10		
 winterTemperatureEndDay	03/31	The last day (MM/DD) of the "winter" period for winter temperature experiments	DAY	15		
