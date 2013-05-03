@@ -1,5 +1,5 @@
 inSALMO-GUI.exe
-VERSION 1.2.0
-Packaged 2011-10-11
+VERSION 1.2.1
+Packaged 2012-12-14
 by Colin Sheppard
-https://github.com/colinsheppard/fishery-management/commit/a147b67ae3cf37aeba0059a46b698df9b71e1723
+https://github.com/colinsheppard/insalmo-instream-gui/commit/7eb39823fa90db02ceca9c90b384d6b0cf6af01d
