@@ -4,3 +4,6 @@
 [submodule "Code/inSTREAM"]
 	path = Code/inSTREAM
 	url = git@github.com:colinsheppard/instream.git
+[submodule "Code/inSTREAM-SD"]
+	path = Code/inSTREAM-SD
+	url = git@github.com:colinsheppard/instream-sd.git
