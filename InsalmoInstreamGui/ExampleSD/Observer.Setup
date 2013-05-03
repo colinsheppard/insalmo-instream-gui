@@ -1,0 +1,23 @@
+@begin
+# Default Observer input for inSTREAM 6.0
+# Make sure there are no trailing spaces
+# following text input!
+# Lower the raster resolution to make display bigger (and slower)
+
+rasterResolutionX  100
+rasterResolutionY  100
+
+rasterOutputFrequency   1
+modelNumber       1
+
+displayFrequency            1
+takeRasterPictures          NO
+
+rasterColorVariable         depth
+maxShadeVelocity 	        100
+maxShadeDepth 	            200
+
+tagFishColor                YellowGreen
+tagCellColor                DeepPink1
+
+@end

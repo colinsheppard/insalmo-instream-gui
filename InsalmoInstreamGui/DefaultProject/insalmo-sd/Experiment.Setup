@@ -1,0 +1,12 @@
+#Experiment setup file for inSTREAM 6.0	
+#Example with no experiment
+#SFR; created:	4/16/2013
+
+numberOfScenarios	1
+numberOfReplicates	1
+	
+sendScenarioCountToParam:	scenario
+inClass:	TroutModelSwarm
+	
+sendReplicateCountToParam:	replicate
+inClass:	TroutModelSwarm

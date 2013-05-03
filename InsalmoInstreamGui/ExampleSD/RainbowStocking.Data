@@ -1,0 +1,9 @@
+Rainbow trout stocking input for inSTREAM 6.0 default project
+Stocking simulated only at upper site.
+Stocking Date	Age	NumberStocked	MeanLength	StdDevLength	Reach
+6/15/1996	1	1687	18.9	1.9	UpperSite
+7/14/1997	1	793	22.1	2.2	UpperSite
+7/22/1997	1	753	23.9	2.4	UpperSite
+6/16/1998	1	911	15.5	1.5	UpperSite
+6/27/1998	1	1447	20.1	2	UpperSite
+6/29/1999	1	1580	13.7	1.4	UpperSite

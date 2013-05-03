@@ -1,0 +1,16 @@
+Format: must be tab separated, first four field are required, 5th-7th are optional.
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin
+reachName	UpperSite	Reach name (with no spaces)	STRING	1
+habParamFile	UpperSiteHabitat.Params	Name of reach's habitat parameter file	INFILENAME	2
+habDownstreamJunctionNumber	2	Reach's downstream junction number	INTEGER	3	0	99999
+habUpstreamJunctionNumber	1	Reach's upstream junction number	INTEGER	4	0	99999
+cellGeomFile	UpperSite-Geom.Data	Name of reach's geometry (cell coordinates) file	INFILENAME	5
+cellHydraulicFile	UpperSite-Hyd.csv	Name of reach's hydraulic (depth and velocity vs. flow) file	INFILENAME	5
+cellHabVarsFile	UpperSite-CellData.csv	Name of reach's cell variables file	INFILENAME	5
+flowFile	HourlyFlowData.csv	Name of reach's hourly flow input file	INFILENAME	6
+temperatureFile	TemperatureData.csv	Name of reach's temperature input file	INFILENAME	7
+turbidityFile	TurbidityData.csv	Name of reach's turbidity input file	INFILENAME	8
+driftFoodFile	DriftData.csv	Name of reach's hourly drift concentration file	INFILENAME	9
+reachLength	1000	Reach length (m)	FLOAT	10	1	
+@end

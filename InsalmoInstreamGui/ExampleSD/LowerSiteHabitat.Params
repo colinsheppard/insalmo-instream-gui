@@ -1,0 +1,27 @@
+# Example habitat parameters for Lower Site, inSTREAM 6.0
+@begin	
+	
+habDriftRegenDist	1000
+habPreyEnergyDensity	4000
+habSearchProd	1.00E-06
+habShelterSpeedFrac	0.5
+habTwilightLength	0.5
+habMaxSpawnFlow	60
+habShearParamA	0
+habShearParamB	9.999
+	
+habAngleNightFactor	0
+habAnglePressJan	3
+habAnglePressFeb	10
+habAnglePressMar	35
+habAnglePressApr	55
+habAnglePressMay	60
+habAnglePressJun	45
+habAnglePressJul	30
+habAnglePressAug	30
+habAnglePressSep	35
+habAnglePressOct	25
+habAnglePressNov	5
+habAnglePressDec	2
+	
+@end	

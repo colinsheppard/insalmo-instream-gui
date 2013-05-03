@@ -1,0 +1,25 @@
+Format: must be tab separated, first four field are required, 5th-7th are optional.
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin
+habSearchProd	1.00E-06	Production of search food (g/cm2/hr)	FLOAT	5	0	0.1
+habDriftRegenDist	1000	Distance to regenerate drift (cm)	FLOAT	10	1	10000
+habPreyEnergyDensity	4000	Energy density of food (j/g)	FLOAT	15	1000	10000
+habShelterSpeedFrac	0.5	Ratio of swimming speed in velocity shelter to cell mean velocity	FLOAT	20	0	1
+habTwilightLength	0.5	Time before sunrise and after sunset considered daytime (hr)	FLOAT	25	0	2
+habMaxSpawnFlow	60	Maximum flow at which fish spawn (m3/s)	FLOAT	30	0.1	
+habShearParamA	0	Multiplier in equation for shear stress as a function of flow	FLOAT	35		
+habShearParamA	9.99	Exponent in equation for shear stress as a function of flow	FLOAT	40		
+habAngleNightFactor	0	Night fishing pressure, as fraction of daytime pressure	FLOAT	45	0	1
+habAnglePressJan	3	Angling pressure for January (angler-hrs/d/km)	FLOAT	50	0	500
+habAnglePressFeb	10	Angling pressure for February (angler-hrs/d/km)	FLOAT	55	0	500
+habAnglePressMar	35	Angling pressure for March (angler-hrs/d/km)	FLOAT	60	0	500
+habAnglePressApr	55	Angling pressure for April (angler-hrs/d/km)	FLOAT	65	0	500
+habAnglePressMay	60	Angling pressure for May (angler-hrs/d/km)	FLOAT	70	0	500
+habAnglePressJun	45	Angling pressure for June (angler-hrs/d/km)	FLOAT	75	0	500
+habAnglePressJul	30	Angling pressure for July (angler-hrs/d/km)	FLOAT	80	0	500
+habAnglePressAug	30	Angling pressure for August (angler-hrs/d/km)	FLOAT	85	0	500
+habAnglePressSep	35	Angling pressure for September (angler-hrs/d/km)	FLOAT	90	0	500
+habAnglePressOct	25	Angling pressure for October (angler-hrs/d/km)	FLOAT	95	0	500
+habAnglePressNov	5	Angling pressure for November (angler-hrs/d/km)	FLOAT	100	0	500
+habAnglePressDec	2	Angling pressure for December (angler-hrs/d/km)	FLOAT	105	0	500
+@end

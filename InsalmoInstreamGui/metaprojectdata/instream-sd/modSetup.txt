@@ -1,0 +1,22 @@
+Format: must be tab separated, first four field are required, 5th-7th are optional.
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin						
+randGenSeed	32461	Random number generator seed	INTEGER	1	0	99999999
+numberOfSpecies	2	Number of species in Species.Setup	INTEGER	2	1	10
+runStartDate	10/1/1995	Run start date	DATE	5		
+runEndDate	9/30/1999	Run end date	DATE	10		
+popInitDate	10/1/1995	Date used to identify initial population characteristics from population initialization input file	DATE	15		
+siteLatitude                 	40	Latitude of simulated site	FLOAT	20	0	90
+fishOutputFile	LiveFishOut.csv	Population output file name	OUTFILENAME	25		
+fishMortalityFile	DeadFishOut.csv	Mortality output file name	OUTFILENAME	30		
+reddOutputFile	Redds_Out.csv	Redd output file name	OUTFILENAME	35		
+appendFiles	0	0 to overwrite output files; 1 to append	BOOL	45	0	1
+shuffleYears	0	1 if simulation years should be randomly shuffled; 0 if not	BOOL	50	0	1
+shuffleYearReplace	1	1 if year shuffle randomization is with replacement (only relevant if 'shuffleYears' is 1); 0 if without replacement	BOOL	55	0	1
+shuffleYearSeed	4685	Seed used by random year shuffler	INTEGER	60	0	99999999
+writeCellFishReport	0	1 to produce optional report on habitat variables and fish in each cell	BOOL	65	0	1
+writeReddSurvReport	0	1 to produce optional details on survival of each redd with habitat data	BOOL	70	0	1
+writeReddMortReport	0	1 to produce optional details on egg mortality for each redd	BOOL	75	0	1
+writeMoveReport	0	1 to produce optional output to test fish habitat selection	BOOL	80	0	1
+writeCellCentroidReport	0	1 to produce a report of cell centroid coordinates	BOOL	85	0	1
+@end

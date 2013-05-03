@@ -1,0 +1,17 @@
+Brown trout initial populations	for inSTREAM 6.0 default project
+One year of input is available; use it for all simulated years.
+InitDate	Age	Number	LengthMean	LengthSD	Reach
+10/1/1995	0	103	12.8	1.2	UpperSite
+10/1/1995	1	82	24.6	3.2	UpperSite
+10/1/1995	2	51	39.3	2.9	UpperSite
+10/1/1995	3	64	41.5	3.8	UpperSite
+10/1/1995	4	34	44.6	2.6	UpperSite
+10/1/1995	5	19	45.2	5.3	UpperSite
+10/1/1995	6	11	47.4	1.5	UpperSite
+10/1/1995	0	103	12.8	1.2	LowerSite
+10/1/1995	1	82	24.6	3.2	LowerSite
+10/1/1995	2	51	39.3	2.9	LowerSite
+10/1/1995	3	64	41.5	3.8	LowerSite
+10/1/1995	4	34	44.6	2.6	LowerSite
+10/1/1995	5	19	45.2	5.3	LowerSite
+10/1/1995	6	11	47.4	1.5	LowerSite
