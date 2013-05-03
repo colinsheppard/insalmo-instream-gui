@@ -1111,10 +1111,14 @@ public class InsalmoInstreamActions {
 				sb.append("</table><br>");
 			}
 			sb.append( "</body></html>" );
-			JLabel textarea = new JLabel( sb.toString());
-			textarea.setVerticalAlignment(JLabel.TOP);
+			JTextPane textarea = new JTextPane();
+			textarea.setContentType("text/html");
+			textarea.setText(sb.toString());
+			textarea.setEditable(false); // as before
+			textarea.setBackground(null); // this is the same as a JLabel
+			textarea.setBorder(null); // remove the border
 			JScrollPane scrollpane = new JScrollPane(textarea);
-			scrollpane.setPreferredSize(new Dimension(600, 400));
+			scrollpane.setPreferredSize(new Dimension(800, 600));
 			int result = JOptionPane.showOptionDialog(parent.parentFrame, scrollpane,"Warning",JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,new String[]{"Continue","Close Without Save"},"Continue"); 
 			if(result==1){
 				shutDownProject();
