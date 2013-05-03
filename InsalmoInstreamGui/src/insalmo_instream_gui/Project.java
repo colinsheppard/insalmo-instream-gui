@@ -258,8 +258,10 @@ public class Project {
 			SetupParameters sParams =  new SetupParameters("speSetup","Species.Setup");
 			while ((strLine = br.readLine())!=null) {
 				lineCount++;
-				if((lineCount+1)%5==0 && !strLine.trim().equals("")){
-					throw new IOException("Species.Setup (line "+lineCount+") -- expecting a blank line");
+				if(MetaProject.getInstance().isInstreamSD()){
+					if((lineCount-4)%6==0 && !strLine.trim().equals(""))throw new IOException("Species.Setup (line "+lineCount+") -- expecting a blank line");
+				}else{
+					if((lineCount+1)%5==0 && !strLine.trim().equals(""))throw new IOException("Species.Setup (line "+lineCount+") -- expecting a blank line");
 				}
 				if (strLine.trim().equals("")) {
 					beginDataInt = 1;
@@ -283,6 +285,14 @@ public class Project {
 							break;
 						case 4:
 							sParams.addParameter(new Parameter("speciesColor",splitStr[0],sParams));
+							if(!MetaProject.getInstance().isInstreamSD()){
+								this.setupParams.put("speSetup-"+sParams.getParamInstance(), sParams);
+								this.loadSpeciesParams(sParams,projectDir.getPath()+"/"+sParams.getParameter("speciesParamFile").getParameterValue());
+								beginDataInt=-1;
+							}
+							break;
+						case 5:
+							sParams.addParameter(new Parameter("speciesStockingFile",splitStr[0],sParams));
 							this.setupParams.put("speSetup-"+sParams.getParamInstance(), sParams);
 							this.loadSpeciesParams(sParams,projectDir.getPath()+"/"+sParams.getParameter("speciesParamFile").getParameterValue());
 							beginDataInt=-1;
