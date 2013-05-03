@@ -109,17 +109,17 @@ mortFishStrandD9	0.3	Ratio of fish length / water depth at which survival is 0.9
 mortFishTerrPredCoverFactor	0.99	Factor by which terrestrial predation survival is increased when using cover	FLOAT	525	0	1
 mortFishTerrPredD1	50	Depth at which terr predation survival increases by 10% (cm)	FLOAT	530		
 mortFishTerrPredD9	1000	Depth at which terr predation survival increases by 90% (cm)	FLOAT	535		
-mortFishTerrPredDayMin	0.99	Minimum daily survival probability for terrestrial predation, in daytime		540	0.5	1
+mortFishTerrPredDayMin	0.99	Minimum daily survival probability for terrestrial predation, in daytime	FLOAT	540	0.5	1
 mortFishTerrPredH1	500	Dist to cover at which terr predation survival increases by 10% (cm)	FLOAT	545		
 mortFishTerrPredH9	-100	Dist to cover at which terr predation survival increases by 90% (cm)	FLOAT	550		
 mortFishTerrPredL1	6	Length at which terr predation survival increases by 10% (cm)	FLOAT	555		
 mortFishTerrPredL9	3	Length at which terr predation survival increases by 90% (cm)	FLOAT	560		
-mortFishTerrPredNightMin	0.997	Minimum daily survival probability for terrestrial predation, at night		565	0.5	1
+mortFishTerrPredNightMin	0.997	Minimum daily survival probability for terrestrial predation, at night	FLOAT	565	0.5	1
 mortFishTerrPredT1	10	Turbidity at which terr predation survival increases by 10% (NTU)	FLOAT	570		
 mortFishTerrPredT9	50	Turbidity at which terr predation survival increases by 90% (NTU)	FLOAT	575		
 mortFishTerrPredV1	20	Velocity at which terr predation survival increases by 10% (cm/s)	FLOAT	580		
 mortFishTerrPredV9	100	Velocity at which terr predation survival increases by 90% (cm/s)	FLOAT	585		
-mortFishVelocityCoverFactor	0.75	Fraction by which velocity survival is increased when using cover		590	0	1
+mortFishVelocityCoverFactor	0.75	Fraction by which velocity survival is increased when using cover	FLOAT	590	0	1
 mortFishVelocityV1	1.8	Ratio of max swim speed / cell velocity where survival is 0.1	FLOAT	595		
 mortFishVelocityV9	1.4	Ratio of max swim speed / cell velocity where survival is 0.9	FLOAT	600		
 mortReddDewaterSurv	0.9	Daily egg survival when redd is dewatered	FLOAT	605	0	1

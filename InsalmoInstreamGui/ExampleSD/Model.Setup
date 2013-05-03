@@ -29,6 +29,7 @@ writeCellFishReport				0
 writeReddSurvReport				0
 writeReddMortReport				0
 writeMoveReport					0
+writeCellCentroidReport			0
 
 @end
 

@@ -8,7 +8,7 @@ habShelterSpeedFrac	0.5	Ratio of swimming speed in velocity shelter to cell mean
 habTwilightLength	0.5	Time before sunrise and after sunset considered daytime (hr)	FLOAT	25	0	2
 habMaxSpawnFlow	60	Maximum flow at which fish spawn (m3/s)	FLOAT	30	0.1	
 habShearParamA	0	Multiplier in equation for shear stress as a function of flow	FLOAT	35		
-habShearParamA	9.99	Exponent in equation for shear stress as a function of flow	FLOAT	40		
+habShearParamB	9.99	Exponent in equation for shear stress as a function of flow	FLOAT	40		
 habAngleNightFactor	0	Night fishing pressure, as fraction of daytime pressure	FLOAT	45	0	1
 habAnglePressJan	3	Angling pressure for January (angler-hrs/d/km)	FLOAT	50	0	500
 habAnglePressFeb	10	Angling pressure for February (angler-hrs/d/km)	FLOAT	55	0	500

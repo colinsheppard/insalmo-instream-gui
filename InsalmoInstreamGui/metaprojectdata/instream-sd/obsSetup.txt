@@ -3,6 +3,9 @@ VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBo
 @begin
 rasterResolutionX	100	Raster resolution in X dimension; higher values make display smaller	INTEGER	0	10	1000
 rasterResolutionY	100	Raster resolution in Y dimension; higher values make display smaller	INTEGER	5	10	1000
+rasterOutputFrequency	1	Hours between raster updates	INTEGER	6	1	24
+modelNumber	1	Number that labels raster picture file names	INTEGER	7	1
+displayFrequency	1	Hours between display updates	INTEGER	8	1	5
 rasterColorVariable	depth	Display "depth" or "velocity" on raster	STRING	10		
 maxShadeVelocity	200	Display colors velocities in 60 shades between zero and this value (cm/s)	FLOAT	15	60	1000
 maxShadeDepth	200	Display colors depths in 60 shades between zero and this value (cm)	FLOAT	20	60	1000
