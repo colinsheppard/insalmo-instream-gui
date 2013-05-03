@@ -50,7 +50,7 @@ public class SetupParameters{
 					&& !paramName.equals("numberOfSpecies")
 					&& !paramName.equals("numberOfScenarios")
 					&& !this.params.containsKey(paramName)){
-				if(MetaProject.getInstance().getVersion().equals("insalmo") &&
+				if(MetaProject.getInstance().isInsalmo() &&
 						(paramName.equals("numberOfYearShufflerReplicates") ||
 						 paramName.equals("firstShuffleYearSeed")	||
 						 paramName.equals("shuffleYears")	||

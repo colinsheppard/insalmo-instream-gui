@@ -50,10 +50,12 @@ public class LaunchInsamloExecutable implements Runnable{
 		String appPath = MetaProject.getInstance().getApplicationDir();
 		try {
 			ProcessBuilder pb = null;
-			if(MetaProject.getInstance().getVersion().equals("insalmo")){
+			if(MetaProject.getInstance().isInsalmo()){
 				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO\\.libs\\insalmo.exe", useBat);
-			}else{
+			}else if(MetaProject.getInstance().isInstream()){
 				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSTREAM\\.libs\\instream.exe", useBat);
+			}else{
+				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSTREAM-SD\\.libs\\instream6-0.exe", useBat);
 			}
 			Map<String, String> env = pb.environment();
 			env.put("Path", appPath+"\\..\\Code\\Swarm\\bin;"+env.get("Path"));

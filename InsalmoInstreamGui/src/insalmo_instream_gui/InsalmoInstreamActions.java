@@ -112,7 +112,7 @@ public class InsalmoInstreamActions {
 			SetupParameters expSetup = getOpenProject().getSetupParameters("expSetup-");
 			theText += "<tr><td>Number of Scenarios:</td><td><i>"+getOpenProject().getNumberOfScenarios().toString()+"</i></td></tr>";
 			theText += "<tr><td>Number of Replicates:</td><td><i>"+expSetup.getParameter("numberOfReplicates").getParameterValue()+"</i></td></tr>";
-			if(parent.isINSTREAM){
+			if(!MetaProject.getInstance().isInsalmo()){
 				theText += "<tr><td>Number of Year Shuffler Replicates:</td><td><i>"+expSetup.getParameter("numberOfYearShufflerReplicates").getParameterValue()+"</i><br></td></tr>";
 			}
 			theText += "<tr><td colspan=2>Parameters varied in experiment and their values:</td></tr>";
@@ -399,8 +399,10 @@ public class InsalmoInstreamActions {
 	public void helpInterfaceActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
 		File helpFile = null;
-		if(parent.isINSTREAM){
+		if(MetaProject.getInstance().isInstream()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_GUI_Guide.chm");
+		}else if(MetaProject.getInstance().isInstreamSD()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_GUI_Guide.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_GUI_Guide.chm");
 		}
@@ -409,8 +411,10 @@ public class InsalmoInstreamActions {
 	public void helpModelActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
 		File helpFile = null;
-		if(parent.isINSTREAM){
+		if(MetaProject.getInstance().isInstream()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Model_Description.chm");
+		}else if(MetaProject.getInstance().isInstreamSD()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Model_Description.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Model_Description.chm");
 		}
@@ -419,8 +423,10 @@ public class InsalmoInstreamActions {
 	public void helpSoftwareGuideActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
 		File helpFile = null;
-		if(parent.isINSTREAM){
+		if(MetaProject.getInstance().isInstream()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Software_Documentation.chm");
+		}else if(MetaProject.getInstance().isInstreamSD()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Software_Documentation.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Software_Documentation.chm");
 		}
@@ -429,8 +435,10 @@ public class InsalmoInstreamActions {
 	public void helpLFTActionPerformed(java.awt.event.ActionEvent evt) {
 		commitTables();
 		File helpFile = null;
-		if(parent.isINSTREAM){
+		if(MetaProject.getInstance().isInstream()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Limiting_Factors_Tool.chm");
+		}else if(MetaProject.getInstance().isInstreamSD()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Limiting_Factors_Tool.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Limiting_Factors_Tool.chm");
 		}
@@ -543,7 +551,7 @@ public class InsalmoInstreamActions {
 		File fishFile, reddsFile;
 		SetupParameters modSetup = getOpenProject().getSetupParameters("modSetup-");
 		String fishOutputFilename = null;
-		if(parent.isINSTREAM){
+		if(!MetaProject.getInstance().isInsalmo()){
 			fishOutputFilename = modSetup.getParameter("fishOutputFile").getParameterValue();
 		}else{
 			fishOutputFilename = modSetup.getParameter("outmigrantOutputFile").getParameterValue();
@@ -560,12 +568,12 @@ public class InsalmoInstreamActions {
 			"in the project directory to view the results.  Either the model has not yet been run, or that output file was removed, please run the model again.</body></html>");
 			return;			
 		}
-		if((parent.isINSTREAM && !fishOutputFilename.equals("Live_Fish_Out.csv")) || 
-				(!parent.isINSTREAM && !fishOutputFilename.equals("Outmigrants_Out.csv")) || 
+		if((!MetaProject.getInstance().isInsalmo() && !fishOutputFilename.equals("Live_Fish_Out.csv")) || 
+				(MetaProject.getInstance().isInsalmo() && !fishOutputFilename.equals("Outmigrants_Out.csv")) || 
 				!reddOutputFilename.equals("Redds_Out.csv")){
 			ArrayList<ArrayList> tab = new ArrayList<ArrayList>();
 			ArrayList<String> col = new ArrayList<String>();
-			if(parent.isINSTREAM){
+			if(!MetaProject.getInstance().isInsalmo()){
 				col.add("fishOutputFile");
 			}else{
 				col.add("outmigrantOutputFile");

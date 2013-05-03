@@ -64,7 +64,7 @@ public class MetaProject {
 	private boolean projectChanged = false;
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
-	private String version = "insalmo";  // "insalmo" or "instream"
+	private String version = "instream-sd";  // "insalmo", "instream", "instream-sd"
 	private InsalmoInstreamView insalmoInstreamView;
 
     public static synchronized MetaProject getInstance() {
@@ -75,6 +75,9 @@ public class MetaProject {
     }
 	protected MetaProject(){
 		if(version.equals("instream")){
+			variableFileNames[0] = "ExampleSiteA-Hab.Params";
+			variableFileNames[1] = "ExampleTrout.Params";
+		}else if(version.equals("instream-sd")){
 			variableFileNames[0] = "ExampleSiteA-Hab.Params";
 			variableFileNames[1] = "ExampleTrout.Params";
 		}else{
@@ -244,6 +247,12 @@ public class MetaProject {
 	public String getVersion(){
 		return this.version;
 	}
+	public Boolean isInsalmo(){
+		return this.version.equals("insalmo");
+	}
+	public Boolean isInstreamSD(){
+		return this.version.equals("instream-sd");
+	}
 	public Boolean isInstream(){
 		return this.version.equals("instream");
 	}
@@ -254,6 +263,6 @@ public class MetaProject {
 		return this.insalmoInstreamView;
 	}
 	public String getAppTitle(){
-		return (this.version.equals("instream") ? "InSTREAM" : "InSALMO");
+		return (this.version.equals("instream") ? "InSTREAM" : (this.version.equals("instream-sd") ? "InSTREAM-6" : "InSALMO"));
 	}
 }

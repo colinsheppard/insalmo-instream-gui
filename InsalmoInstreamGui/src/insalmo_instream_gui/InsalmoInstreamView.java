@@ -43,7 +43,6 @@ import javax.swing.text.DefaultCaret;
  */
 public class InsalmoInstreamView extends JFrame{
 	public File projectDir = null;
-	public Boolean isINSTREAM = null;
 	org.jdesktop.application.ResourceMap resourceMap;
 	public static String newline = System.getProperty("line.separator");
 	public JPanel		mainPanel = new javax.swing.JPanel();
@@ -215,7 +214,6 @@ public class InsalmoInstreamView extends JFrame{
 	public InsalmoInstreamView(InsalmoInstreamGui inSALMO) {
 		parentFrame = inSALMO;
 		MetaProject.getInstance().setInSALMOView(this);
-		isINSTREAM = MetaProject.getInstance().getVersion().equals("instream");
 		actionHandler = new InsalmoInstreamActions(this);
 		initComponents();
 	}
@@ -996,8 +994,7 @@ public class InsalmoInstreamView extends JFrame{
 	}
 
 	public boolean experimentValueErrorsExist(){
-		if(MetaProject.getInstance().getVersion().equals("instream") && 
-				this.openProject.getSetupParameters("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue()>0){
+		if(!MetaProject.getInstance().isInsalmo() && this.openProject.getSetupParameters("expSetup-").getParameter("numberOfYearShufflerReplicates").getParameterIntegerValue()>0){
 			for(String exp : this.openProject.exps){
 				if(this.openProject.getExperimentParameters(exp).getValues().size() != this.openProject.getNumberOfScenarios()){
 					return true;
