@@ -292,6 +292,7 @@ public class Project {
 							if(!MetaProject.getInstance().isInstreamSD()){
 								this.setupParams.put("speSetup-"+sParams.getParamInstance(), sParams);
 								this.loadSpeciesParams(sParams,projectDir.getPath()+"/"+sParams.getParameter("speciesParamFile").getParameterValue());
+								sParams =  new SetupParameters("speSetup","Species.Setup");
 								beginDataInt=-1;
 							}
 							break;
@@ -299,6 +300,7 @@ public class Project {
 							sParams.addParameter(new Parameter("speciesStockingFile",splitStr[0],sParams));
 							this.setupParams.put("speSetup-"+sParams.getParamInstance(), sParams);
 							this.loadSpeciesParams(sParams,projectDir.getPath()+"/"+sParams.getParameter("speciesParamFile").getParameterValue());
+							sParams =  new SetupParameters("speSetup","Species.Setup");
 							beginDataInt=-1;
 							break;
 						}
@@ -910,7 +912,9 @@ public class Project {
 				br.write(speName+newline);
 				br.write(this.setupParams.get("speParam-"+speName).getFileName()+newline);
 				br.write(sParams.getParameter("speciesInitPopFile").getParameterValue()+newline);
-				br.write(sParams.getParameter("speciesColor").getParameterValue()+newline+newline);
+				br.write(sParams.getParameter("speciesColor").getParameterValue()+newline);
+				if(MetaProject.getInstance().isInstreamSD())br.write(sParams.getParameter("speciesStockingFile").getParameterValue()+newline);
+				br.write(newline);
 			}
 			br.flush();
 			out.close();
