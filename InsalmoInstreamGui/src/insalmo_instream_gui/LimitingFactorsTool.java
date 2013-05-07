@@ -625,6 +625,7 @@ public class LimitingFactorsTool {
 					}
 					break;
 				case FOOD_AVAIL:
+					
 					Double foodAvailabilityRatioLow = Double.parseDouble(lftSetup.getParameter("foodAvailabilityRatioLow").getParameterValue());
 					Double foodAvailabilityRatioHigh = Double.parseDouble(lftSetup.getParameter("foodAvailabilityRatioHigh").getParameterValue());
 					ExperimentParameter expParamConc = null;
@@ -656,6 +657,62 @@ public class LimitingFactorsTool {
 							}
 						}
 						firstInstance = false;
+					}
+					if(MetaProject.getInstance().isInstreamSD()){
+						dataFilePath = newExpDir.getAbsolutePath()+"/";
+						alreadyProcessed.clear();
+						firstInstance = true;
+						for(String hab : project.getHabs()){
+							// EXPERIMENT SETUP
+							String dataFileName = project.getSetupParameters("habSetup-"+hab).getParameter("driftFoodFile").getParameterValue();
+							File dataFile = new File(dataFileName);
+							parent.actionHandler.addExperimentParamSubmitted("driftFoodFile", hab, "HabitatSpace");
+							expParam = parent.getOpenProject().getExperimentParameters("driftFoodFile ("+hab+")");
+							expParam.getValues().clear();
+							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
+								String newDataFileName = getNameWithoutExtension(dataFile)+"-LFT-"+scenarioNum+".csv";
+								for(int uncertInd = 0; uncertInd < totalUncertRuns; uncertInd++){
+									expParam.addValue(newDataFileName);
+								}
+							}
+							firstInstance = false;
+							// MODIFY INPUT FILES IF NECESSARY
+							if(alreadyProcessed.contains(dataFileName))continue;
+							alreadyProcessed.add(dataFileName);
+							ArrayList<ArrayList> timeSeries = parseTimeSeriesFile(dataFilePath+dataFileName,MetaProject.getInstance().isInstreamSD());
+							ArrayList<Day> dates = timeSeries.get(0);
+							ArrayList<Integer> hours = null;
+							ArrayList<Double> data = null;
+							Integer hoursInd = null, dataInd = 1;
+							if(MetaProject.getInstance().isInstreamSD()){
+								hoursInd = 1;
+								dataInd = 2;
+								hours = timeSeries.get(hoursInd);
+							}
+							data = timeSeries.get(dataInd);
+							ArrayList<ArrayList> newTimeSeries = new ArrayList<ArrayList>();
+							ArrayList<Double> newFoodAvailabilityRatio = new ArrayList<Double>();
+							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
+								ArrayList<ArrayList> newTS = new ArrayList<ArrayList>();
+								newTS.add(new ArrayList<Day>());
+								if(hoursInd != null)newTS.add(new ArrayList<Integer>());
+								newTS.add(new ArrayList<Double>());
+								newTimeSeries.add(newTS);
+								newFoodAvailabilityRatio.add((foodAvailabilityRatioLow + (foodAvailabilityRatioHigh - foodAvailabilityRatioLow)*(scenarioNum)/(numScenarios-1)));
+							}
+							for(int i=0; i<dates.size(); i++){
+								for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
+									((ArrayList<Day>) newTimeSeries.get(scenarioNum).get(0)).add(dates.get(i));
+									if(hoursInd != null)((ArrayList<Integer>) newTimeSeries.get(scenarioNum).get(hoursInd)).add(hours.get(i));
+									Double newValue = data.get(i) * newFoodAvailabilityRatio.get(scenarioNum);
+									((ArrayList<Double>) newTimeSeries.get(scenarioNum).get(dataInd)).add(newValue);
+								}
+							}
+							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
+								String newDataFileName = getNameWithoutExtension(dataFile)+"-LFT-"+scenarioNum+".csv";
+								writeTimeSeriesFile(dataFilePath+newDataFileName,newTimeSeries.get(scenarioNum));
+							}
+						}
 					}
 					break;
 				case REDD_SCOURING:
