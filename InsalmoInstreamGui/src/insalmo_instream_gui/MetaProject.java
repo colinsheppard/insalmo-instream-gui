@@ -83,7 +83,7 @@ public class MetaProject {
 			variableFileNames[1] = "ExampleTrout.Params";
 		}else if(version.equals("instream-sd")){
 			isInstreamSDVar = true;
-			variableFileNames[0] = "LowerSiteHabitat.Params";
+			variableFileNames[0] = "UpperSiteHabitat.Params";
 			variableFileNames[1] = "DefaultRainbowTrout.Params";
 		}else{
 			isInsalmoVar = true;

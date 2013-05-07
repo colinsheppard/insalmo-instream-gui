@@ -123,7 +123,7 @@ public class Project {
 				if(MetaProject.getInstance().isInstream()){
 					sParams.setParamInstance("ExampleSiteA");
 				}else if(MetaProject.getInstance().isInstreamSD()){
-					sParams.setParamInstance("LowerSite");
+					sParams.setParamInstance("UpperSite");
 				}else{
 					sParams.setParamInstance("ClearCreek-3A");
 				}
@@ -144,6 +144,21 @@ public class Project {
 				}
 			}
 			this.setupParams.put(paramType+"-"+((sParams.getParamInstance()==null)?"":sParams.getParamInstance()), sParams);
+			if(paramType.equals("habSetup")){
+				File defaultFile = new File(MetaProject.getInstance().getApplicationDir()+"/DefaultProject/"+MetaProject.getInstance().getVersion()+"/"+fileName);
+				if(defaultFile.exists()){
+					File destinationFile = new File(projectDir+"/"+fileName);
+					if(!destinationFile.exists())
+						try {
+							MetaProject.getInstance().copy(defaultFile, destinationFile);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				}else{
+					System.out.println("Warning: Cannot locate file "+defaultFile.getAbsolutePath());
+				}
+			}
 		}
 		SetupParameters expSetup = new SetupParameters("expSetup","Experiment.Setup");
 		expSetup.addParameter(new Parameter("numberOfReplicates","1",expSetup));
