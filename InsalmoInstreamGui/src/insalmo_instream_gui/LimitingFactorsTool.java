@@ -361,7 +361,7 @@ public class LimitingFactorsTool {
 						// MODIFY INPUT FILES IF NECESSARY
 						if(alreadyProcessed.contains(dataFileName))continue;
 						alreadyProcessed.add(dataFileName);
-						ArrayList<ArrayList> timeSeries = parseTimeSeriesFile(dataFilePath+dataFileName);
+						ArrayList<ArrayList> timeSeries = parseTimeSeriesFile(dataFilePath+dataFileName,MetaProject.getInstance().isInstreamSD());
 						ArrayList<Day> dates = timeSeries.get(0);
 						ArrayList<Integer> hours = null;
 						ArrayList<Double> data = null;
@@ -377,6 +377,7 @@ public class LimitingFactorsTool {
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 							ArrayList<ArrayList> newTS = new ArrayList<ArrayList>();
 							newTS.add(new ArrayList<Day>());
+							if(hoursInd != null)newTS.add(new ArrayList<Integer>());
 							newTS.add(new ArrayList<Double>());
 							newTimeSeries.add(newTS);
 							constantBaseAdder.add(baseRangeLow + (baseRangeHigh-baseRangeLow)*(scenarioNum)/(numScenarios-1));
@@ -407,7 +408,7 @@ public class LimitingFactorsTool {
 					Boolean isGravelExperiment = (exp==LFTExperiment.SPAWNING_GRAVEL_AVAIL);
 					String gravelOrShelter = isGravelExperiment ? "gravel" : "shelter";
 					int columnToMod = isGravelExperiment ? 3 : 1;
-					numColumnsExpected = 5;
+					numColumnsExpected = MetaProject.getInstance().isInstreamSD() ? 6 : 5;
 					dataFilePath = newExpDir.getAbsolutePath()+"/";
 					Double rangeLow = null, rangeHigh=null;
 					rangeLow = Double.parseDouble(lftSetup.getParameter(gravelOrShelter + "AvailabilityRangeLow").getParameterValue());
@@ -456,7 +457,7 @@ public class LimitingFactorsTool {
 						}
 						for(int i=0; i<cellHabData.get(0).size(); i++){
 							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
-								for(int columnInd = 0; columnInd < 5; columnInd++){
+								for(int columnInd = 0; columnInd < numColumnsExpected; columnInd++){
 									if(columnInd != columnToMod){
 										((ArrayList) newTimeSeries.get(scenarioNum).get(columnInd)).add(cellHabData.get(columnInd).get(i));
 									}
@@ -540,7 +541,7 @@ public class LimitingFactorsTool {
 						}
 						for(int i=0; i<cellHabData.get(0).size(); i++){
 							for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
-								for(int columnInd = 0; columnInd < 5; columnInd++){
+								for(int columnInd = 0; columnInd < numColumnsExpected; columnInd++){
 									if(columnInd != columnToMod){
 										((ArrayList) newTimeSeries.get(scenarioNum).get(columnInd)).add(cellHabData.get(columnInd).get(i));
 									}
@@ -578,15 +579,40 @@ public class LimitingFactorsTool {
 					Double piscRiskHigh = Double.parseDouble(lftSetup.getParameter("piscivoryRiskRatioHigh").getParameterValue());
 					firstInstance = true;
 					for(String spe : project.getFish()){
-						Double baseRisk = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortFishAqPredMin").getParameterValue());
-						parent.actionHandler.addExperimentParamSubmitted("mortFishAqPredMin", spe, "FishParams");
-						expParam = parent.getOpenProject().getExperimentParameters("mortFishAqPredMin ("+spe+")");
-						expParam.getValues().clear();
+						Double baseRisk = 0.0, baseRiskDay = 0.0, baseRiskNight = 0.0;
+						ExperimentParameter expParamNight = null;
+						if(MetaProject.getInstance().isInstreamSD()){
+							baseRiskDay = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortFishAqPredDayMin").getParameterValue());
+							baseRiskNight = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortFishAqPredNightMin").getParameterValue());
+							parent.actionHandler.addExperimentParamSubmitted("mortFishAqPredDayMin", spe, "FishParams");
+							parent.actionHandler.addExperimentParamSubmitted("mortFishAqPredNightMin", spe, "FishParams");
+							expParam = parent.getOpenProject().getExperimentParameters("mortFishAqPredDayMin ("+spe+")");
+							expParamNight = parent.getOpenProject().getExperimentParameters("mortFishAqPredNightMin ("+spe+")");
+							expParam.getValues().clear();
+							expParamNight.getValues().clear();
+						}else{
+							baseRisk = Double.parseDouble(parent.getOpenProject().getSetupParameters("speParam-"+spe).getParameter("mortFishAqPredMin").getParameterValue());
+							parent.actionHandler.addExperimentParamSubmitted("mortFishAqPredMin", spe, "FishParams");
+							expParam = parent.getOpenProject().getExperimentParameters("mortFishAqPredMin ("+spe+")");
+							expParam.getValues().clear();
+						}
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 							Double newRisk = (piscRiskLow + (piscRiskHigh - piscRiskLow)*(scenarioNum)/(numScenarios-1));
-							Double newValue = (1.0 - (1.0 - baseRisk) * newRisk);
+							Double newValue = 0.0, newValueDay = 0.0, newValueNight = 0.0;
+							if(MetaProject.getInstance().isInstreamSD()){
+								newValueDay = (1.0 - (1.0 - baseRiskDay) * newRisk);
+								newValueNight = (1.0 - (1.0 - baseRiskNight) * newRisk);
+							}else{
+								newValue = (1.0 - (1.0 - baseRisk) * newRisk);
+							}
 							for(int uncertInd = 0; uncertInd < totalUncertRuns; uncertInd++){
-								expParam.addValue(newValue.toString());
+								if(MetaProject.getInstance().isInstreamSD()){
+									expParam.addValue(newValueDay.toString());
+									expParamNight.addValue(newValueNight.toString());
+								}else{
+									expParam.addValue(newValue.toString());
+								}
+								
 								// the following should only happen once, not for each reach or species
 								if(firstInstance){
 									for(ExperimentParameter uncertParam : uncertParams){
@@ -605,18 +631,21 @@ public class LimitingFactorsTool {
 					ExperimentParameter expParamProd = null;
 					firstInstance = true;
 					for(String hab : project.getHabs()){
-						Double baseConc = Double.parseDouble(parent.getOpenProject().getSetupParameters("habParam-"+hab).getParameter("habDriftConc").getParameterValue());
+						Double baseConc = null;
+						if(!MetaProject.getInstance().isInstreamSD()){
+							baseConc = Double.parseDouble(parent.getOpenProject().getSetupParameters("habParam-"+hab).getParameter("habDriftConc").getParameterValue());
+						}
 						Double baseProd = Double.parseDouble(parent.getOpenProject().getSetupParameters("habParam-"+hab).getParameter("habSearchProd").getParameterValue());
-						parent.actionHandler.addExperimentParamSubmitted("habDriftConc", hab, "HabitatSpace");
+						if(!MetaProject.getInstance().isInstreamSD())parent.actionHandler.addExperimentParamSubmitted("habDriftConc", hab, "HabitatSpace");
 						parent.actionHandler.addExperimentParamSubmitted("habSearchProd", hab, "HabitatSpace");
-						expParamConc = parent.getOpenProject().getExperimentParameters("habDriftConc ("+hab+")");
+						if(!MetaProject.getInstance().isInstreamSD())expParamConc = parent.getOpenProject().getExperimentParameters("habDriftConc ("+hab+")");
 						expParamProd = parent.getOpenProject().getExperimentParameters("habSearchProd ("+hab+")");
-						expParamConc.getValues().clear();
+						if(!MetaProject.getInstance().isInstreamSD())expParamConc.getValues().clear();
 						expParamProd.getValues().clear();
 						for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 							Double newRatio = (foodAvailabilityRatioLow + (foodAvailabilityRatioHigh - foodAvailabilityRatioLow)*(scenarioNum)/(numScenarios-1));
 							for(int uncertInd = 0; uncertInd < totalUncertRuns; uncertInd++){
-								expParamConc.addValue(((Double)(baseConc*newRatio)).toString());
+								if(!MetaProject.getInstance().isInstreamSD())expParamConc.addValue(((Double)(baseConc*newRatio)).toString());
 								expParamProd.addValue(((Double)(baseProd*newRatio)).toString());
 								// the following should only happen once, not for each reach or species
 								if(firstInstance){
@@ -858,10 +887,15 @@ public class LimitingFactorsTool {
 		return exceptionMessages;
 	}
 	public  ArrayList<ArrayList> parseTimeSeriesFile(String filename) throws FileNotFoundException,IOException,ParseException{
+		return parseTimeSeriesFile(filename,false);
+	}
+	public  ArrayList<ArrayList> parseTimeSeriesFile(String filename,Boolean hasHoursColumn) throws FileNotFoundException,IOException,ParseException{
 		ArrayList<Day> dates = new ArrayList<Day>();
+		ArrayList<Integer> hours = hasHoursColumn ? new ArrayList<Integer>() : null;
 		ArrayList<Double> data = new ArrayList<Double>();
 		ArrayList<ArrayList> result = new ArrayList<ArrayList>();
 		result.add(dates);
+		if(hours!=null)result.add(hours);
 		result.add(data);
 
 		File dataFile = new File(filename);
@@ -889,11 +923,18 @@ public class LimitingFactorsTool {
 				}
 			}
 			lineData = strLine.split(delim);
-			if(lineData.length<2){
+			if(!hasHoursColumn && lineData.length < 2){
 				throw new IOException("Missing data in file "+dataFile+", line "+lineCount+" contains less than 2 values, expecting 2.");
+			}else if(hasHoursColumn && lineData.length < 3){
+				throw new IOException("Missing data in file "+dataFile+", line "+lineCount+" contains less than 3 values, expecting 3.");
 			}
 			dates.add(new Day(timeSeriesDateFormat.parse(lineData[0])));
-			data.add(Double.parseDouble(lineData[1]));
+			if(!hasHoursColumn){
+				data.add(Double.parseDouble(lineData[1]));
+			}else{
+				hours.add(Integer.parseInt(lineData[1]));
+				data.add(Double.parseDouble(lineData[2]));
+			}
 		}
 		return result;
 	}
@@ -971,7 +1012,7 @@ public class LimitingFactorsTool {
 			FileOutputStream fstream = new FileOutputStream(filename);
 			DataOutputStream out = new DataOutputStream(fstream);
 			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(out));
-
+			String toWrite = null;
 			br.write("# Time Series Data File Automatically Generated by Limiting Factors Tool"+newline+newline);
 			if(hours==null){
 				br.write("Date,Value"+newline);
@@ -985,7 +1026,10 @@ public class LimitingFactorsTool {
 				if(hours==null){
 					br.write(dates.get(i).toInSALMODateString()+","+data.get(i).toString()+newline);
 				}else{
-					br.write(dates.get(i).toInSALMODateString()+","+hours.get(i).toString()+","+data.get(i).toString()+newline);
+					toWrite = dates.get(i).toInSALMODateString()+",";
+					toWrite += hours.get(i)+",";
+					toWrite += data.get(i).toString()+newline;
+					br.write(toWrite);
 				}
 			}
 			br.close();
