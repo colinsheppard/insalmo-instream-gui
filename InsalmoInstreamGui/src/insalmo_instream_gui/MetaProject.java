@@ -66,6 +66,9 @@ public class MetaProject {
 	private String applicationDirPath = null;
 	private String version = "instream-sd";  // "insalmo", "instream", "instream-sd"
 	private InsalmoInstreamView insalmoInstreamView;
+	private Boolean isInstreamVar = false;
+	private Boolean isInstreamSDVar = false;
+	private Boolean isInsalmoVar = false;
 
     public static synchronized MetaProject getInstance() {
         if (instance == null) {
@@ -75,12 +78,15 @@ public class MetaProject {
     }
 	protected MetaProject(){
 		if(version.equals("instream")){
+			isInstreamVar = true;
 			variableFileNames[0] = "ExampleSiteA-Hab.Params";
 			variableFileNames[1] = "ExampleTrout.Params";
 		}else if(version.equals("instream-sd")){
-			variableFileNames[0] = "ExampleSiteA-Hab.Params";
-			variableFileNames[1] = "ExampleTrout.Params";
+			isInstreamSDVar = true;
+			variableFileNames[0] = "LowerSiteHabitat.Params";
+			variableFileNames[1] = "DefaultRainbowTrout.Params";
 		}else{
+			isInsalmoVar = true;
 			variableFileNames[0] = "ClearCreek3A-Hab.Params";
 			variableFileNames[1] = "FallChinook.Params";
 		}
@@ -248,13 +254,13 @@ public class MetaProject {
 		return this.version;
 	}
 	public Boolean isInsalmo(){
-		return this.version.equals("insalmo");
+		return isInsalmoVar;
 	}
 	public Boolean isInstreamSD(){
-		return this.version.equals("instream-sd");
+		return isInstreamSDVar;
 	}
 	public Boolean isInstream(){
-		return this.version.equals("instream");
+		return isInstreamVar;
 	}
 	public void setInSALMOView(InsalmoInstreamView inSALMOView) {
 		this.insalmoInstreamView = inSALMOView;
