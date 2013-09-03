@@ -7,3 +7,6 @@
 [submodule "Code/inSTREAM-SD"]
 	path = Code/inSTREAM-SD
 	url = git@github.com:colinsheppard/instream-sd.git
+[submodule "Code/inSALMO-FA"]
+	path = Code/inSALMO-FA
+	url = git@github.com:colinsheppard/insalmo-fa.git
