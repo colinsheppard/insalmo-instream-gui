@@ -21,4 +21,5 @@ writeReddSurvReport	0	1 to produce optional details on survival of each redd wit
 writeReddMortReport	0	1 to produce optional details on egg mortality for each redd	BOOL	75	0	1
 writeMoveReport	0	1 to produce optional output to test fish habitat selection	BOOL	80	0	1
 writeCellCentroidReport	0	1 to produce a report of cell centroid coordinates	BOOL	85	0	1
+writeReadyToSpawnReport	0	1 to produce a report for testing decision of when to spawn	BOOL	90	0	1
 @end

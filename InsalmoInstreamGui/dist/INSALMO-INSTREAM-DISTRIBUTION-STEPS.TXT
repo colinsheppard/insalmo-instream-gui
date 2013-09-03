@@ -26,6 +26,7 @@ inSTREAM_#-#\Code\inSTREAM\
 *********************************************
 **Export and Package GUI
 *********************************************
+
 -Make sure the correct version is being compiled by setting the "version" property in the class MetaProject.java.
 -From Eclipse with the inSALMO/inSTREAM project open, select File->Export->Runnable JAR File->(Set Launch Config to 
 "Run InSALMO/InSTREAM" and set export destination to dist\inSALMO-GUI.jar or dist\inSTREAM-GUI.jar)
