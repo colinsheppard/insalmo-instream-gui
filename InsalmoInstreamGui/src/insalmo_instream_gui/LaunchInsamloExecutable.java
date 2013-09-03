@@ -51,7 +51,11 @@ public class LaunchInsamloExecutable implements Runnable{
 		try {
 			ProcessBuilder pb = null;
 			if(MetaProject.getInstance().isInsalmo()){
-				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO\\.libs\\insalmo.exe", useBat);
+				if(MetaProject.getInstance().isInsalmoFA()){
+					pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO-FA\\.libs\\insalmo-fa.exe", useBat);
+				}else{
+					pb = new ProcessBuilder(appPath+"\\..\\Code\\inSALMO\\.libs\\insalmo.exe", useBat);
+				}
 			}else if(MetaProject.getInstance().isInstream()){
 				pb = new ProcessBuilder(appPath+"\\..\\Code\\inSTREAM\\.libs\\instream.exe", useBat);
 			}else{

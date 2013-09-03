@@ -253,6 +253,9 @@ public class MetaProject {
 	public Boolean isInsalmo(){
 		return this.version.equals("insalmo") || this.version.equals("insalmo-fa");
 	}
+	public Boolean isInsalmoFA(){
+		return this.version.equals("insalmo-fa");
+	}
 	public Boolean isInstreamSD(){
 		return this.version.equals("instream-sd");
 	}
