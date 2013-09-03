@@ -1,0 +1,42 @@
+Format: must be tab separated, first four fields are required, 5th-7th are optional.
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin						
+numScenarios	5	The number of senarios per experiment (applies to all experiments)	INTEGER	0	0	20
+outmigrantSuccessLength	5	The length (cm) above which outmigrants are considered "successful" in results analyses	FLOAT	5		
+winterTemperatureStartDay	11/01	The first day (MM/DD) of the "winter" period for winter temperature experiments	DAY	10		
+winterTemperatureEndDay	03/31	The last day (MM/DD) of the "winter" period for winter temperature experiments	DAY	15		
+winterTemperatureRangeLow	-4	The constant change in temperature (deg C) for the lowest-temperature scenario in the winter temperature experiment.	FLOAT	20		
+winterTemperatureRangeHigh	4	The constant change in temperature (deg C) for the highest-temperature scenario in the winter temperature experiment.	FLOAT	25		
+summerTemperatureStartDay	04/01	The first day (MM/DD) of the "summer" period for summer temperature experiments	DAY	30		
+summerTemperatureEndDay	10/31	The last day (MM/DD) of the "summer" period for summer temperature experiments	DAY	35		
+summerTemperatureRangeLow	-4	The constant change in temperature (deg C) for the lowest-temperature scenario in the summer temperature experiment.	FLOAT	40		
+summerTemperatureRangeHigh	4	The constant change in temperature (deg C) for the highest-temperature scenario in the summer temperature experiment.	FLOAT	45		
+baseFlowRangeLow	-2	The constant change in flow (m3/s) for the lowest-flow scenario in the base flow experiment.	FLOAT	50		
+baseFlowRangeHigh	4	The constant change in flow (m3/s) for the highest-flow scenario in the base flow experiment.	FLOAT	55		
+gravelAvailabilityRangeLow	0.5	The lowest value of relative gravel availability in the spawning gravel experiment. The value must be between 0.0 and 1.0	FLOAT	60	0	1
+gravelAvailabilityRangeHigh	1.5	The highest value of relative gravel availability in the spawning gravel experiment. The value must be between 1.0 and 2.0	FLOAT	65	1	2
+shelterAvailabilityRangeLow	0.5	The lowest value of relative velocity shelter availability in the velocity shelter experiment. The value must be between 0.0 and 1.0	FLOAT	70		
+shelterAvailabilityRangeHigh	1.5	The highest value of relative velocity shelter availability in the velocity shelter experiment. The value must be between 1.0 and 2.0	FLOAT	75	1	2
+hidingCoverRangeLow	0.5	The lowest value of hiding cover availability in the hiding cover experiment. The value must be between 0.0 and 1.0	FLOAT	80	0	1
+hidingCoverRangeHigh	1.5	The highest value of hiding cover availability in the hiding cover experiment. The value must be between 1.0 and 2.0	FLOAT	85	1	2
+hidingCoverThreshold	1	In the hiding cover experiment, the cell distance to hiding cover (m) defining cover close enough to provide substantial benefit	FLOAT	90		
+piscivoryRiskRatioLow	0.9	The change in piscivory risk (fraction of the standard value) for the lowest-risk scenario in the piscivory risk experiment.	FLOAT	95		
+piscivoryRiskRatioHigh	1.1	The change in piscivory risk (fraction of the standard value) for the highest-risk scenario in the piscivory risk experiment.	FLOAT	100		
+foodAvailabilityRatioLow	0.5	The fraction of standard food availability for the lowest-food scenario in the food availability experiment.	FLOAT	105		
+foodAvailabilityRatioHigh	2	The fraction of standard food availability for the highest-food scenario in the food availability experiment.	FLOAT	110		
+reddScourRatioLow	0.5	The lowest factor by which redd depth is multiplied in the redd scour experiment	FLOAT	115		
+reddScourRatioHigh	1.5	The highest factor by which redd depth is multiplied in the redd scour experiment	FLOAT	120		
+spawnerNumberRatioLow	0.5	The fraction by which the standard number of spawners is multiplied in the lowest-number scenario in the spawner number experiment.	FLOAT	125		
+spawnerNumberRatioHigh	1.5	The fraction by which the standard number of spawners is multiplied in the highest scenario in the spawner number experiment.	FLOAT	130		
+numUncertaintyParams	3	Number of parameters used in the uncertainty analysis	INTEGER	135	0	3
+numUncertaintyScenarios	2	Number of scenarios per parameter used in the uncertainty analysis	INTEGER	140	0	20
+uncertaintyParam1	fishRespParamA	Parameter 1 to be varied in the uncertainty analysis	STRING	150		
+uncertaintyParam1LowFactor	0.8	Lower limit for uncertainty parameter 1 scaling factor.	FLOAT	155		
+uncertaintyParam1HighFactor	1.2	Upper limit for uncertainty parameter 1 scaling factor.	FLOAT	160		
+uncertaintyParam2	fishMaxSwimParamA	Parameter 2 to be varied in the uncertainty analysis	STRING	165		
+uncertaintyParam2LowFactor	0.8	Lower limit for uncertainty parameter 2 scaling factor.	FLOAT	170		
+uncertaintyParam2HighFactor	1.2	Upper limit for uncertainty parameter 2 scaling factor.	FLOAT	175		
+uncertaintyParam3	fishOutmigrateSuccessL1	Parameter 3 to be varied in the uncertainty analysis	STRING	180		
+uncertaintyParam3LowFactor	0.6	Lower limit for uncertainty parameter 3 scaling factor.	FLOAT	185		
+uncertaintyParam3HighFactor	1.2	Upper limit for uncertainty parameter 3 scaling factor.	FLOAT	190		
+@end						

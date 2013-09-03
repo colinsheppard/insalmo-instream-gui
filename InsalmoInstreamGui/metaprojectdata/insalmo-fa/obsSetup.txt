@@ -1,0 +1,13 @@
+Format: must be tab separated, first four field are required, 5th-7th are optional.						
+VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
+@begin						
+rasterColorVariable	depth	Display "depth" or "velocity" on raster	STRING	0		
+rasterResolutionX	50	Raster resolution in X dimension; higher values make display smaller	INTEGER	0	1	
+rasterResolutionY	50	Raster resolution in Y dimension; higher values make display smaller	INTEGER	0	1	
+takeRasterPictures	NO	YES to output raster to file each day	STRING	0		
+tagFishColor	tomato	Color for tagged fish	STRING	12		
+tagCellColor	DeepPink1	Color for tagged cells	STRING	13		
+dryCellColor	white	Color for dry (depth = 0) cells	STRING	14		
+maxShadeVelocity	200	Display colors velocities in 60 shades between zero and this value (cm/s)	FLOAT	0	60	1000
+maxShadeDepth	150	Display colors depths in 60 shades between zero and this value (cm)	FLOAT	0	60	1000
+@end						

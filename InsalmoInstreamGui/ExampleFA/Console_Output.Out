@@ -1,0 +1,15 @@
+[stdout] ExperBatchSwarm[stderr] *** event raised for warning: WarningMessage
+[stderr] WARNING: SCENARIO ITERATOR >>>> nextControlSetOnObject
+[stderr]          theObject = TroutBatchSwarm does not belong to iterMap
+[stderr] *** execution continuing...
+[stderr] modelSetupFile = (null) 
+[stderr] FishParams >>>> createEnd >>>> BEGIN
+[stderr] ERROR: >>>> createEnd >>>> fishMemoryListLength has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishSmoltDelay has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishOceanSurvMax has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishOceanSurvL1 has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishOceanSurvL9 has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishExpectedOffspringOceanFemale has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishExpectedOffspringOceanMale has not been initialized
+[stderr] ERROR: >>>> createEnd >>>> fishMaturityDecisionInterval has not been initialized
+[stderr] ERROR: FishParams >>>> createEnd >>>> Please check Fish Parameter input file
