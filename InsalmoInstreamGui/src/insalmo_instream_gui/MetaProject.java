@@ -82,9 +82,11 @@ public class MetaProject {
 			variableFileNames[0] = "ExampleSiteA-Hab.Params";
 			variableFileNames[1] = "ExampleTrout.Params";
 		}else if(version.equals("instream-sd")){
-			variableFileNames[0] = "ExampleSiteA-Hab.Params";
-			variableFileNames[1] = "ExampleTrout.Params";
+			isInstreamSDVar = true;
+			variableFileNames[0] = "UpperSiteHabitat.Params";
+			variableFileNames[1] = "DefaultRainbowTrout.Params";
 		}else if(version.equals("insalmo-fa")){
+			isInsalmoVar = true;
 			variableFileNames[0] = "ClearCreek3A-Hab.Params";
 			variableFileNames[1] = "ClearCreekOMykissFA.Params";
 		}else{
