@@ -781,7 +781,7 @@ public class InsalmoInstreamActions {
 			parent.parentFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			parent.startLFTButton.setEnabled(false);
 			Boolean doExecution = parent.lftTool.setupLFT();
-			if(doExecution){
+			if(doExecution && okToRunModel()){
 				parent.lftTabbedPane.setSelectedIndex(1);
 				parent.lftTool.setTerminatedForcefully(false);
 				parent.lftTool.executeLFT();

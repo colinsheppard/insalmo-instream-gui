@@ -207,6 +207,14 @@ public class LimitingFactorsTool {
 					factorLevels.get(paramNum).add(scaledUncertParam); 
 				}
 			}
+			// If there are no uncertainty params, we need to add a blank column in order to fool the excel macro to work
+			if(factorLevels.size()==1){
+				factorLevelHeader += ",";
+				factorLevels.add(new ArrayList<String>());
+				for(Integer runInd = 0; runInd < totalUncertRuns*numScenarios; runInd++){
+					factorLevels.get(1).add("");
+				}
+			}
 			writeTable(lftDir.getAbsolutePath()+"/LFT_Factor_Levels.csv",factorLevels,factorLevelHeader);
 			// Configure each experiment through Experiment.Setup as well as modifying input files when relevant
 			for(LFTExperiment exp : LFTExperiment.values()){
@@ -1077,9 +1085,6 @@ public class LimitingFactorsTool {
 				br.write("Date,Hour,Value"+newline);
 			}
 			for(int i = 0; i < dates.size(); i++){
-				if(i==25139){
-					int j = 0;
-				}
 				if(hours==null){
 					br.write(dates.get(i).toInSALMODateString()+","+data.get(i).toString()+newline);
 				}else{
