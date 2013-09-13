@@ -24,6 +24,8 @@
  * */
 package insalmo_instream_gui;
 
+import insalmo_instream_gui.LimitingFactorsTool.LFTExperiment;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -443,7 +445,7 @@ public class Project {
 			fstream.close();
 			e.printStackTrace();
 		}
-		if(MetaProject.getInstance().getVersion().equals("insalmo")){
+		if(MetaProject.getInstance().isInsalmo()){
 			if(this.exps.contains("shuffleYearSeed (ALL)")){
 				this.removeExperimentParameter("shuffleYearSeed (ALL)");
 			}

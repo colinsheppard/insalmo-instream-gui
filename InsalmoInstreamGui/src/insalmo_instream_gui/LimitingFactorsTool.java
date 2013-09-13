@@ -76,6 +76,8 @@ public class LimitingFactorsTool {
 		String projectDir = parent.getProjectDir().getAbsolutePath();
 		SetupParameters lftSetup = project.getSetupParameters("lftSetup-");
 		Hashtable<String,ArrayList<String>> uncertaintyData = new Hashtable<String,ArrayList<String>>();
+		String lftBigOutmigrantsSizeThreshold = null;
+		if(isInsalmo)lftBigOutmigrantsSizeThreshold = lftSetup.getParameter("outmigrantSuccessLength").getParameterValue();
 
 		if(parent.actionHandler.saveProject()){
 			if(project.getNumErrors()>0){
@@ -223,6 +225,12 @@ public class LimitingFactorsTool {
 				parent.actionHandler.closeProject("Close");
 				parent.actionHandler.openProject(newExpDir);
 				parent.actionHandler.clearExperiment();
+				ExperimentParameter lftBigOutExperParam = null;
+				if(isInsalmo){
+					parent.actionHandler.addExperimentParamSubmitted("lftBigOutmigrantsSizeThreshold", "NONE", "TroutModelSwarm");
+					lftBigOutExperParam = parent.getOpenProject().getExperimentParameters("lftBigOutmigrantsSizeThreshold (ALL)");
+					lftBigOutExperParam.getValues().clear();
+				}
 				ArrayList<ExperimentParameter> uncertParams = createUncertaintyParameters(uncertaintyData);
 				switch (exp) {
 				case WINTER_WATER_TEMP:
@@ -283,6 +291,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -362,6 +371,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -439,6 +449,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -523,6 +534,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -626,6 +638,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -661,6 +674,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
@@ -741,6 +755,7 @@ public class LimitingFactorsTool {
 									for(ExperimentParameter uncertParam : uncertParams){
 										uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
 									}
+									if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 								}
 							}
 						}
