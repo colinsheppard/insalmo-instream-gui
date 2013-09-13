@@ -201,12 +201,13 @@ public class LimitingFactorsTool {
 					factorLevels.get(0).add(scaledParam.toString());
 				}
 			}
-			for(Integer paramNum = 1; paramNum < factorLevels.size(); paramNum++){
-				Double modDelay = Math.pow(numUncertScenarios.doubleValue(),((Integer)(paramNum-1)).doubleValue());
-				for(Integer runInd = 0; runInd < totalUncertRuns*numScenarios; runInd++){
-					Double scaledUncertParam = 0.5;
-					if(numUncertScenarios>1)scaledUncertParam = (Math.floor(runInd.doubleValue()/modDelay) % numUncertScenarios.doubleValue())/(numUncertScenarios.doubleValue()-1);
-					factorLevels.get(paramNum).add(scaledUncertParam); 
+			for(int i = 0; i < numScenarios; i++){
+				int factorInd = 1;
+				for(String paramKey : uncertaintyData.keySet()){
+					for(String val : uncertaintyData.get(paramKey)){
+						factorLevels.get(factorInd).add(val);
+					}
+					factorInd++;
 				}
 			}
 			// If there are no uncertainty params, we need to add a blank column in order to fool the excel macro to work
