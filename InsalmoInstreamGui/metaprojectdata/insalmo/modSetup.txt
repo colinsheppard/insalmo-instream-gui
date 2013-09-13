@@ -17,5 +17,5 @@ shuffleYearSeed	1	Seed used by random year shuffler	INTEGER	22	0	99999999
 siteLatitude	40	Latitude of the study site, in degrees north	FLOAT	30	-90	90
 juvenileSuperindividualRatio	20	Number of juveniles to represent per model fish	INTEGER	40	1	100
 numSpawnerAdjuster	1	Number of Spawners adjustment factor (used by Limiting Factors Tool, simply scales the number of spawners)	FLOAT	45	0	20
-lftBigOutmigrantsSizeThreshold	5.0	The length (cm) above which outmigrants are considered successful in limiting factors tool results analysis.	FLOAT	50	0	9999
+lftBigOutmigrantsSizeThreshold	5.0	The length (cm) above which outmigrants are considered successful in Limiting Factors Tool results analysis.	FLOAT	50	0	9999
 @end						
