@@ -769,12 +769,16 @@ public class LimitingFactorsTool {
 					parent.actionHandler.addExperimentParamSubmitted("numSpawnerAdjuster", "NONE", "TroutModelSwarm");
 					expParam = parent.getOpenProject().getExperimentParameters("numSpawnerAdjuster (ALL)");
 					expParam.getValues().clear();
+					firstInstance = true;
 					for(int scenarioNum = 0; scenarioNum < numScenarios; scenarioNum++ ){
 						Double newRatio = (spawnerNumberRatioLow + (spawnerNumberRatioHigh - spawnerNumberRatioLow)*(scenarioNum)/(numScenarios-1));
 						for(int uncertInd = 0; uncertInd < totalUncertRuns; uncertInd++){
 							expParam.addValue(newRatio.toString());
-							for(ExperimentParameter uncertParam : uncertParams){
-								uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
+							if(firstInstance){
+								for(ExperimentParameter uncertParam : uncertParams){
+									uncertParam.addValue(uncertaintyData.get(uncertParam.getParamKey()).get(uncertInd));
+								}
+								if(isInsalmo)lftBigOutExperParam.addValue(lftBigOutmigrantsSizeThreshold);
 							}
 						}
 					}
