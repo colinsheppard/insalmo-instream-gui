@@ -51,12 +51,12 @@ fishSpawnDSuitS4	1	Spawning suitability for depth 4	FLOAT	93	0	1
 fishSpawnDSuitS5	0	Spawning suitability for depth 5	FLOAT	95	0	1
 fishSpawnEggViability	0.8	Fraction of eggs that are viable	FLOAT	97	0	1
 fishSpawnDefenseArea	200000	Area that females guard around redds	FLOAT	97	0	400000
-fishSpawnEndDate	30-Nov	Last day of spawning (MM/DD)	DAY	99		
+fishSpawnEndDate	11/30	Last day of spawning (MM/DD)	DAY	99		
 fishSpawnMaxFlowChange	0.2	Maximum change in flow for spawning (fraction)	FLOAT	101	0.05	1
 fishSpawnMaxTemp	14	Maximum temperature for spawning (C)	FLOAT	103	0	20
 fishSpawnMinTemp	5	Minimum temperature for spawning (C)	FLOAT	111	0	20
 fishSpawnProb	0.2	Probability of spawning on days when conditions met	FLOAT	113	0	1
-fishSpawnStartDate	1-Oct	First day of spawning (MM/DD)	DAY	115		
+fishSpawnStartDate	10/1	First day of spawning (MM/DD)	DAY	115		
 fishSpawnVSuitS1	0	Spawning suitability for velocity 1	FLOAT	117	0	1
 fishSpawnVSuitS2	0	Spawning suitability for velocity 2	FLOAT	119	0	1
 fishSpawnVSuitS3	0.06	Spawning suitability for velocity 3	FLOAT	121	0	1

@@ -138,6 +138,8 @@ public class Project {
 					sParams.setParamInstance("ExampleTrout");
 				}else if(MetaProject.getInstance().isInstreamSD()){
 					sParams.setParamInstance("Rainbow");
+				}else if(MetaProject.getInstance().isInsalmoFA()){
+					sParams.setParamInstance("OMykiss");
 				}else{
 					sParams.setParamInstance("FallChinook");
 				}
