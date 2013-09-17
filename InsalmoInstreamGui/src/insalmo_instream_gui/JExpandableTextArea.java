@@ -186,7 +186,7 @@ public class JExpandableTextArea extends JTextArea implements MouseMotionListene
  
     public void mousePressed(MouseEvent e) {
         Point p = e.getPoint();
-        System.out.println("mouse clicked");
+//        System.out.println("mouse clicked");
  
         if (getTriangle().contains(p)){
             mousePressedInTriangle = true;
