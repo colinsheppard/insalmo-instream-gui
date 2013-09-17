@@ -1204,7 +1204,7 @@ public class LimitingFactorsTool {
 			if(terminateButton.getActionListeners().length==0){
 				terminateButton.addActionListener(new TerminateListener(parent));
 			}
-			JExpandableTextArea textArea = new JExpandableTextArea(30,70);
+			JExpandableTextArea textArea = new JExpandableTextArea(20,75);
 			textArea.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 			textArea.setEditable(false);
 			textArea.setName(expName);
