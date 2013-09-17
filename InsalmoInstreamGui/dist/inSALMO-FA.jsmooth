@@ -14,7 +14,7 @@
 <currentDirectory>..\Projects</currentDirectory>
 <embeddedJar>true</embeddedJar>
 <executableName>inSALMO-FA-GUI.exe</executableName>
-<iconLocation>inSALMO-Icon.gif</iconLocation>
+<iconLocation>inSALMO-FA-Icon.gif</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <jarLocation>inSALMO-FA-GUI.jar</jarLocation>
 <mainClassName>insalmo_instream_gui.InsalmoInstreamGui</mainClassName>
@@ -44,6 +44,6 @@
 </skeletonProperties>
 <skeletonProperties>
 <key>Debug</key>
-<value>0</value>
+<value>1</value>
 </skeletonProperties>
 </jsmoothproject>
