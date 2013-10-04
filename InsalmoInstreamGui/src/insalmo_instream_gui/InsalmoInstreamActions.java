@@ -403,6 +403,8 @@ public class InsalmoInstreamActions {
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_GUI_Guide.chm");
 		}else if(MetaProject.getInstance().isInstreamSD()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_GUI_Guide.chm");
+		}else if(MetaProject.getInstance().isInsalmoFA()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_FA_GUI_Guide.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_GUI_Guide.chm");
 		}
@@ -415,6 +417,8 @@ public class InsalmoInstreamActions {
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Model_Description.chm");
 		}else if(MetaProject.getInstance().isInstreamSD()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Model_Description.chm");
+		}else if(MetaProject.getInstance().isInsalmoFA()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_FA_Model_Description.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Model_Description.chm");
 		}
@@ -427,6 +431,8 @@ public class InsalmoInstreamActions {
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Software_Documentation.chm");
 		}else if(MetaProject.getInstance().isInstreamSD()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Software_Documentation.chm");
+		}else if(MetaProject.getInstance().isInsalmoFA()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_FA_Software_Documentation.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Software_Documentation.chm");
 		}
@@ -439,6 +445,8 @@ public class InsalmoInstreamActions {
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_5_0_Limiting_Factors_Tool.chm");
 		}else if(MetaProject.getInstance().isInstreamSD()){
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSTREAM_6_0_Limiting_Factors_Tool.chm");
+		}else if(MetaProject.getInstance().isInsalmoFA()){
+			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_FA_Limiting_Factors_Tool.chm");
 		}else{
 			helpFile = new File(MetaProject.getInstance().getApplicationDir()+"/../Help/inSALMO_Limiting_Factors_Tool.chm");
 		}
