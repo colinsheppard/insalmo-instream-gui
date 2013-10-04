@@ -130,7 +130,12 @@ public class NewExperimentParameter extends javax.swing.JFrame {
             	parameterTypeModelButtonActionPerformed(evt);
             }
         });
-        String[] modelParams = new String[] {"randGenSeed","numberOfSpecies","runStartDate","runEndDate","popInitDate","appendFiles","tagFishColor"};
+        String[] modelParams = null;
+        if(MetaProject.getInstance().isInsalmo()){
+        	modelParams = new String[] {"randGenSeed","numberOfSpecies","runStartDate","runEndDate","popInitDate","appendFiles","tagFishColor","numSpawnerAdjuster"};
+        }else{
+        	modelParams = new String[] {"randGenSeed","numberOfSpecies","runStartDate","runEndDate","popInitDate","appendFiles","tagFishColor"};
+        }
         this.parameterLists.put("model",modelParams);
         
         //FISH PARAMS
