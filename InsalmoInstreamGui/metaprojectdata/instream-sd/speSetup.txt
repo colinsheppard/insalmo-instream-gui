@@ -1,9 +1,9 @@
 Format: must be tab separated, first four field are required, 5th-7th are optional.
 VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
 @begin
-speciesName	Rainbow	Name of species used in code	STRING	1		
-speciesParamFile	DefaultRainbowTrout.Params	Fish parameter file name for species	INFILENAME	2		
-speciesInitPopFile	RainbowInitPops.Data	Initial population file name for species	INFILENAME	3		
-speciesColor	cyan	Species display color	STRING	4		
-speciesStockingFile	RainbowStocking.Data	File of stocking input for species; "NoStocking" if none	INFILENAME	5		
+speciesName	Rainbow	Name of species used in code	STRING	1	0	200
+speciesParamFile	DefaultRainbowTrout.Params	Fish parameter file name for species	INFILENAME	2	0	200	
+speciesInitPopFile	RainbowInitPops.Data	Initial population file name for species	INFILENAME	3	0	200
+speciesColor	cyan	Species display color	STRING	4	0	200
+speciesStockingFile	RainbowStocking.Data	File of stocking input for species; "NoStocking" if none	INFILENAME	5	0	200
 @end

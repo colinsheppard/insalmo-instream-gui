@@ -1,8 +1,8 @@
 Format: must be tab separated, first four field are required, 5th-7th are optional.						
 VariableName	DefaultValue	VariableTitle	DataType	DisplayOrder	LowerBound	UpperBound
 @begin						
-speciesName	OMykiss	Name of species used in code	STRING	1		
-speciesParamFile	ClearCreekOMykissFA.Params	Fish parameter file name for species	INFILENAME	2	0	35
-speciesInitPopFile	ClearCreekOMykissSpawnerInit.csv	Spawner initialization file name for species	INFILENAME	3	0	35
-speciesColor	SteelBlue	Species display color	STRING	4		
+speciesName	OMykiss	Name of species used in code	STRING	1	0	200
+speciesParamFile	ClearCreekOMykissFA.Params	Fish parameter file name for species	INFILENAME	2	0	200
+speciesInitPopFile	ClearCreekOMykissSpawnerInit.csv	Spawner initialization file name for species	INFILENAME	3	0	200
+speciesColor	SteelBlue	Species display color	STRING	4	0	200
 @end						
