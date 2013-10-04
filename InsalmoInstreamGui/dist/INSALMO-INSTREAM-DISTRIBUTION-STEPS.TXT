@@ -29,7 +29,8 @@ inSTREAM_#-#\Code\inSTREAM\
 
 -Make sure the correct version is being compiled by setting the "version" property in the class MetaProject.java.
 -From Eclipse with the inSALMO/inSTREAM project open, select File->Export->Runnable JAR File->(Set Launch Config to 
-"Run InSALMO/InSTREAM" and set export destination to dist\inSALMO-GUI.jar or dist\inSTREAM-GUI.jar)
+"Run InSALMO/InSTREAM" and set export destination to dist\inSALMO-GUI.jar or dist\inSTREAM-GUI.jar)  Make sure to select "Extract required librariesÉ" and 
+NOT "Package required librariesÉ"
 -Open the jsmooth executable bundler in dist\inSALMO.jsmooth or dist\inSTREAM.jsmoloth (this adds error checking to make sure 
 the appropriate version of JVM is installed) which requires you have JSMOOTH installed (http://jsmooth.sourceforge.net/)
 -Select from Menu "Project"->"Compile..."
@@ -54,5 +55,7 @@ commit from the previous step), this updated VERSION.txt file should then get co
 *********************************************
 **Package GUI for Shipping
 *********************************************
--Now zip up inSALMO_#-# or inSTREAM_#-# and ship her out, users can extract the zip file anywhere and it should run as along as the 
+-Now zip up inSALMO_#-# or inSTREAM_#-#, on Windows 8 the ".libs" directory under the model code folder will not get included by default, so after the initial
+archiving, make sure to go into the Code directory and copy the .libs folder and then navigate into the zip archive and paste it into the appropriate location. 
+-Now ship her out, users can extract the zip file anywhere and it should run as along as the 
 contents inside don't get moved around or renamed.

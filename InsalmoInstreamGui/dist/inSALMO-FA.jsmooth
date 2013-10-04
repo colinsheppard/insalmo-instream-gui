@@ -7,10 +7,6 @@
 <JVMSearchPath>exepath</JVMSearchPath>
 <JVMSearchPath>jview</JVMSearchPath>
 <arguments>"../GUI"</arguments>
-<classPath>lib\appframework-1.0.3.jar</classPath>
-<classPath>lib\swing-worker-1.1.jar</classPath>
-<classPath>lib\toplink-essentials-agent.jar</classPath>
-<classPath>lib\toplink-essentials.jar</classPath>
 <currentDirectory>..\Projects</currentDirectory>
 <embeddedJar>true</embeddedJar>
 <executableName>inSALMO-FA-GUI.exe</executableName>
