@@ -2,15 +2,15 @@
 
 @begin
 winterTemperatureStartDay		11/01
-outmigrantSuccessLength		5.0
+outmigrantSuccessLength		5.75
 uncertaintyParam2HighFactor		1.4
-numUncertaintyScenarios		1
+numUncertaintyScenarios		3
 uncertaintyParam3		fishMaxSwimParamA
 uncertaintyParam2LowFactor		0.6
 uncertaintyParam2		fishOutmigrateSuccessL1
 uncertaintyParam1		fishRespParamA
 baseFlowRangeLow		-2.0
-numUncertaintyParams		0
+numUncertaintyParams		2
 piscivoryRiskRatioLow		0.9
 hidingCoverRangeHigh		1.5
 shelterAvailabilityRangeHigh		1.5
@@ -35,8 +35,8 @@ foodAvailabilityRatioLow		0.5
 numScenarios		7
 piscivoryRiskRatioHigh		1.1
 baseFlowRangeHigh		4.0
-reddScourRatioLow		0.5
-summerTemperatureRangeHigh		4.0
 uncertaintyParam1LowFactor		0.8
+summerTemperatureRangeHigh		4.0
+reddScourRatioLow		0.5
 winterTemperatureRangeLow		-4.0
 @end
