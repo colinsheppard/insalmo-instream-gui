@@ -83,8 +83,8 @@ mortFishAqPredF9	0	Feeding time at which fish predation survival increases by 90
 mortFishAqPredL1	4	Length at which fish predation survival increases by 10% (cm)	FLOAT	395						
 mortFishAqPredL9	8	Length at which fish predation survival increases by 90% (cm)	FLOAT	400						
 mortFishAqPredMin	0.9	Minimum daily survival probability for fish predation	FLOAT	405	0.5	1				
-mortFishAqPredP1	1.00E-05	Predator density at which survival increases by 90% (cm^-2)	FLOAT	410	0	1				
-mortFishAqPredP9	2.00E-06	Predator density at which survival increases by 10% (cm^-2)	FLOAT	415	0	1				
+mortFishAqPredP1	1.00E-05	Predator density at which survival increases by 10% (cm^-2)	FLOAT	410	0	1				
+mortFishAqPredP9	2.00E-06	Predator density at which survival increases by 90% (cm^-2)	FLOAT	415	0	1				
 mortFishAqPredT1	6	Temperature at which fish predation survival increases by 10% (C)	FLOAT	420						
 mortFishAqPredT9	2	Temperature at which fish predation survival increases by 90% (C)	FLOAT	425						
 mortFishAqPredU1	5	Turbidity at which fish predation survival increases by 10% (NTU)	FLOAT	430						
