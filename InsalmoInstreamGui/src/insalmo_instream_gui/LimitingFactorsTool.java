@@ -173,7 +173,7 @@ public class LimitingFactorsTool {
 				for(String inFilename : filesToCopy){
 					if(alreadyCopied.contains(inFilename))continue;
 					alreadyCopied.add(inFilename);
-					MetaProject.getInstance().copy(new File(projectDir+"/"+inFilename), new File(newExpDir.getAbsolutePath()+"/"+inFilename));
+					if(!inFilename.equals("NoStocking"))MetaProject.getInstance().copy(new File(projectDir+"/"+inFilename), new File(newExpDir.getAbsolutePath()+"/"+inFilename));
 				}
 			}
 			String dataFilePath = null;
