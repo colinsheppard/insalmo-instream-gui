@@ -101,6 +101,10 @@ public class Parameter {
 			this.validationType = MetaParameter.ValidationType.ERROR;
 			this.validationMessage = "Illegal file selected";
 			break;
+		case NOSTOCKING_CASE:
+			this.validationType = MetaParameter.ValidationType.ERROR;
+			this.validationMessage = "'NoStocking' is case sensitive and must match exactly as used in this message.";
+			break;
 		case INVALID_FLOAT:
 			this.validationType = MetaParameter.ValidationType.ERROR;
 			this.validationMessage = "Invalid floating point expression";

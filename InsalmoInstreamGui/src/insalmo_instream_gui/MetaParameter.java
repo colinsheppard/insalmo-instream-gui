@@ -54,7 +54,7 @@ public class MetaParameter {
 	public enum ValidationCode{
 		VALID, UNTESTED, RANGE_LOW, RANGE_HIGH, LENGTH_LONG, LENGTH_SHORT, INVALID_FLOAT, 
 		INVALID_INTEGER, INVALID_DATE, INVALID_DAY, INVALID_BOOL, MISSING_FILE, ILLEGAL_FILE,
-		INCONSISTENT_SCENARIOS, CHOOSING
+		NOSTOCKING_CASE, INCONSISTENT_SCENARIOS, CHOOSING
 	}
 	public enum ValidationType{
 		VALID, WARNING, ERROR, CHOOSING 
@@ -154,6 +154,14 @@ public class MetaParameter {
 				break;
 			}else if(value.length() < this.stringLow){
 				validationCode = ValidationCode.LENGTH_SHORT;
+				break;
+			}
+			if(value.toLowerCase().equals("nostocking")){
+				if(value.equals("NoStocking")){
+					validationCode = ValidationCode.VALID;
+				}else{
+					validationCode = ValidationCode.NOSTOCKING_CASE;
+				}
 				break;
 			}
 			// Now test if the file exists

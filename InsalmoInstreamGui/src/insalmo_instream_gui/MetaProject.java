@@ -64,7 +64,7 @@ public class MetaProject {
 	private boolean projectChanged = false;
 	private JPanel	contentPanel = new javax.swing.JPanel();
 	private String applicationDirPath = null;
-	private String version = "insalmo";  // "insalmo", "insalmo-fa", "instream", "instream-sd"
+	private String version = "instream-sd";  // "insalmo", "insalmo-fa", "instream", "instream-sd"
 	private InsalmoInstreamView insalmoInstreamView;
 	private Boolean isInstreamVar = false;
 	private Boolean isInstreamSDVar = false;
