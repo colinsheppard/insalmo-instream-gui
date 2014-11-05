@@ -749,6 +749,7 @@ public class Project {
 			try{
 				speSetup.addParameter(new Parameter("speciesName",newSpeciesName,speSetup));
 				speSetup.addParameter(new Parameter("speciesColor",MetaProject.getInstance().getMetaParameter("speciesColor").getDefaultValue(),speSetup));
+				if(MetaProject.getInstance().isInstreamSD())speSetup.addParameter(new Parameter("speciesStockingFile",MetaProject.getInstance().getMetaParameter("speciesStockingFile").getDefaultValue(),speSetup));
 
 				// For Init Pop File, we use the default
 				String defaultFileName = MetaProject.getInstance().getMetaParameter("speciesInitPopFile").getDefaultValue();
@@ -781,6 +782,7 @@ public class Project {
 			speSetup.addParameter(new Parameter("speciesName",newSpeciesName,speSetup));
 			speSetup.addParameter(new Parameter("speciesInitPopFile",existingSpeSetup.getParameter("speciesInitPopFile").getParameterValue(),speSetup));
 			speSetup.addParameter(new Parameter("speciesColor",existingSpeSetup.getParameter("speciesColor").getParameterValue(),speSetup));
+			if(MetaProject.getInstance().isInstreamSD())speSetup.addParameter(new Parameter("speciesStockingFile",existingSpeSetup.getParameter("speciesStockingFile").getParameterValue(),speSetup));
 			SetupParameters existingSpeParams= getSetupParameters("speParam-"+existingSpeciesName);
 			SetupParameters speParams = new SetupParameters("speParam",newSpeciesName+".Params");
 			speParams.setParamInstance(speSetup.getParameter("speciesName").getParameterValue());
