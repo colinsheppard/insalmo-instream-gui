@@ -94,9 +94,6 @@ public class Project {
 						pValue = "-99/-99";
 						break;
 					}
-					if(paramName.equals("reachName") || paramName.equals("speciesName")){
-						pValue = MetaProject.getInstance().getMetaParameter(paramName).getDefaultValue();
-					}
 				}else{
 					pValue = MetaProject.getInstance().getMetaParameter(paramName).getDefaultValue();
 				}
@@ -251,7 +248,7 @@ public class Project {
 					}
 					if(sParams.getParameter(splitStr[0])!=null)throw new IOException("Reach.Setup (line "+lineCount+") -- variable name "+splitStr[0]+" specified twice in one Reach block.");
 					try{
-						sParams.addParameter(new Parameter(splitStr[0],splitStr[1],sParams));
+						if(!splitStr[0].equals("reachName"))sParams.addParameter(new Parameter(splitStr[0],splitStr[1],sParams));
 					}catch(IllegalParameterException e){
 						e.printStackTrace();
 						this.illegals.add(new String[] {splitStr[0],splitStr[1],"Reach.Setup",e.getMessage()});
@@ -298,7 +295,6 @@ public class Project {
 							}
 							fish.add(splitStr[0]);
 							sParams.setParamInstance(splitStr[0]);
-							sParams.addParameter(new Parameter("speciesName",splitStr[0],sParams));
 							break;
 						case 2:
 							sParams.addParameter(new Parameter("speciesParamFile",splitStr[0],sParams));
@@ -640,7 +636,7 @@ public class Project {
 	}
 	public void loadHabitatParams(SetupParameters sParams, String filePath) throws RuntimeException,IOException{
 		SetupParameters habParams = new SetupParameters("habParam",sParams.getParameter("habParamFile").getParameterValue());
-		habParams.setParamInstance(sParams.getParameter("reachName").getParameterValue());
+		habParams.setParamInstance(sParams.getParamInstance());
 		try {
 			File f = new File(filePath);
 			FileInputStream fstream = new FileInputStream(filePath);
@@ -675,14 +671,14 @@ public class Project {
 			System.err.println("Error: " + e.getMessage());
 			e.printStackTrace();
 		}	
-		this.setupParams.put("habParam-"+sParams.getParameter("reachName").getParameterValue(),habParams);
+		this.setupParams.put("habParam-"+sParams.getParamInstance(),habParams);
 		habParams.setFileName(sParams.getParameter("habParamFile").getParameterValue());
 		sParams.removeParameter("habParamFile");
 	}
 
 	public void loadSpeciesParams(SetupParameters sParams, String filePath) throws RuntimeException,IOException{
 		SetupParameters speParams = new SetupParameters("speParam",sParams.getParameter("speciesParamFile").getParameterValue());
-		speParams.setParamInstance(sParams.getParameter("speciesName").getParameterValue());
+		speParams.setParamInstance(sParams.getParamInstance());
 		try {
 			File f = new File(filePath);
 			FileInputStream fstream = new FileInputStream(filePath);
@@ -717,7 +713,7 @@ public class Project {
 			System.err.println("Error: " + e.getMessage());
 			e.printStackTrace();
 		}	
-		this.setupParams.put("speParam-"+sParams.getParameter("speciesName").getParameterValue(),speParams);
+		this.setupParams.put("speParam-"+sParams.getParamInstance(),speParams);
 		speParams.setFileName(sParams.getParameter("speciesParamFile").getParameterValue());
 		sParams.removeParameter("speciesParamFile");
 		// the following is before I allowed the .Params filename to be specified from inside Species.Setup
@@ -747,7 +743,6 @@ public class Project {
 			SetupParameters speSetup =  new SetupParameters("speSetup","Species.Setup");
 			speSetup.setParamInstance(newSpeciesName);
 			try{
-				speSetup.addParameter(new Parameter("speciesName",newSpeciesName,speSetup));
 				speSetup.addParameter(new Parameter("speciesColor",MetaProject.getInstance().getMetaParameter("speciesColor").getDefaultValue(),speSetup));
 				if(MetaProject.getInstance().isInstreamSD())speSetup.addParameter(new Parameter("speciesStockingFile",MetaProject.getInstance().getMetaParameter("speciesStockingFile").getDefaultValue(),speSetup));
 
@@ -766,7 +761,7 @@ public class Project {
 				e.printStackTrace();
 			}
 			SetupParameters speParams = new SetupParameters("speParam",newSpeciesName+".Params");
-			speParams.setParamInstance(speSetup.getParameter("speciesName").getParameterValue());
+			speParams.setParamInstance(speSetup.getParamInstance());
 			// Initialize the fish with default values
 			for(String speParamName : MetaProject.getInstance().getParameterNameListFromType("speParam")){
 				Parameter newParam = new Parameter(speParamName,MetaProject.getInstance().getMetaParameter(speParamName).getDefaultValue(),speParams);
@@ -779,13 +774,12 @@ public class Project {
 			String existingSpeParamsFilename = getSetupParameters("speParam-"+existingSpeciesName).getFileName();
 			SetupParameters speSetup = new SetupParameters("speSetup","Species.Setup");
 			speSetup.setParamInstance(newSpeciesName);
-			speSetup.addParameter(new Parameter("speciesName",newSpeciesName,speSetup));
 			speSetup.addParameter(new Parameter("speciesInitPopFile",existingSpeSetup.getParameter("speciesInitPopFile").getParameterValue(),speSetup));
 			speSetup.addParameter(new Parameter("speciesColor",existingSpeSetup.getParameter("speciesColor").getParameterValue(),speSetup));
 			if(MetaProject.getInstance().isInstreamSD())speSetup.addParameter(new Parameter("speciesStockingFile",existingSpeSetup.getParameter("speciesStockingFile").getParameterValue(),speSetup));
 			SetupParameters existingSpeParams= getSetupParameters("speParam-"+existingSpeciesName);
 			SetupParameters speParams = new SetupParameters("speParam",newSpeciesName+".Params");
-			speParams.setParamInstance(speSetup.getParameter("speciesName").getParameterValue());
+			speParams.setParamInstance(speSetup.getParamInstance());
 			for(String speParamParamName : MetaProject.getInstance().getParameterNameListFromType("speParam")){
 				speParams.addParameter(new Parameter(speParamParamName,existingSpeParams.getParameter(speParamParamName).getParameterValue(),speParams));
 			}
@@ -815,10 +809,9 @@ public class Project {
 					newParam.updateValidationCode();
 				}
 			}
-			habSetup.getParameter("reachName").setParameterValue(newReachName);
 
 			SetupParameters habParams = new SetupParameters("habParam",newReachName+".Params");
-			habParams.setParamInstance(habSetup.getParameter("reachName").getParameterValue());
+			habParams.setParamInstance(newReachName);
 			for(String habParamName : MetaProject.getInstance().getParameterNameListFromType("habParam")){
 				habParams.addParameter(new Parameter(habParamName,MetaProject.getInstance().getMetaParameter(habParamName).getDefaultValue(),habSetup));
 			}
@@ -834,10 +827,9 @@ public class Project {
 					habSetup.addParameter(newParam);
 				}
 			}
-			habSetup.getParameter("reachName").setParameterValue(newReachName);
 			SetupParameters existingHabParam = getSetupParameters("habParam-"+existingReachName);
 			SetupParameters habParam = new SetupParameters("habParam",newReachName+".Params");
-			habParam.setParamInstance(habSetup.getParameter("reachName").getParameterValue());
+			habParam.setParamInstance(newReachName);
 			for(String habParamParamName : MetaProject.getInstance().getParameterNameListFromType("habParam")){
 				habParam.addParameter(new Parameter(habParamParamName,existingHabParam.getParameter(habParamParamName).getParameterValue(),habParam));
 			}
@@ -894,7 +886,7 @@ public class Project {
 			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(out));
 			br.write("Reach.Setup file. Automatically generated by "+MetaProject.getInstance().getAppTitle()+" GUI"+newline+newline+newline);
 			for (String habName : this.habs) {
-				br.write("REACHBEGIN"+newline+"habParamFile\t\t"+this.setupParams.get("habParam-"+habName).getFileName()+newline);
+				br.write("REACHBEGIN"+newline+"reachName\t\t"+habName+newline+"habParamFile\t\t"+this.setupParams.get("habParam-"+habName).getFileName()+newline);
 				SetupParameters sParams =  this.setupParams.get("habSetup-"+habName);
 				for (Parameter param : sParams.getParameterCollection()) {
 					br.write(param.getParameterName()+"\t\t"+param.getParameterValue()+newline);
@@ -1048,14 +1040,14 @@ public class Project {
 		this.setNumberOfScenarios();
 	}
 	public void addHabitat(SetupParameters habSetup, SetupParameters habParams){
-		this.habs.add(habSetup.getParameter("reachName").getParameterValue());
-		this.setupParams.put("habSetup-"+habSetup.getParamInstance(), habSetup);
-		this.setupParams.put("habParam-"+habSetup.getParameter("reachName").getParameterValue(),habParams);
+		this.habs.add(habSetup.getParamInstance());
+		this.setupParams.put("habSetup-"+habSetup.getParamInstance(),habSetup);
+		this.setupParams.put("habParam-"+habSetup.getParamInstance(),habParams);
 	}
 	public void addSpecies(SetupParameters speSetup, SetupParameters speParams){
-		this.fish.add(speSetup.getParameter("speciesName").getParameterValue());
+		this.fish.add(speSetup.getParamInstance());
 		this.setupParams.put("speSetup-"+speSetup.getParamInstance(), speSetup);
-		this.setupParams.put("speParam-"+speSetup.getParameter("speciesName").getParameterValue(),speParams);
+		this.setupParams.put("speParam-"+speSetup.getParamInstance(),speParams);
 	}
 	public void removeExperimentParameter(String paramKey){
 		if(this.expParams.containsKey(paramKey)){
