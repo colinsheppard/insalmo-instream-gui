@@ -55,8 +55,10 @@ public class InsalmoInstreamView extends JFrame{
 	public JButton		clearExpParamButton = new javax.swing.JButton();
 	public JButton		addSpeButton = new javax.swing.JButton();
 	public JButton		remSpeButton = new javax.swing.JButton();	
+	public JButton		renameSpeButton = new javax.swing.JButton();
 	public JButton		addHabButton = new javax.swing.JButton();
 	public JButton		remHabButton = new javax.swing.JButton();
+	public JButton		renameHabButton = new javax.swing.JButton();
 	public Separator	jSeparatorExperimentSummary = new javax.swing.JToolBar.Separator();
 	public Separator	jSeparatorConfigureExperiment = new javax.swing.JToolBar.Separator();
 	public JButton		summaryButton = new javax.swing.JButton();
@@ -1155,6 +1157,17 @@ public class InsalmoInstreamView extends JFrame{
 				}
 			});
 		}
+		renameSpeButton.setText(resourceMap.getString("renameSpeButton.text")); 
+		renameSpeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+		renameSpeButton.setName("renameSpeButton");
+		renameSpeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+		if(renameSpeButton.getActionListeners().length==0){
+			renameSpeButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					actionHandler.changeSpeOrHabNameActionPerformed(evt);
+				}
+			});
+		}
 
 
 		speciesSetupTabLayout = new javax.swing.GroupLayout(speciesSetupTab);
@@ -1256,7 +1269,8 @@ public class InsalmoInstreamView extends JFrame{
 														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 														.addComponent(speciesSetupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
 														.addComponent(addSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(remSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+														.addComponent(remSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(renameSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
 														.addContainerGap())
 				);
 		speciesSetupTabLayout.setVerticalGroup(
@@ -1269,7 +1283,8 @@ public class InsalmoInstreamView extends JFrame{
 										.addComponent(speciesSetupComboLabel)
 										.addComponent(speciesSetupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addComponent(addSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(remSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+										.addComponent(remSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(renameSpeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
 										.addGroup(speciesSetupTabLayout.createSequentialGroup()
 												.addGap(15, 15, 15)
 												.addGroup(speciesSetupLayeredScrollPanesVGroup)
@@ -1360,6 +1375,18 @@ public class InsalmoInstreamView extends JFrame{
 				}
 			});
 		}
+		renameHabButton.setText(resourceMap.getString("renameHabButton.text")); 
+		renameHabButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+		renameHabButton.setName("renameHabButton");
+		renameHabButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+		if(renameHabButton.getActionListeners().length==0){
+			renameHabButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					actionHandler.changeSpeOrHabNameActionPerformed(evt);
+				}
+			});
+		}
+		
 		habitatSetupTabLayout = new javax.swing.GroupLayout(habitatSetupTab);
 		habitatSetupTab.setLayout(habitatSetupTabLayout);
 		habitatParamTabLayout = new javax.swing.GroupLayout(habitatParamTab);
@@ -1441,7 +1468,8 @@ public class InsalmoInstreamView extends JFrame{
 														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 														.addComponent(habitatSetupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
 														.addComponent(addHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(remHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+														.addComponent(remHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(renameHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
 														.addContainerGap())
 				);
 		habitatSetupTabLayout.setVerticalGroup(
@@ -1453,7 +1481,8 @@ public class InsalmoInstreamView extends JFrame{
 										.addComponent(habitatSetupComboLabel)
 										.addComponent(habitatSetupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addComponent(addHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(remHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+										.addComponent(remHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(renameHabButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
 										.addGap(15, 15, 15)
 										.addGroup(habitatSetupLayeredScrollPanesVGroup)
 										.addContainerGap())

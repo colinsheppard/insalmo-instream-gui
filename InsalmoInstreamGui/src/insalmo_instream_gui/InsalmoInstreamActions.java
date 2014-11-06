@@ -297,6 +297,14 @@ public class InsalmoInstreamActions {
 		parent.showErrorWarnings.setLocationRelativeTo(parent.parentFrame);
 		InsalmoInstreamApp.getApplication().show(parent.showErrorWarnings);
 	}
+	public void changeSpeOrHabNameActionPerformed(ActionEvent evt) {
+		commitTables();
+		Boolean isSpecies = parent.modelSetupTabbedPane.getSelectedComponent().getName().equals("speciesSetupTab");
+		Integer speOrHabIndex = isSpecies ?  parent.speciesSetupComboBox.getSelectedIndex() : parent.habitatSetupComboBox.getSelectedIndex();
+		ChangeFishOrReachName changeSpeOrHab = new ChangeFishOrReachName(parent, getOpenProject(),speOrHabIndex,isSpecies);
+		changeSpeOrHab.setLocationRelativeTo(InsalmoInstreamApp.getApplication().getMainFrame());
+		InsalmoInstreamApp.getApplication().show(changeSpeOrHab);
+	}
 	public void changeSpeParamActionPerformed(ActionEvent evt) {
 		commitTables();
 		Integer speIndex = Integer.parseInt(((JButton)evt.getSource()).getName().substring(20));
