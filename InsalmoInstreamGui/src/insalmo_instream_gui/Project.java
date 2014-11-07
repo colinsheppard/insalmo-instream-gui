@@ -721,6 +721,24 @@ public class Project {
 		//		speParams.setFileName(sParams.getParamInstance()+".Params");
 	}
 	
+	public void changeSpeciesName(String oldName, String newName){
+		this.setupParams.put("speSetup-"+newName,this.setupParams.get("speSetup-"+oldName));
+		this.setupParams.remove("speSetup-"+oldName);
+		this.setupParams.get("speSetup-"+newName).setParamInstance(newName);
+		this.setupParams.put("speParam-"+newName,this.setupParams.get("speParam-"+oldName));
+		this.setupParams.remove("speParam-"+oldName);
+		this.setupParams.get("speParam-"+newName).setParamInstance(newName);
+		this.fish.set(this.fish.indexOf(oldName), newName); 
+	}
+	public void changeReachName(String oldName, String newName){
+		this.setupParams.put("habSetup-"+newName,this.setupParams.get("habSetup-"+oldName));
+		this.setupParams.remove("habSetup-"+oldName);
+		this.setupParams.get("habSetup-"+newName).setParamInstance(newName);
+		this.setupParams.put("habParam-"+newName,this.setupParams.get("habParam-"+oldName));
+		this.setupParams.remove("habParam-"+oldName);
+		this.setupParams.get("habParam-"+newName).setParamInstance(newName);
+		this.habs.set(this.habs.indexOf(oldName), newName);
+	}
 	public void changeSpeciesParameterFile(String speciesName, File newParameterFile) throws Exception{
 		SetupParameters speSetup = setupParams.get("speSetup-"+speciesName);
 		SetupParameters prevSpeParam = setupParams.get("speParam-"+speciesName);

@@ -1006,6 +1006,8 @@ public class InsalmoInstreamView extends JFrame{
 		return false;
 	}
 
+
+	
 	public void createParameterTabs(){
 		/*
 		 * Model setup tab 
@@ -1779,6 +1781,27 @@ public class InsalmoInstreamView extends JFrame{
 		if(lftTextAreas.size()==0){
 			lftTool.createLFTOutputTabs(lftExecutionTabbedPane);
 		}
+	}
+	
+	public void changeSpeciesName(String oldName,Integer speciesIndex,String newName){
+		speciesComboElements.set(speciesIndex,new String[] {newName,"speciesTable"+speciesIndex});
+		speciesSetupComboBox.removeAllItems();
+		speciesParamComboBox.removeAllItems();
+		for(String name : this.openProject.getFish()){
+			speciesSetupComboBox.addItem(name);
+			speciesParamComboBox.addItem(name);
+		}
+		modelSetupTabbedPane.revalidate();
+	}
+	public void changeReachName(String oldName,Integer reachIndex,String newName){
+		habitatComboElements.set(reachIndex,new String[] {newName,"habitatTable"+reachIndex});
+		habitatSetupComboBox.removeAllItems();
+		habitatParamComboBox.removeAllItems();
+		for(String name : this.openProject.getHabs()){
+			habitatSetupComboBox.addItem(name);
+			habitatParamComboBox.addItem(name);
+		}
+		modelSetupTabbedPane.revalidate();
 	}
 
 	// MENU ITEM ACTIONS

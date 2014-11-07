@@ -162,9 +162,13 @@ public class ChangeFishOrReachName extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(this, "The reach name '" + newSpeciesOrReachName + "' already exists in the project, please type another.");
 			return;
 		}else{
-			
-			// here we do the actual change
-			
+			if(this.isSpecies){
+				this.openProject.changeSpeciesName(this.speciesOrReachName,newSpeciesOrReachName);
+				this.parent.changeSpeciesName(this.speciesOrReachName,speciesOrReachIndex,newSpeciesOrReachName);
+			}else{
+				this.openProject.changeReachName(this.speciesOrReachName,newSpeciesOrReachName);
+				this.parent.changeReachName(this.speciesOrReachName,speciesOrReachIndex,newSpeciesOrReachName);
+			}
 		}
 		this.dispose();
 	}
