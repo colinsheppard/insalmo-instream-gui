@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
 import javax.swing.*;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.JToolBar.Separator;
@@ -1782,7 +1783,19 @@ public class InsalmoInstreamView extends JFrame{
 			lftTool.createLFTOutputTabs(lftExecutionTabbedPane);
 		}
 	}
-	
+	public void changeExperimentParamKey(Hashtable<Integer,String[]> indicesToChange){
+		for(Integer indToChange : indicesToChange.keySet()){
+			String expParamKey = indicesToChange.get(indToChange)[0];
+			experimentParamComboElements.set(indToChange,new String[] {expParamKey,"experimentParamTable"+expParamKey});
+			experimentParamTable.get(indToChange).setName(expParamKey);
+			experimentParamTable.get(indToChange).getModel().setValueAt(indicesToChange.get(indToChange)[1], 1, 1);
+		}
+		experimentParamComboBox.removeAllItems();
+		for(String expParamKey : this.openProject.getExperimentParamKeys()){
+			experimentParamComboBox.addItem(expParamKey);
+		}
+		experimentTabbedPane.revalidate();
+	}
 	public void changeSpeciesName(String oldName,Integer speciesIndex,String newName){
 		speciesComboElements.set(speciesIndex,new String[] {newName,"speciesTable"+speciesIndex});
 		speciesSetupComboBox.removeAllItems();

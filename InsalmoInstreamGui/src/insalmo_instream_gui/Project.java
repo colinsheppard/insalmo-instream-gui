@@ -721,6 +721,26 @@ public class Project {
 		//		speParams.setFileName(sParams.getParamInstance()+".Params");
 	}
 	
+	public Hashtable<Integer,String[]> changeExperimentParamKey(String oldName, String newName){
+		ArrayList<String> newExps = new ArrayList<String>();
+		Hashtable<Integer,String[]> indicesToChange = new Hashtable<Integer,String[]>();
+		Integer i = 0;
+		for(String expKey : this.exps){
+			if(this.expParams.get(expKey).getInstanceName().equals(oldName)){
+				this.expParams.get(expKey).setInstanceName(newName);
+				String newKey = this.expParams.get(expKey).getParamKey(); 
+				this.expParams.put(newKey,this.expParams.get(expKey));
+				this.expParams.remove(expKey);
+				indicesToChange.put(i,new String[]{newKey,newName});
+				newExps.add(newKey);
+			}else{
+				newExps.add(expKey);
+			}
+			i++;
+		}
+		this.exps = newExps;
+		return indicesToChange;
+	}
 	public void changeSpeciesName(String oldName, String newName){
 		this.setupParams.put("speSetup-"+newName,this.setupParams.get("speSetup-"+oldName));
 		this.setupParams.remove("speSetup-"+oldName);

@@ -38,6 +38,7 @@ package insalmo_instream_gui;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -169,6 +170,8 @@ public class ChangeFishOrReachName extends javax.swing.JFrame {
 				this.openProject.changeReachName(this.speciesOrReachName,newSpeciesOrReachName);
 				this.parent.changeReachName(this.speciesOrReachName,speciesOrReachIndex,newSpeciesOrReachName);
 			}
+			Hashtable<Integer,String[]> expIndicesToChange = this.openProject.changeExperimentParamKey(this.speciesOrReachName, newSpeciesOrReachName);
+			this.parent.changeExperimentParamKey(expIndicesToChange);
 		}
 		this.dispose();
 	}
