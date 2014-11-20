@@ -35,6 +35,7 @@
 
 package insalmo_instream_gui;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -98,6 +99,7 @@ public class ChangeFishOrReachName extends javax.swing.JFrame {
 		newNameTextField.setName("newNameTextField");
 		newNameTextField.setText(this.speciesOrReachName);
 		newNameTextField.setVisible(true);
+		newNameTextField.setMaximumSize( new Dimension(Integer.MAX_VALUE, newNameTextField.getPreferredSize().height) );
 
 		// SUBMIT AND CANCEL
 		submitButton.setName("submitButton");
