@@ -34,8 +34,8 @@ foodAvailabilityRatioLow		0.5
 numScenarios		4
 piscivoryRiskRatioHigh		1.1
 baseFlowRangeHigh		4
-summerTemperatureRangeHigh		4
-uncertaintyParam1LowFactor		0.8
 reddScourRatioLow		0.5
+uncertaintyParam1LowFactor		0.8
+summerTemperatureRangeHigh		4
 winterTemperatureRangeLow		-4
 @end

@@ -8,6 +8,7 @@ runEndDate	9/30/1999	Run end date	DATE	10
 popInitDate	10/1/1995	Date used to identify initial population characteristics from population initialization input file	DATE	15		
 siteLatitude                 	40	Latitude of simulated site	FLOAT	20	0	90
 fracFlowChangeForMovement	 0.1	Fractional change in flow that triggers a model step	FLOAT	22	0.0	5.0
+fracDriftChangeForMovement	 0.2	Fractional change in drift that triggers a model step	FLOAT	23	0.0	5.0
 fishOutputFile	LiveFishOut.csv	Population output file name	OUTFILENAME	25		
 fishMortalityFile	DeadFishOut.csv	Mortality output file name	OUTFILENAME	30		
 reddOutputFile	Redds_Out.csv	Redd output file name	OUTFILENAME	35		
@@ -22,4 +23,6 @@ writeReddMortReport	0	1 to produce optional details on egg mortality for each re
 writeMoveReport	0	1 to produce optional output to test fish habitat selection	BOOL	80	0	1
 writeCellCentroidReport	0	1 to produce a report of cell centroid coordinates	BOOL	85	0	1
 writeReadyToSpawnReport	0	1 to produce a report for testing decision of when to spawn	BOOL	90	0	1
+writeIndividualFishReport	0	1 to produce a report on individual fish	BOOL	95	0	1
+fileOutputFrequency	5	File output frequency	INTEGER	100	0	99999999
 @end
