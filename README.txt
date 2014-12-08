@@ -1,4 +1,4 @@
-inSALMO/inSTREAM Graphic User Interface Version 1.4.6, September 2013.
+inSALMO/inSTREAM Graphic User Interface Version 1.5.0, December 2014.
 
 This software provides an interface for using the inSALMO and inSTREAM individual-based salmon model. The model represents effects of river habitat on freshwater life stages of salmon, from spawning through outmigration of juveniles.
 
