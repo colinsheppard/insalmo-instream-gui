@@ -30,8 +30,9 @@ fishMaxSwimParamB	21	Constant in max swim speed length term	FLOAT	125	0	50
 fishMaxSwimParamC	-0.0029	T2 coefficient in max swim speed temperature term	FLOAT	130	-1	0
 fishMaxSwimParamD	0.084	T coefficient in max swim speed temperature term	FLOAT	135	0	1
 fishMaxSwimParamE	0.37	Constant in max swim speed temperature term	FLOAT	140	0	1
-fishMoveDistParamA	20	A in: max move distance = A*Length^B (unitless)	FLOAT	145	5	100
-fishMoveDistParamB	2	B in: max move distance = A*Length^B (unitless)	FLOAT	150	1	3
+fishMoveDistParamA	20	A in: max move distance = A*Length^B (unitless)	FLOAT	145	5	1000
+fishMoveDistParamB	2	B in: max move distance = A*Length^B (unitless)	FLOAT	150	0.5	3
+fishMaxLengthGrowth	0.02	Maximum daily growth in length (cm)	FLOAT	152	0.005	0.2 
 fishMovePenaltyTime	0	Time (hr) that fish do not feed after moving	FLOAT	155	0	2
 fishPiscivoryLength	15	Length (cm) above which trout are assumed piscivorous	FLOAT	160	10	10000
 fishReactDistNightFactor	0.5	Factor by which detection distance is reduced at night.	FLOAT	165	0	1

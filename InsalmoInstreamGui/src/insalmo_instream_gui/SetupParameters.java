@@ -47,6 +47,8 @@ public class SetupParameters{
 			if(!paramName.equals("habParamFile") 
 					&& !paramName.equals("speciesParamFile")
 					&& !paramName.equals("shuffleYearSeed")
+					&& !paramName.equals("speciesName")
+					&& !paramName.equals("reachName")
 					&& !paramName.equals("numberOfSpecies")
 					&& !paramName.equals("numberOfScenarios")
 					&& !this.params.containsKey(paramName)){

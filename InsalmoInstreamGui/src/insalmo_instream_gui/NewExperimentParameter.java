@@ -94,7 +94,7 @@ public class NewExperimentParameter extends javax.swing.JFrame {
             	parameterTypeInputButtonActionPerformed(evt);
             }
         });
-        String[] inputParams = new String[] {"cellHabVarsFile","flowFile","temperatureFile","turbidityFile"};
+        String[] inputParams = new String[] {"cellHabVarsFile","flowFile","temperatureFile","turbidityFile","driftFoodFile"};
         this.parameterLists.put("input",inputParams);
         this.className = "HabitatSpace";
         

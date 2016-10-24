@@ -11,4 +11,5 @@ cellHabVarsFile	ExampleSiteA-Cell.csv	Name of reach's cell variables data file	I
 flowFile	ExampleFlowInput.csv	Name of reach's flow input file	INFILENAME	6	0	50
 temperatureFile	ExampleTemperatureInput.csv	Name of reach's temperature input file	INFILENAME	7	0	50
 turbidityFile	ExampleTurbidityInput.csv	Name of reach's turbidity input file	INFILENAME	8	0	50
+driftFoodFile	ExampleDriftFoodFile.csv	Name of reach's drift food input file	INFILENAME	9	0	50
 @end						

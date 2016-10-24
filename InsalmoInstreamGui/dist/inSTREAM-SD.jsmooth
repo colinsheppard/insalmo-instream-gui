@@ -13,7 +13,7 @@
 <classPath>lib\toplink-essentials.jar</classPath>
 <currentDirectory>..\Projects</currentDirectory>
 <embeddedJar>true</embeddedJar>
-<executableName>inSTREAM_6-0.exe</executableName>
+<executableName>inSTREAM_6-1.exe</executableName>
 <iconLocation>inSTREAM-SD-Icon.gif</iconLocation>
 <initialMemoryHeap>-1</initialMemoryHeap>
 <jarLocation>inSTREAM-SD-GUI.jar</jarLocation>
